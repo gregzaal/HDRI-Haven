@@ -7,6 +7,5 @@
 .htaccess
 secret_config.php
 /files
-/files_t
 /utils
 /analytics
