@@ -8,7 +8,7 @@ $WORKING_LOCALLY = substr($_SERVER['DOCUMENT_ROOT'], 0, 3) == "C:/" || substr($_
 
 $SYSTEM_ROOT = $_SERVER['DOCUMENT_ROOT'];
 if ($WORKING_LOCALLY){
-    $SYSTEM_ROOT = "C:/HDRI-Haven/Web/hdrihaven-v2/";
+    $SYSTEM_ROOT = $GLOBALS['LOCAL_WORKING_FOLDER'];
 }
 
 include($_SERVER['DOCUMENT_ROOT'].'/php/secret_config.php');
@@ -212,7 +212,7 @@ function clean_email_string($string) {
 }
 
 function debug_email($subject, $text){
-    $email_to = "gregzzmail@gmail.com";
+    $email_to = $GLOBALS['ADMIN_EMAIL'];
     $email_from = "info@hdrihaven.com";
     $headers = 'From: '.$email_from."\r\n".
     'Reply-To: '.$email_from."\r\n" .
