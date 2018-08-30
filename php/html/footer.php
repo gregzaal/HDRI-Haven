@@ -43,6 +43,7 @@ echo ">";
         <li><a href="/p/faq.php">FAQ</a></li>
         <li><a href="/p/finance-reports.php">Finance Reports</a></li>
         <li><a href="https://blog.hdrihaven.com/">Blog</a></li>
+        <li><a href="https://github.com/gregzaal/HDRI-Haven">Source</a></li>
         <!-- <li><a href="/p/stats.php">Stats</a></li> -->
     </ul>
 </div>
