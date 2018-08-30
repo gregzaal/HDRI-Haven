@@ -1,0 +1,13 @@
+// Smaller than 1300
+
+.patreon-bar-wrapper {
+    max-width: 80%;
+    padding: 0 1em;
+}
+
+#hdri-grid {
+    padding: 0;
+}
+.grid-item {
+    width: calc(50% - 1em - 2px);
+}

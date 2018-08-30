@@ -1,0 +1,12 @@
+*_cached.html
+/php/cache/
+/php/patreon_data/
+/php/patreon_tokens.json
+*.css.map
+.sass-cache
+.htaccess
+secret_config.php
+/files
+/files_t
+/utils
+/analytics
