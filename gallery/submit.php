@@ -38,7 +38,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         <div class="form-item">
             <h2>Upload image:</h2>
             <input type="file" name="file" id="file" required>
-            <p><br>JPG or PNG, max file size 5 MB.</p>
+            <p><br>JPG or PNG, up to 5 MB.</p>
         </div>
 
         <div class="form-item">

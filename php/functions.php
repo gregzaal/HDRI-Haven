@@ -4,14 +4,14 @@
 // Constants & Utils
 // ============================================================================
 
+include($_SERVER['DOCUMENT_ROOT'].'/php/secret_config.php');
+
 $WORKING_LOCALLY = substr($_SERVER['DOCUMENT_ROOT'], 0, 3) == "C:/" || substr($_SERVER['DOCUMENT_ROOT'], 0, 3) == "X:/";
 
 $SYSTEM_ROOT = $_SERVER['DOCUMENT_ROOT'];
 if ($WORKING_LOCALLY){
     $SYSTEM_ROOT = $GLOBALS['LOCAL_WORKING_FOLDER'];
 }
-
-include($_SERVER['DOCUMENT_ROOT'].'/php/secret_config.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/vendor/patreon/patreon/src/patreon.php');
 use Patreon\API;
