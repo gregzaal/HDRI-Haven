@@ -1,6 +1,6 @@
 # HDRI Haven Source Code
 
-This repo contains the website code for [Texture Haven](https://hdrihaven.com/).
+This repo contains the website code for [HDRI Haven](https://hdrihaven.com/).
 
 I am not a web developer really, so I apologize in advance for the hideous code you are about to see.
 
