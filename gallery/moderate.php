@@ -24,7 +24,7 @@ $hdri_used = $_GET['u'];
 $favourite = $_GET['f'];
 
 $conn = db_conn_read_write();
-$renders = get_gallery_renders($conn);
+$renders = get_gallery_renders(true, $conn);
 if (in_array($hash, array_column($renders, 'hash'))){
     $file_name = "";
     foreach($renders as $r){

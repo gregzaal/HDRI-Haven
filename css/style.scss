@@ -1395,6 +1395,48 @@ ul#navbar {
     }
 }
 
+#backplates-grid {
+    margin: 1em 0;
+
+    .item {
+        display: inline-block;
+        padding: 5px;
+        width: calc(25% - 10px);
+        vertical-align: middle;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+#user-renders {
+    margin: 1em 0;
+
+    .user-render {
+        position: relative;
+
+        .user-render-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            opacity: 0;
+            @include transition();
+        }
+
+        &:hover {
+            @include drop-shadow();
+
+            .user-render-info {
+                opacity: 0.85;
+                @include transition();
+            }
+        }
+    }
+}
+
 
 // ============================================================================
 // Vault Info
@@ -1620,26 +1662,6 @@ ul#navbar {
 
         &:hover {
             @include scale(1.1);
-        }
-    }
-}
-
-
-// ============================================================================
-// Backplates
-// ============================================================================
-
-#backplates-grid {
-    margin-top: 1em;
-
-    .item {
-        display: inline-block;
-        padding: 5px;
-        width: calc(25% - 10px);
-        vertical-align: middle;
-
-        img {
-            width: 100%;
         }
     }
 }

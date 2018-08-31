@@ -28,7 +28,7 @@ if ($mode == 0){
 
 <?php
     $conn = db_conn_read_only();
-    $renders = get_gallery_renders($conn);
+    $renders = get_gallery_renders(false, $conn);
     foreach ($renders as $r){
         if (($mode == "1" and $r['favourite']) or ($mode == "0" and !$r['favourite'])) {
             $src = "/files/gallery/L/".$r['file_name'];

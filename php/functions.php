@@ -247,7 +247,7 @@ function include_start_html($title, $slug="") {
     $html = ob_get_contents();
     ob_end_clean();
 
-    if ($title == "Render Gallery"){
+    if ($title == "Render Gallery" || starts_with($title, "HDRI: ")){
         $html = str_replace('%GALLERYJS%', "<link rel=\"stylesheet\" href=\"/js/flexImages/jquery.flex-images.css\"><script src=\"/js/flexImages/jquery.flex-images.min.js\"></script>", $html);
     }else{
         $html = str_replace('%GALLERYJS%', "", $html);
@@ -624,14 +624,19 @@ function get_sponsors($slug, $reuse_conn=NULL){
     return $array;
 }
 
-function get_gallery_renders($reuse_conn=NULL){
+function get_gallery_renders($all=false, $reuse_conn=NULL){
     if (is_null($reuse_conn)){
         $conn = db_conn_read_only();
     }else{
         $conn = $reuse_conn;
     }
     $row = 0; // Default incase of SQL error
-    $sql = "SELECT * FROM gallery WHERE favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21 ORDER BY POWER(clicks+10*click_weight, 0.7)/POWER(ABS(DATEDIFF(date_added, NOW()))+1, 1.1) DESC, clicks DESC, date_added DESC";
+    $sql = "SELECT * FROM gallery";
+    if (!$all){
+        $sql .= " WHERE favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21";
+    }
+    $sql .= " ORDER BY POWER(clicks+10*click_weight, 0.7)/POWER(ABS(DATEDIFF(date_added, NOW()))+1, 1.1) DESC, clicks DESC, date_added DESC";
+    // $sql = "SELECT * FROM gallery WHERE favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21 ORDER BY POWER(clicks+10*click_weight, 0.7)/POWER(ABS(DATEDIFF(date_added, NOW()))+1, 1.1) DESC, clicks DESC, date_added DESC";
     $result = mysqli_query($conn, $sql);
 
     $array = array();

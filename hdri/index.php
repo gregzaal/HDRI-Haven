@@ -257,7 +257,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         if (file_exists($backplates_scan_dir)){
             $files = scandir($backplates_scan_dir);
             if (sizeof($files) > 2){  // In case files don't exist, only "files" in dir will be "." and ".."
-                echo "<h2>Backplates</h1>";
+                echo "<h2>Backplates</h2>";
                 echo "<div id='backplates-grid'>";
                 foreach ($files as $f) {
                     if (ends_with(strtolower($f), ".jpg")){
@@ -301,6 +301,55 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 }else{
     echo "<h1 class='coming-soon'>Coming soon :)</h1>";
 }
+
+$all_renders = get_gallery_renders(true, $conn);
+$renders = [];
+foreach ($all_renders as $r){
+    if ($r['hdri_used'] == $slug){
+        array_push($renders, $r);
+    }
+}
+if ($renders){
+    echo "<h2>";
+    echo "User Renders ";
+    echo "<a href=\"/gallery/submit.php?h=".$slug."\"><i class='material-icons'>add_circle_outline</i></a>";
+    echo "</h2>";
+    echo '<div id="user-renders">';
+    echo '<div class="flex-images">';
+    foreach ($renders as $r){
+        if ($r['approval_pending'] == 0){
+            $src = "/files/gallery/S/".$r['file_name'];
+            $src_L = "/files/gallery/L/".$r['file_name'];
+            $real_src = $GLOBALS['SYSTEM_ROOT'].$src;
+            $size = getimagesize($real_src);
+            if ($r['author_link'] == "" || $r['author_link'] == "none"|| $r['author_link'] == "http://"){
+                $r['author_link'] = "#";
+            }
+            echo "<div class='item user-render' data-w='".$size[0]."' data-h='".$size[1]."'>";
+            echo "<div class='user-render-info'>";
+            echo "<p>";
+            echo "<i>{$r['artwork_name']}</i>";
+            echo " by ";
+            if ($r['author_link'] && $r['author_link'] !== "#"){
+                echo "<a target=\"_blank\" href=\"{$r['author_link']}\">{$r['author']}</a>";
+            }else{
+                echo $r['author'];
+            }
+            echo "</p>";
+            echo "</div>";
+            echo "<a href=\"".$src_L."\" target=\"_blank\">";
+            echo "<img src=\"".$src."\">";
+            echo "</a>";
+            echo "</div>";
+        }
+    }
+    echo "</div>";
+    echo "</div>";
+    echo "<script type=\"text/javascript\">";
+    echo "$('#user-renders').flexImages({rowHeight: 300});";
+    echo "</script>";
+}
+
 
 /*
 TODO:

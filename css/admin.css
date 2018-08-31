@@ -28,6 +28,8 @@ h1 {
 h2 {
   font-size: 1.5em;
   padding: 0.5em; }
+  h2 .material-icons {
+    vertical-align: top; }
 
 h3 {
   font-size: 1.3em; }

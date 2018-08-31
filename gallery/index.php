@@ -24,7 +24,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 <div class="flex-images">
     <?php
     $conn = db_conn_read_only();
-    $renders = get_gallery_renders($conn);
+    $renders = get_gallery_renders(false, $conn);
     $hdris = get_from_db("popular", "all", "all", "all", $conn);
     $hdri_names = [];
     foreach ($hdris as $h){

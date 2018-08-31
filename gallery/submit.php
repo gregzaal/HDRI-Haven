@@ -18,11 +18,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
     <h2>Note:</h2>
     <p>
-        Your image will be displayed on the main gallery page for a minimum of three weeks.<br>
-        In order to keep the gallery from becoming cluttered, some images may be removed after this time.
+        To prevent the gallery from becoming cluttered, unfortunately only the highest quality work will be accepted.
     </p>
     <p>
-        Please limit your submissions to a maximum of <b>3 per month</b> of your best work.
+        If accepted, you will be notified by the email address you provide, and your image will be displayed on the main gallery page for a minimum of three weeks. If your work is exceptional, it may remain permanently.
     </p>
 
     <form action="do_submit.php" method="post" enctype="multipart/form-data" id="gallery-form">
@@ -66,7 +65,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             
         <div class="form-item">
             <h2>HDRI Used:</h2>
-            <input type="text" name="hdri-used" placeholder="Satara Night" value="" required>
+            <?php
+            echo "<input type=\"text\" name=\"hdri-used\" placeholder=\"Satara Night\" value=\"";
+            if (isset($_GET["h"])){
+                echo htmlspecialchars($_GET["h"]);
+            }
+            echo "\" required>";
+            ?>
             <p>The name of the HDRI you used in this render. <a href="/hdris/category/?c=all">See the list here</a>.</p>
         </div>
             

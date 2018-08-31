@@ -28,6 +28,8 @@ h1 {
 h2 {
   font-size: 1.5em;
   padding: 0.5em; }
+  h2 .material-icons {
+    vertical-align: top; }
 
 h3 {
   font-size: 1.3em; }
@@ -1096,6 +1098,35 @@ ul#navbar {
     #sponsor-list li:last-child {
       padding-bottom: 0; }
 
+#backplates-grid {
+  margin: 1em 0; }
+  #backplates-grid .item {
+    display: inline-block;
+    padding: 5px;
+    width: calc(25% - 10px);
+    vertical-align: middle; }
+    #backplates-grid .item img {
+      width: 100%; }
+
+#user-renders {
+  margin: 1em 0; }
+  #user-renders .user-render {
+    position: relative; }
+    #user-renders .user-render .user-render-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      opacity: 0;
+      transition: all 0.15s ease; }
+    #user-renders .user-render:hover {
+      box-shadow: 2px 2px 9px -2px rgba(0, 0, 0, 0.2);
+      transition: all 0.15s ease; }
+      #user-renders .user-render:hover .user-render-info {
+        opacity: 0.85;
+        transition: all 0.15s ease; }
+
 .vault-wrapper {
   margin-top: 2em;
   text-align: center; }
@@ -1247,16 +1278,6 @@ ul#navbar {
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.6); }
     .gallery-fav .fa:hover {
       transform: scale(1.1); }
-
-#backplates-grid {
-  margin-top: 1em; }
-  #backplates-grid .item {
-    display: inline-block;
-    padding: 5px;
-    width: calc(25% - 10px);
-    vertical-align: middle; }
-    #backplates-grid .item img {
-      width: 100%; }
 
 .contrib-earnings-page table {
   width: 100%;
