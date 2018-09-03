@@ -77,9 +77,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 
     <div class="form-item">
     <h2>Coordinates:</h2>
-    <input id="form-coord_x" type="text" name="coord_x" value="0">
-    <input id="form-coord_y" type="text" name="coord_y" value="0">
-    <label><input id="form-coords_are_approx" type="checkbox" name="coords_are_approx" value="Approximate">Approximate</label><br>
+    <input id="form-coords" type="text" name="coords" value="0">
     </div>
 
     <div class="form-item">

@@ -42,11 +42,7 @@ $sql_fields['tags'] = format_tagcat($_GET["tags"], $conn);
 $sql_fields['date_taken'] = $_GET["date_taken"];
 $sql_fields['problem'] = $_GET["problem"];
 $sql_fields['timezone_offset'] = $_GET["timezone_offset"];
-$sql_fields['coord_x'] = $_GET["coord_x"];
-$sql_fields['coord_y'] = $_GET["coord_y"];
-if (isset($_GET['coords_are_approx'])) {
-    $sql_fields['coords_are_approx'] = "1";
-}
+$sql_fields['coords'] = $_GET["coords"];
 if (isset($_GET['backplates'])) {
     echo "backplates: ";
     echo $_GET['backplates'];

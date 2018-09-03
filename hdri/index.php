@@ -189,6 +189,20 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<b>Published:</b> ".date("d F Y", strtotime($info['date_published']))." (".time_ago($info['date_published']).")";
     echo "</li>";
 
+    if ($info['coords'] && $info['coords'] != '0'){
+        $coords = explode(",", $info['coords']);
+        $cy = trim($coords[0]);
+        $cx = trim($coords[1]);
+        $map_url = "https://www.google.com/maps/place/".$cy.'+'.$cx;
+        echo "<li>";
+        echo "<b>Location:</b> ";
+        echo "<a href=\"".$map_url."\", target=\"_blank\">";
+        echo $cy.', '.$cx;
+        echo "</a>";
+        echo " (approx.)";
+        echo "</li>";
+    }
+
     echo "<li>";
     $category_str = "";
     $category_arr = explode(';', $info['categories']);
