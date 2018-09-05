@@ -382,13 +382,6 @@ if ($similar){
     echo "</div>";
 }
 
-
-/*
-TODO:
-    Similar HDRIs
-    User renders
-*/
-
 // echo "<hr class='disqus' />";
 // echo "<p class='center'>Note: Comments have been temporarily disabled due to <a href='https://twitter.com/disqus'>Disqus</a> injecting multiple ads (including auto-playing videos).<br>I'm currently looking for an alternative, <a href='/p/about-contact.php'>let me know</a> if you can help.</p>";
 if (!$GLOBALS['WORKING_LOCALLY']){
