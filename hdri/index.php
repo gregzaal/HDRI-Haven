@@ -182,7 +182,12 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     }
 
     echo "<li>";
-    echo "<b>Taken:</b> ".date("d F Y H:i", (strtotime($info['date_taken'])+($info['timezone_offset']*60*60)));
+    $taken_format = "d F Y H:i";
+    if (ends_with($info['date_taken'], "00:00:00")){
+        // Don't show time if it's the default (unknown). Note: if shooting at midnight, make sure it's not exactly midnight.
+        $taken_format = "d F Y";
+    }
+    echo "<b>Taken:</b> ".date($taken_format, (strtotime($info['date_taken'])+($info['timezone_offset']*60*60)));
     echo "</li>";
 
     echo "<li>";
