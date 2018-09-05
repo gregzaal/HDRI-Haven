@@ -370,6 +370,19 @@ if ($renders){
 }
 
 
+$similar = get_similar($slug, $conn);
+if ($similar){
+    echo "<h2>";
+    echo "Similar HDRIs";
+    echo "</h2>";
+    echo "<div id='hdri-grid'>";
+    foreach ($similar as $s){
+        echo make_grid_item($s);
+    }
+    echo "</div>";
+}
+
+
 /*
 TODO:
     Similar HDRIs

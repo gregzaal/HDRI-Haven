@@ -71,7 +71,7 @@ hr {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 pre {
-  display: inline;
+  display: inline-block;
   padding: 0.3em 0.4em;
   border-radius: 2px;
   border: 1px solid rgba(155, 214, 61, 0.8);

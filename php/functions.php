@@ -228,6 +228,12 @@ function debug_console($str){
     echo "</script>";
 }
 
+function pprint($x){
+    echo "<pre>";
+    print_r ($x);
+    echo "</pre>";
+}
+
 function join_paths() {
     $paths = array();
     foreach (func_get_args() as $arg) {
@@ -514,33 +520,46 @@ function track_search($search_term, $category="", $reuse_conn=NULL){
     }
 }
 
-function get_similar($category, $slug, $reuse_conn=NULL){
-    // Return products of the same category with similar tags
+function get_similar($slug, $reuse_conn=NULL){
 
     if (is_null($reuse_conn)){
         $conn = db_conn_read_only();
     }else{
         $conn = $reuse_conn;
     }
-    $items = get_from_db("popular", "all", $category, "all", $conn, 0);
+    $items = get_from_db("popular", "all", "all", "all", $conn);
     if (is_null($reuse_conn)){
         $conn->close();
     }
 
-    $item = array();
+    $this_item = array();
     foreach ($items as $row){
         if ($row['slug'] == $slug){
-            $item = $row;
+            $this_item = $row;
             break;
         }
+    }
+    if (!$this_item){
+        // Unpublished items will not be in 'get_from_db', so just don't show their similar items
+        return NULL;
     }
     $similarities = array();
     foreach ($items as $row){
         $row_slug = $row['slug'];
         if ($row_slug != $slug){
+            $cats = explode(";", $row['categories']);
+            foreach ($cats as $cat){
+                if (strpos((';'.$this_item['categories'].';'), (';'.$cat.';')) !== FALSE){
+                    if (array_key_exists($row_slug, $similarities)){
+                        $similarities[$row_slug] = $similarities[$row_slug] + 1;
+                    }else{
+                        $similarities[$row_slug] = 1;
+                    }
+                }
+            }
             $tags = explode(";", $row['tags']);
             foreach ($tags as $tag){
-                if (strpos((';'.$item['tags'].';'), (';'.$tag.';')) !== FALSE){
+                if (strpos((';'.$this_item['tags'].';'), (';'.$tag.';')) !== FALSE){
                     if (array_key_exists($row_slug, $similarities)){
                         $similarities[$row_slug] = $similarities[$row_slug] + 1;
                     }else{
@@ -551,7 +570,7 @@ function get_similar($category, $slug, $reuse_conn=NULL){
         }
     }
     arsort($similarities);
-    $similar_slugs = array_slice(array_keys($similarities), 0, 4);  // only the first 6 keys
+    $similar_slugs = array_slice(array_keys($similarities), 0, 6);  // only the first 6 keys
 
     $similar = array();
     foreach ($similar_slugs as $s){
@@ -683,7 +702,7 @@ function make_category_list($sort, $reuse_conn=NULL, $current="all"){
     echo "</div>";
 }
 
-function make_grid_item($i, $sort, $category="all"){
+function make_grid_item($i, $category="all"){
     $html = "";
 
     $slug = $i['slug'];
@@ -764,7 +783,7 @@ function make_hdri_grid($sort="popular", $search="all", $category="all", $author
         $html .= " :(</p>";
     }else{
         foreach ($items as $i){
-            $html .= make_grid_item($i, $sort, $category);
+            $html .= make_grid_item($i, $category);
         }
     }
     return $html;
