@@ -65,7 +65,7 @@ $conn = db_conn_read_only();
         <h1>Latest HDRIs</h1>
         <div id='hdri-grid'>
         <?php
-        echo make_hdri_grid("date_published", "all", "all", "all", $conn, 4);
+        echo make_hdri_grid("date_published", "all", "all", "all", $conn, 8);
         ?>
         </div>
         <a href="/hdris/category?c=all">
