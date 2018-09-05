@@ -327,6 +327,9 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<h2>";
     echo "User Renders ";
     echo "<a href=\"/gallery/submit.php?h=".$slug."\"><i class='material-icons'>add_circle_outline</i></a>";
+    if (!$renders){
+        echo " <sup style='font-size: 65%; color: black; font-style: italic; opacity: 0.5'>None yet, be the first!</sup>";
+    }
     echo "</h2>";
     if ($renders){
         echo '<div id="user-renders">';
@@ -363,22 +366,19 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<script type=\"text/javascript\">";
         echo "$('#user-renders').flexImages({rowHeight: 300});";
         echo "</script>";
-    }else{
-        echo "<p>";
-        echo "None yet, <a href=\"/gallery/submit.php?h=".$slug."\">be the first!</a>";
-        echo "</p>";
     }
-
 
     $similar = get_similar($slug, $conn);
     if ($similar){
         echo "<h2>";
         echo "Similar HDRIs";
         echo "</h2>";
+        echo "<div id='similar-hdris'>";
         echo "<div id='hdri-grid'>";
         foreach ($similar as $s){
             echo make_grid_item($s);
         }
+        echo "</div>";
         echo "</div>";
     }
 

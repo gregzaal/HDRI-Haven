@@ -1127,6 +1127,9 @@ ul#navbar {
         opacity: 0.85;
         transition: all 0.15s ease; }
 
+#similar-hdris #hdri-grid {
+  padding: 0; }
+
 .vault-wrapper {
   margin-top: 2em;
   text-align: center; }
