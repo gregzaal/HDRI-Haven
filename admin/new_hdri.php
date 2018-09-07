@@ -170,7 +170,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     
     <div class="form-item">
     <h2>File Format:</h2>
-    <input id="form-author" type="text" name="author" value="hdr">
+    <input id="form-fileformat" type="text" name="fileformat" value="hdr">
     <i class="fa fa-question-circle show-tooltip" aria-hidden="true"></i>
     <div class="tooltip hidden">hdr, exr, etc...</div>
     </div>
