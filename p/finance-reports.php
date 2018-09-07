@@ -19,6 +19,9 @@ $conn->close();
     <p>If you have any questions, feel free to email me at <?php insert_email() ?></p>
     <ul>
         <li>
+            <a href="https://docs.google.com/spreadsheets/d/1oLm5tZhfDsxyrGOQvJ4xqW2FUlCbzpzKccx1AmYd31M/edit?usp=sharing">August 2018</a>
+        </li>
+        <li>
             <a href="https://docs.google.com/spreadsheets/d/16wib6zEofhsCCtC3k0MvBfIfjcL9HtBfsVGj5qyoj3Q/edit?usp=sharing">July 2018</a>
         </li>
         <li>
