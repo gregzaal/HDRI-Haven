@@ -30,6 +30,7 @@ if (in_array($hash, array_column($renders, 'hash'))){
     foreach($renders as $r){
         if ($hash == $r['hash']){
             $file_name = $r['file_name'];
+            $email = $r['author_email'];
             break;
         }
     }
@@ -43,6 +44,23 @@ if (in_array($hash, array_column($renders, 'hash'))){
         $sql = "UPDATE gallery SET approval_pending=0, file_name=\"".$file_name."\", favourite=".$favourite.", hdri_used=\"".$hdri_used."\" WHERE hash=\"".$hash."\"";
         resize_image($old_fp, $new_fp_L, "jpg", 1920, 1080);
         resize_image($old_fp, $new_fp_S, "jpg", 1000, 400);
+
+        if ($email){
+            $subject = "Render Gallery Submission";
+            $email_message = "<html><body>";
+            $email_message = "<p>Thanks for your submission to the HDRI Haven <a href=\"https://hdrihaven.com/gallery/\">Render Gallery</a>!</p>";
+            $email_message = "<p>Your image has been <b>approved</b> and will be visible online soon.</p>";
+            $email_message .= "</body></html>";
+
+            $email_to = $email;
+            $email_from = "info@hdrihaven.com";
+            $headers = 'From: '.$email_from."\r\n".
+            'Reply-To: '.$email_from."\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+            @mail($email_to, $subject, clean_email_string($email_message), $headers);
+        }
     }else{
         $sql = "DELETE FROM gallery WHERE hash=\"".$hash."\"";
     }
