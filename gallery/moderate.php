@@ -68,8 +68,8 @@ if (in_array($hash, array_column($renders, 'hash'))){
                 if ($email != "" && $decision == "y"){
                     $subject = "Render Gallery Submission";
                     $email_message = "<html><body>";
-                    $email_message = "<p>Thanks for your submission to the HDRI Haven <a href=\"https://hdrihaven.com/gallery/\">Render Gallery</a>!</p>";
-                    $email_message = "<p>Your image has been <b>approved</b> and will be visible online soon.</p>";
+                    $email_message .= "<p>Thanks for your submission to the HDRI Haven <a href=\"https://hdrihaven.com/gallery/\">Render Gallery</a>!</p>";
+                    $email_message .= "<p>Your image has been <b>approved</b> and will be visible online soon.</p>";
                     $email_message .= "</body></html>";
 
                     $email_to = $email;
