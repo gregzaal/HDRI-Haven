@@ -1676,28 +1676,3 @@ ul#navbar {
 // ============================================================================
 // Contributors
 // ============================================================================
-
-.contrib-earnings-page{
-
-    table {
-        width: 100%;
-        text-align: center;
-        margin: 1.5em 1em;
-        border: 1px solid rgba(black, 0.3);
-
-        td, th {
-            padding: 0.2em;
-            border-right: 1px solid rgba(black, 0.1);
-
-            &:last-child {
-                border-right: none;
-            }
-        }
-
-        th {
-            padding: 0.5em;
-            border-bottom: 1px solid rgba(black, 0.2);
-        }
-    }
-}
-

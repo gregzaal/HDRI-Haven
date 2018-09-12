@@ -14,9 +14,24 @@ $conn->close();
 <div id="page-wrapper">
     <h1>Finance Reports</h1>
     <p>
-        Note: For now here's just a list of spreadsheets. I'll make some pretty graphs when there is more data to deal with, as well as explain and visualize how the travel costs are paid off using the monthly savings.
+        Since all income for HDRI Haven comes from donations, I treat this money as if it's not my own, instead still belonging to the people who are investing in the platform.
     </p>
-    <p>If you have any questions, feel free to email me at <?php insert_email() ?></p>
+    <p>
+        All spendings, savings and allocations of the income each month is detailed in the public spreadsheets below.
+    </p>
+    <p>
+        In a nutshell:
+    <ul>
+        <li>The income is first used to cover the running costs (server hosting and other necessary services).</li>
+        <li>Then, I (Greg Zaal) personally take 20% of the remainder as a salary to cover my time working on building, maintaining and improving the website, as well as checking, processing and uploading HDRIs from the various HDRI authors.</li>
+        <li>The remainder (~75% of the original income) is shared between the HDRI authors whose work was published that month, relative to the number of HDRIs they each published. For more details on how this amount is shared, look at one of the months below.</li>
+    </ul>
+    </p>
+    <p>
+        If you have any questions, feel free to email me at <?php insert_email() ?>.
+    </p>
+
+    <h2>Detailed Monthly Reports</h2>
     <ul>
         <li>
             <a href="https://docs.google.com/spreadsheets/d/1oLm5tZhfDsxyrGOQvJ4xqW2FUlCbzpzKccx1AmYd31M/edit?usp=sharing">August 2018</a>
@@ -53,26 +68,99 @@ $conn->close();
         </li>
     </ul>
 
-    <h2>Travel Reports</h2>
-    <ul>
-        <li>
-            <a href="https://docs.google.com/spreadsheets/d/1gsVMENinn_PG5GS9A2ITyxD1U-AshG6cchxdb_UeKTE/edit?usp=sharing">KwaZulu-Natal 2018</a>
-        </li>
-        <li>
-            <a href="/hdris/category/?o=popular&c=studio&s=small+studio">Small Studio</a> shoot: R3000 (<a href="https://www.google.co.za/search?q=3000+zar+in+usd" target="_blank">ZAR</a>)
-        </li>
-        <li>
-            <a href="https://docs.google.com/spreadsheets/d/1WrjLImQWRuaTPavW7rhBGzT9mlT-bMSXZVJzvadJ52Y/edit?usp=sharing">Italy 2017</a>
-        </li>
-    </ul>
+    <p>
+        For a quick visual overview of how HDRI Haven has grown, I recommend checking out the <a href="https://graphtreon.com/creator/hdrihaven">Graphtreon page</a>.
+    </p>
 
-    <h2>Savings</h2>
-    <p>The current balance of savings calculated from monthly reports and travel reports combined:</p>
-    <div class='col-2 center'>
-        <p>Travel Balance: <b class='<?php echo ($balance_travel>0?"green":"red"); ?>-text'>R<?php echo $balance_travel; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_travel) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+    <?php 
+    $conn = db_conn_read_only();
+
+    $sql = "SELECT * FROM `savings` WHERE type = \"travel\" ORDER BY `datetime` desc";
+    $result = mysqli_query($conn, $sql);
+    $travel = array();
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $travel[$row['id']] = $row;
+        }
+    }
+
+    $sql = "SELECT * FROM `savings` WHERE type = \"equipment\" ORDER BY `datetime` desc";
+    $result = mysqli_query($conn, $sql);
+    $equipment = array();
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $equipment[$row['id']] = $row;
+        }
+    }
+
+    $conn->close();
+    ?>
+
+    <div class='col-2' style='vertical-align: top'>
+    <h2>Travel Savings</h2>
+    <p>Savings to spend on traveling to new locations, shooting different types of HDRIs.</p>
+    <p>Current travel balance: <b class='<?php echo ($balance_travel>0?"green":"red"); ?>-text'>R<?php echo $balance_travel; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_travel) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+
+    <table cellspacing=0>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+        </tr>
+        <?php 
+        foreach($travel as $x){
+            echo "<tr>";
+            echo "<td>".date("Y-m-d", strtotime($x['datetime']))."</td>";
+            echo "<td>";
+            if ($x['link']){
+                echo "<a href=\"{$x['link']}\">";
+                echo $x['description'];
+                echo "</a>";
+            }else{
+                echo $x['description'];
+            }
+            echo "</td>";
+            echo "<td class='".($x['amount_c']>0?"green":"red")."-text'>";
+            echo "R".($x['amount_c']/100);
+            echo "</td>";
+            echo "</tr>";
+        }
+        ?>
+    </table>
     </div>
-    <div class='col-2 center'>
-        <p>Equipment Balance: <b class='<?php echo ($balance_equipment>0?"green":"red"); ?>-text'>R<?php echo $balance_equipment; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_equipment) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+
+
+    <div class='col-2' style='vertical-align: top'>
+    <h2>Equipment Savings</h2>
+    <p>Savings to spend on camera gear or other hardware necessary to shooting and stitching HDRIs.</p>
+    <p>Current equipment balance: <b class='<?php echo ($balance_equipment>0?"green":"red"); ?>-text'>R<?php echo $balance_equipment; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_equipment) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+
+    <table cellspacing=0>
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+        </tr>
+        <?php 
+        foreach($equipment as $x){
+            echo "<tr>";
+            echo "<td>".date("Y-m-d", strtotime($x['datetime']))."</td>";
+            echo "<td>";
+            if ($x['link']){
+                echo "<a href=\"{$x['link']}\">";
+                echo $x['description'];
+                echo "</a>";
+            }else{
+                echo $x['description'];
+            }
+            echo "</td>";
+            echo "<td class='".($x['amount_c']>0?"green":"red")."-text'>";
+            echo "R".($x['amount_c']/100);
+            echo "</td>";
+            echo "</tr>";
+        }
+        ?>
+    </table>
     </div>
 
 </div>

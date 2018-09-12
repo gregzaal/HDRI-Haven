@@ -78,6 +78,20 @@ pre {
   background-color: rgba(155, 214, 61, 0.1);
   color: #72a423; }
 
+table {
+  text-align: center;
+  margin: 1.5em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: calc(100% - 2em); }
+  table td, table th {
+    padding: 0.2em;
+    border-right: 1px solid rgba(0, 0, 0, 0.1); }
+    table td:last-child, table th:last-child {
+      border-right: none; }
+  table th {
+    padding: 0.5em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
+
 .material-icons {
   vertical-align: middle; }
 
@@ -89,7 +103,7 @@ pre {
   top: -4em; }
 
 .green-text {
-  color: #9bd63d; }
+  color: #7cc010; }
 
 .red-text {
   color: #F96854; }
@@ -1281,19 +1295,5 @@ ul#navbar {
     text-shadow: 0 0 6px rgba(0, 0, 0, 0.6); }
     .gallery-fav .fa:hover {
       transform: scale(1.1); }
-
-.contrib-earnings-page table {
-  width: 100%;
-  text-align: center;
-  margin: 1.5em 1em;
-  border: 1px solid rgba(0, 0, 0, 0.3); }
-  .contrib-earnings-page table td, .contrib-earnings-page table th {
-    padding: 0.2em;
-    border-right: 1px solid rgba(0, 0, 0, 0.1); }
-    .contrib-earnings-page table td:last-child, .contrib-earnings-page table th:last-child {
-      border-right: none; }
-  .contrib-earnings-page table th {
-    padding: 0.5em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2); }
 
 /*# sourceMappingURL=style.css.map */
