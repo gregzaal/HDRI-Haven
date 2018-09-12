@@ -99,6 +99,10 @@ function str_contains($haystack, $needle) {
     return strpos($haystack, $needle) !== false;
 }
 
+function fmoney($i){
+    return number_format($i, 2, '.', ' ');
+}
+
 function random_hash($length=8){
     $chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789";
     $hash = "";

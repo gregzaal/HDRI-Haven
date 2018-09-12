@@ -5,9 +5,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 $conn = db_conn_read_only();
 $sql = "SELECT sum(amount_c)/100 FROM savings WHERE type=\"travel\"";
-$balance_travel = round(array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))[0]);
+$balance_travel = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))[0];
 $sql = "SELECT sum(amount_c)/100 FROM savings WHERE type=\"equipment\"";
-$balance_equipment = round(array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))[0]);
+$balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))[0];
 $conn->close();
 ?>
 
@@ -99,7 +99,7 @@ $conn->close();
     <div class='col-2' style='vertical-align: top'>
     <h2>Travel Savings</h2>
     <p>Savings to spend on traveling to new locations, shooting different types of HDRIs.</p>
-    <p>Current travel balance: <b class='<?php echo ($balance_travel>0?"green":"red"); ?>-text'>R<?php echo $balance_travel; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_travel) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+    <p>Current travel balance: <b class='<?php echo ($balance_travel>0?"green":"red"); ?>-text'>R<?php echo fmoney($balance_travel); ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_travel) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
 
     <table cellspacing=0>
         <tr>
@@ -121,7 +121,7 @@ $conn->close();
             }
             echo "</td>";
             echo "<td class='".($x['amount_c']>0?"green":"red")."-text'>";
-            echo "R".($x['amount_c']/100);
+            echo "R".fmoney($x['amount_c']/100);
             echo "</td>";
             echo "</tr>";
         }
@@ -133,7 +133,7 @@ $conn->close();
     <div class='col-2' style='vertical-align: top'>
     <h2>Equipment Savings</h2>
     <p>Savings to spend on camera gear or other hardware necessary to shooting and stitching HDRIs.</p>
-    <p>Current equipment balance: <b class='<?php echo ($balance_equipment>0?"green":"red"); ?>-text'>R<?php echo $balance_equipment; ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_equipment) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
+    <p>Current equipment balance: <b class='<?php echo ($balance_equipment>0?"green":"red"); ?>-text'>R<?php echo fmoney($balance_equipment); ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_equipment) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
 
     <table cellspacing=0>
         <tr>
@@ -155,7 +155,7 @@ $conn->close();
             }
             echo "</td>";
             echo "<td class='".($x['amount_c']>0?"green":"red")."-text'>";
-            echo "R".($x['amount_c']/100);
+            echo "R".fmoney($x['amount_c']/100);
             echo "</td>";
             echo "</tr>";
         }
