@@ -57,7 +57,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     ?>
     <a href="submit.php">
     <div id="submit-render-btn" class="item" data-w="200" data-h="200">
-        <p><br><span style="font-size:5em; font-weight:300">+</span><br>Submit Your Render</p>
+        <p><br><span style="font-size:5em; font-weight:300; display:block">+</span><br>Submit Your Render</p>
     </div>
     </a>
 </div>

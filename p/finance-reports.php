@@ -34,6 +34,9 @@ $conn->close();
     <h2>Detailed Monthly Reports</h2>
     <ul>
         <li>
+            <a href="https://docs.google.com/spreadsheets/d/1yc81mjhghmpzsx3C4qf2MF0aRhXwJNK7uOZl3H3JncY/edit?usp=sharing">September 2018</a>
+        </li>
+        <li>
             <a href="https://docs.google.com/spreadsheets/d/1oLm5tZhfDsxyrGOQvJ4xqW2FUlCbzpzKccx1AmYd31M/edit?usp=sharing">August 2018</a>
         </li>
         <li>
