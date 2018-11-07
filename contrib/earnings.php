@@ -53,6 +53,7 @@ echo "<li>HDRIs that also include backplates are weighted ".$weight_mods['backpl
 echo "</ul>";
 
 $author_total_weights = [];
+$any_prepaid = false;
 echo "<h2>HDRIs published this month:</h2>";
 echo "<table cellspacing=0>";
 echo "<tr>";
@@ -78,7 +79,12 @@ foreach ($array as $h){
         $author_total_weights[$a] = $weight;
     }
     echo "<tr>";
-    echo "<td><a href=\"/hdri/?h=".$h['slug']."\">".$h['name']."</a></td>";
+    echo "<td><a href=\"/hdri/?h=".$h['slug']."\">".$h['name']."</a>";
+    if ($h['prepaid']){
+        $any_prepaid = true;
+        echo "**";
+    }
+    echo "</td>";
     echo "<td>".date("d F Y", strtotime($h['date_published']))."</td>";
     echo "<td>".$a."</td>";
     echo "<td>".$h['problem']."</td>";
@@ -117,6 +123,11 @@ echo "</table>";
 if ($T != 0){
     echo "<p>";
     echo "<sup>* Earnings shown may not be accurate as the values displayed are derrived from parameters in the URL. Check the finance reports for exact values. However, the ratios between earnings are correct.</sup>";
+    echo "</p>";
+}
+if ($any_prepaid){
+    echo "<p>";
+    echo "<sup>** This HDRI was paid for up-front, but is still shown here to take part in the calculations for other HDRIs.</sup>";
     echo "</p>";
 }
 
