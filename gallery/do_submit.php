@@ -114,8 +114,8 @@ if ($result == 1){
     $email_message = "<html><body>";
     $img_url = "https://hdrihaven.com/files/gallery/upload/".$file_name;
     $email_message .= "<p><a style='background-color: rgb(83, 161, 184);display:inline-block;padding: 0.75em 1em;color: white;text-decoration: none !important' href=\"".$img_url."\">Image</a></p>\r\n";
-    $email_message .= "<p>Artwork Name: ".$_POST["artwork-name"]."</p>\r\n";
     $email_message .= "<p>Author: ".$_POST["author"]."</p>\r\n";
+    $email_message .= "<p>Artwork Name: ".$_POST["artwork-name"]."</p>\r\n";
     $email_message .= "<p>Email: ".$_POST["author-email"]."</p>\r\n";
     $email_message .= "<p>Link: ".$_POST["author-link"]."</p>\r\n";
     $email_message .= "<p>HDRI Used: <a href='https://hdrihaven.com/hdri/?h=".$hdri_used."'>".$hdri_used."</a> ";

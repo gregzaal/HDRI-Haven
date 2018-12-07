@@ -19,6 +19,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         Or <a href="/p/about-contact.php">contact me</a> if there's some other way you'd like to donate.
     </p>
 
+    <p>
+        Donations under $100 will get added to the monthly Patreon income and shared among HDRI authors. Larger donations will be added directly to the travel and/or equipment budget. See the <a href="/p/finance-reports.php">public finance reports</a> for more details.
+    </p>
+
 </div>
 
 <?php

@@ -221,7 +221,7 @@ if ($T != 0){
 
 echo "<p><sup>
     * Popularity rating is determined by unique downloads over the first 28 days of the HDRI's publication, with some basic statistical maniplulation to lower the influence of large spikes and troughs in downloads.<br>
-    This is to account for inconsistent social media infuence, public holidays and server instabilities, and thus attempt to provide a fairer comparison of quality and usefulness between HDRIs.<br>
+    This is to account for inconsistent social media influence, public holidays and server instabilities, and thus attempt to provide a fairer comparison of quality and usefulness between HDRIs.<br>
     Details about the exact calculations can be found in the <a href=\"https://github.com/gregzaal/HDRI-Haven/blob/master/contrib/popularity.php\" target='_blank'>source code</a> for this page.
     </sup></p>";
 
