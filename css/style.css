@@ -72,7 +72,7 @@ hr {
 
 pre {
   display: inline-block;
-  padding: 0.3em 0.4em;
+  padding: 0 0.4em;
   border-radius: 2px;
   border: 1px solid rgba(155, 214, 61, 0.8);
   background-color: rgba(155, 214, 61, 0.1);
@@ -1240,45 +1240,48 @@ ul#navbar {
       color: white;
       font-size: 2em; }
 
-#gallery-form {
+#gallery-form, #ev-calc-form {
   border: 1px solid rgba(83, 161, 184, 0.5);
   margin: 1em; }
-  #gallery-form .form-item {
+  #gallery-form .form-item, #ev-calc-form .form-item {
     padding: 0.75em 1em;
     border-bottom: 1px solid rgba(83, 161, 184, 0.2); }
-  #gallery-form .error {
+  #gallery-form .error, #ev-calc-form .error {
     background-color: rgba(249, 104, 84, 0.3);
     text-align: center; }
-    #gallery-form .error h2 {
+    #gallery-form .error h2, #ev-calc-form .error h2 {
       display: block;
       padding: 0.5em;
       color: #F96854;
       font-weight: 500; }
-  #gallery-form h2 {
+  #gallery-form h2, #ev-calc-form h2 {
     display: inline-block;
     padding: 0;
     font-size: 1.2em;
     vertical-align: middle; }
-  #gallery-form p, #gallery-form q {
+  #gallery-form p, #gallery-form q, #ev-calc-form p, #ev-calc-form q {
     display: inline;
     margin: 0;
     font-size: 1em;
     vertical-align: middle;
     line-height: 1.5em; }
-  #gallery-form em {
+  #gallery-form em, #ev-calc-form em {
     opacity: 0.6;
     padding-right: 0.5em; }
-  #gallery-form input {
+  #gallery-form input, #ev-calc-form input {
     padding: 0.5em;
     margin: 0 0.75em; }
-  #gallery-form input::placeholder {
+  #gallery-form input::placeholder, #ev-calc-form input::placeholder {
     opacity: 0.5;
     font-style: italic; }
-  #gallery-form input[type=submit] {
+  #gallery-form input[type=submit], #ev-calc-form input[type=submit] {
     display: block;
     margin: 1.5em;
     margin-left: auto;
     margin-right: auto; }
+
+#ev-calc-form {
+  text-align: center; }
 
 .gallery-fav {
   position: relative;

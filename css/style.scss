@@ -1592,7 +1592,7 @@ ul#navbar {
     }
 }
 
-#gallery-form {
+#gallery-form, #ev-calc-form {
     border: 1px solid rgba($c-accent, 0.5);
     margin: 1em;
 
@@ -1647,6 +1647,9 @@ ul#navbar {
         margin-left: auto;
         margin-right: auto;
     }
+}
+#ev-calc-form {
+    text-align: center;
 }
 
 .gallery-fav {
