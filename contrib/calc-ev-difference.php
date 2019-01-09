@@ -66,10 +66,20 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         var a_filter = $('#form-a_filter').val();
         var b_filter = $('#form-b_filter').val();
 
-        var shouldnt_be_empty = [];
+        var shouldnt_be_empty = [a_shutter,
+                                 b_shutter,
+                                 a_aperture,
+                                 b_aperture,
+                                 a_iso,
+                                 b_iso
+                                 ];
+        for (var i = 0; i<shouldnt_be_empty.length; i++){
+            if (shouldnt_be_empty[i] == ""){
+                return "Fill in the fields above, the result will be shown here.";
+            }
+        }
 
-
-        // Sanity checks and defaults
+        // Sanity checks
         if (! /^\d+(\/\d+)?(.\d+)?$/.test(a_shutter)) {
             return "Error: Invalid input for shutter speed A.";
         }
