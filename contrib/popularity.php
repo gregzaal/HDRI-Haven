@@ -164,7 +164,7 @@ echo "<th>Author</th>";
 echo "<th>Unique Downloads**</th>";
 echo "<th>Popularity*</th>";
 if ($T != 0){
-    echo "<th>Bonus</th>";
+    echo "<th>Bonus (ZAR)</th>";
 }
 echo "</tr>";
 $rows = array_sort($rows, "popularity", SORT_DESC);
@@ -197,7 +197,7 @@ foreach ($rows as $r){
     echo "<td>".$r['unique_downloads']."</td>";
     echo "<td>".number_format($relative_popularity*100, 2, '.', ' ')."%</td>";
     if ($T != 0){
-        echo "<td>$".fmoney($earnings)."</td>";
+        echo "<td>R".fmoney($earnings)."</td>";
     }
     echo "</tr>";
 }
@@ -208,12 +208,12 @@ if ($T != 0){
     echo "<table cellspacing=0>";
     echo "<tr>";
     echo "<th>Author</th>";
-    echo "<th>Bonus</th>";
+    echo "<th>Bonus (ZAR)</th>";
     echo "</tr>";
     foreach (array_keys($author_earnings) as $a){
         echo "<tr>";
         echo "<td>".$a."</td>";
-        echo "<td>$".fmoney($author_earnings[$a])."</td>";
+        echo "<td>R".fmoney($author_earnings[$a])."</td>";
         echo "</tr>";
     }
     echo "</table>";
