@@ -149,8 +149,11 @@ foreach ($hdris_this_month as $h){
         $total_popularity += $popularity;
         if ($debug){
             $old_avg = array_sum(array_values($days)) / sizeof(array_values($days));
-            echo $q1." | <b>".$median."</b> | ".$q3."<br>";
-            echo "<b>".round($popularity)."</b> (".round($old_avg).")<br>";
+            echo "Q1: ".$q1."<br>";
+            echo "Median: ".$median."<br>";
+            echo "Average: ".round($old_avg)."<br>";
+            echo "Q3: ".$q3."<br>";
+            echo "<b>Popularity: ".round($popularity)."</b> (absolute, not %)<br>";
             echo "<br></div>";
         }
         array_push($rows, $row);
