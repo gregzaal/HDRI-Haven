@@ -27,7 +27,15 @@ $search = htmlspecialchars($search);
 $category = htmlspecialchars($category);
 $author = htmlspecialchars($author);
 
-include_start_html("HDRIs: ".nice_name($category, "category"));
+$canonical = "https://hdrihaven.com/hdris/category/?";
+$canonical .= "c=".$category;
+if ($author != "all"){
+    $canonical .= "&a=".$author;
+}
+if ($search != "all"){
+    $canonical .= "&s=".$search;
+}
+include_start_html("HDRIs: ".nice_name($category, "category"), "", $canonical);
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 $conn = db_conn_read_write();

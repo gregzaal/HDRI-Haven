@@ -30,7 +30,8 @@ if (sizeof($info) <= 1){
     header("Location: /hdris/category/?s=".$slug);
 }
 
-include_start_html("HDRI: {$info['name']}", $slug);
+$canonical = "https://hdrihaven.com/hdri/?h=".$slug;
+include_start_html("HDRI: {$info['name']}", $slug, $canonical);
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 ?>

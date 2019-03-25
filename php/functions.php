@@ -251,7 +251,7 @@ function join_paths() {
 // HTML
 // ============================================================================
 
-function include_start_html($title, $slug="") {
+function include_start_html($title, $slug="", $canonical="") {
     ob_start();
     include $_SERVER['DOCUMENT_ROOT']."/php/html/start_html.php";
     $html = ob_get_contents();
@@ -274,7 +274,12 @@ function include_start_html($title, $slug="") {
     $html = str_replace('%METATITLE%', $title, $html);
     $html = str_replace('%DESCRIPTION%', '100% Free High Quality HDRIs for Everyone', $html);
     $html = str_replace('%KEYWORDS%', 'HDR,HDRI,IBL,environment,equirectangular,free,cc0,creative commons', $html);
-    $html = str_replace('%URL%', "https://hdrihaven.com$_SERVER[REQUEST_URI]", $html);
+    
+    if ($canonical != ""){
+        $html = str_replace('%URL%', $canonical, $html);
+    }else{
+        $html = str_replace('%URL%', "https://hdrihaven.com$_SERVER[REQUEST_URI]", $html);
+    }
 
     if ($slug != ""){
         $html = str_replace('%FEATURE%', "https://hdrihaven.com/files/hdri_images/meta/{$slug}.jpg", $html);
