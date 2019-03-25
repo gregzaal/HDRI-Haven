@@ -251,10 +251,11 @@ function join_paths() {
 // HTML
 // ============================================================================
 
-function include_start_html($title, $slug="", $canonical="") {
+function include_start_html($title, $slug="", $canonical="", $t1="") {
     ob_start();
     include $_SERVER['DOCUMENT_ROOT']."/php/html/start_html.php";
     $html = ob_get_contents();
+    $textures_one = "";
     ob_end_clean();
 
     if ($title == "Render Gallery" || starts_with($title, "HDRI: ")){
@@ -268,13 +269,32 @@ function include_start_html($title, $slug="", $canonical="") {
         $html = str_replace('%LANDINGJS%', "", $html);
     }else{
         $html = str_replace('%LANDINGJS%', "<script src='/js/landing-slider.js'></script>", $html);
+        $textures_one = "<!-- START Textures.one integration -->
+        <meta name=\"tex1:display-name\" content=\"HDRI Haven\" />
+        <meta name=\"tex1:display-domain\" content=\"hdrihaven.com\" />
+        <meta name=\"tex1:patreon\" content=\"hdrihaven\" />
+        <meta name=\"tex1:twitter\" content=\"HDRIHaven\" />
+        <meta name=\"tex1:instagram\" content=\"\" />
+        <meta name=\"tex1:logo\" content=\"https://hdrihaven.com/files/site_images/logo_line.svg\" />
+        <meta name=\"tex1:icon\" content=\"https://hdrihaven.com/favicon.png\" />
+        <!-- END Textures.one integration -->";
     }
     $html = str_replace('%TITLE%', $title, $html);
 
     $html = str_replace('%METATITLE%', $title, $html);
     $html = str_replace('%DESCRIPTION%', '100% Free High Quality HDRIs for Everyone', $html);
-    $html = str_replace('%KEYWORDS%', 'HDR,HDRI,IBL,environment,equirectangular,free,cc0,creative commons', $html);
-    
+    $keywords = 'HDR,HDRI,IBL,environment,equirectangular,free,cc0,creative commons';
+    if ($t1 != ""){
+        $keywords = $t1['tags'] . "," . $keywords;
+    }
+    $html = str_replace('%KEYWORDS%', $keywords, $html);
+
+    $author = "Greg Zaal";
+    if ($t1 != ""){
+        $author = $t1['author'];
+    }
+    $html = str_replace('%AUTHOR%', $author, $html);
+
     if ($canonical != ""){
         $html = str_replace('%URL%', $canonical, $html);
     }else{
@@ -282,10 +302,22 @@ function include_start_html($title, $slug="", $canonical="") {
     }
 
     if ($slug != ""){
-        $html = str_replace('%FEATURE%', "https://hdrihaven.com/files/hdri_images/meta/{$slug}.jpg", $html);
+        $preview_img = "https://hdrihaven.com/files/hdri_images/meta/{$slug}.jpg";
+        $html = str_replace('%FEATURE%', $preview_img, $html);
+        if ($t1 != ""){
+            $textures_one = "<!-- START Textures.one integration -->\n";
+            $textures_one .= "<meta name=\"tex1:name\" content=\"".$t1['name']."\" />\n";
+            $textures_one .= "<meta name=\"tex1:tags\" content=\"".$t1['tags']."\" />\n";
+            $textures_one .= "<meta name=\"tex1:preview-image\" content=\"$preview_img\" />\n";
+            $textures_one .= "<meta name=\"tex1:type\" content=\"hdri-real\" />\n";
+            $textures_one .= "<meta name=\"tex1:releasedate\" content=\"".$t1['date_published']."\" />\n";
+            $textures_one .= "<!-- END Textures.one integration -->";
+        }
     }else{
         $html = str_replace('%FEATURE%', "https://hdrihaven.com/feature.jpg", $html);
     }
+
+    $html = str_replace('%TEXTURESONE%', $textures_one, $html);
 
     echo $html;
 }

@@ -21,7 +21,7 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <!-- Meta -->
     <meta name="description" content="%DESCRIPTION%"/>
     <meta name="keywords" content="%KEYWORDS%">
-    <meta name="author" content="Greg Zaal">
+    <meta name="author" content="%AUTHOR%">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="rgb(83, 161, 184)">
@@ -35,6 +35,8 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <meta property="og:url" content="%URL%" />
     <meta property="og:site_name" content="HDRI Haven" />
     <meta property="og:image" content="%FEATURE%" />
+
+    %TEXTURESONE%
 
     <!-- jQuery -->
     <script src="/js/jquery.min.js"></script>
