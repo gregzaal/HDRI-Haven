@@ -97,6 +97,25 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </p>
 
 
+    <div class="anchor-wrapper"><a class="anchor" name="exr"></a></div>
+    <a href="#exr"><h2>Why don't you use EXR instead of HDR?</h2></a>
+    <p>
+        This is a very common question and I've done numerous tests of my own to prove to myself that I'm doing the right thing by sticking to HDR. <a href="http://bit.ly/2HWI3jm">Here are some sample files</a> if you'd like to compare the formats yourself.
+    </p>
+    <p>
+        While EXR files are objectively better than the HDR format, being true 32-bits per pixel per channel, the practical difference is insignificant.
+    </p>
+    <p>
+        Generally 32-bit losslessly compressed EXR files are at least double the size of HDR files, while the difference between them (both the files themselves and the lighting they produce) is impossible to distinguish with the naked eye even when zooming in to potentially worst-case-scenario regions and flicking back and forth between them.
+    </p>
+    <p>
+        This file size difference would more than double the stress on the server while not providing any significant improvement to the quality of the HDRIs, as well as increase your loading (i.e. rendering) times in your 3D software.
+    </p>
+    <p>
+        Lossy EXR compression methods do exist (e.g. DWAA) and would reduce the file size even further, however they are not widely supported and often have serious deal-breaking artifacts around bright light sources.
+    </p>
+
+
     <div class="anchor-wrapper"><a class="anchor" name="equipment"></a></div>
     <div class="anchor-wrapper"><a class="anchor" name="software"></a></div>
     <a href="#equipment"><h2>What equipment/software do you use?</h2></a>
