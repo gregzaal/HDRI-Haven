@@ -33,7 +33,8 @@ if (sizeof($info) <= 1){
     header("Location: /hdris/category/?s=".$slug);
 }
 
-include_start_html("Downloading: {$info['name']}");
+$canonical = "https://hdrihaven.com/hdri/?h=".$slug;
+include_start_html("Downloading: {$info['name']}", "", $canonical, "");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 echo "<div id='page-wrapper'>";
