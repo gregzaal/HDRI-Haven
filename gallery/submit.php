@@ -1,6 +1,6 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
-include_start_html("Submit Your Render");
+include_start_html("Submit Your Render", $slug="", $canonical="https://hdrihaven.com/gallery/submit.php", $t1="");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 ?>
 
