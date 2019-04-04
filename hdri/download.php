@@ -34,7 +34,15 @@ if (sizeof($info) <= 1){
 }
 
 $canonical = "https://hdrihaven.com/hdri/?h=".$slug;
-include_start_html("Downloading: {$info['name']}", "", $canonical, "");
+$t1 = [];
+$t1 ['name'] = $info['name'];
+$t1 ['date_published'] = $info['date_published'];
+$t1 ['author'] = $info['author'];
+$category_arr = explode(';', $info['categories']);
+$tag_arr = explode(';', $info['tags']);
+$tags = array_merge($category_arr, $tag_arr);
+$t1 ['tags'] = implode(',', array_merge($category_arr, $tag_arr));
+include_start_html("Downloading: {$info['name']}", $slug, $canonical, $t1);
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 echo "<div id='page-wrapper'>";
