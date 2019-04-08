@@ -49,7 +49,16 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
     </ul>
 
     <p>
-        For a quick visual overview of how HDRI Haven has grown, I recommend checking out the <a href="https://graphtreon.com/creator/hdrihaven">Graphtreon page</a>.
+        For a quick visual overview of how HDRI Haven has grown over time, I recommend checking out the <a href="https://graphtreon.com/creator/hdrihaven">Graphtreon page</a>.
+    </p>
+
+    <hr />
+
+    <p>
+        The following tables show my personal montly savings towards improving the content on this site.
+    </p>
+    <p>
+        As I'm no longer the only photographer publishing work on HDRI Haven, this only includes my small portion of the Patreon income. Other photographers may be spending or saving their earnings differently.
     </p>
 
     <?php
