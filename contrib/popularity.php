@@ -9,6 +9,7 @@ $Y = date("Y");
 $M = date("m");
 $T = 0;  // Total bonus income in USD cents. Optional.
 $debug = false;
+$age_warning = false;
 
 // Get params (if they were passed)
 if (isset($_GET["y"]) && trim($_GET["y"])){
@@ -167,7 +168,7 @@ echo "<th>Author</th>";
 echo "<th>Unique Downloads**</th>";
 echo "<th>Popularity*</th>";
 if ($T != 0){
-    echo "<th>Bonus (ZAR)</th>";
+    echo "<th>Bonus (ZAR)***</th>";
 }
 echo "</tr>";
 $rows = array_sort($rows, "popularity", SORT_DESC);
@@ -191,6 +192,7 @@ foreach ($rows as $r){
     echo "<td>";
     echo date("d F Y", strtotime($r['date_published']));
     if ($age < 28){
+        $age_warning = true;
         echo " <abbr title='This HDRI is less than 28 days old, popularity has not yet stabilized.'>
         <i class='material-icons' style='color:#F96854'>warning</i>
         <abbr>";
@@ -206,12 +208,23 @@ foreach ($rows as $r){
 }
 echo "</table>";
 
+if ($age_warning){
+    echo "<div style=\"
+    background: rgba(255,0,0, 0.05);
+    border: 1px solid rgba(255,0,0, 0.3);
+    padding: 0.5em;
+    \">";
+    echo "<h3 class='red-text' style='margin: 0.7em 1em'>Warning:</h3>";
+    echo "<p>At least one of the HDRIs above is not yet older than 28 days, meaning the popularity values have not yet fully stabilized and are likely inaccurate.</p>";
+    echo "</div>";
+}
+
 if ($T != 0){
     echo "<h2>Author Totals:</h2>";
     echo "<table cellspacing=0>";
     echo "<tr>";
     echo "<th>Author</th>";
-    echo "<th>Bonus (ZAR)</th>";
+    echo "<th>Bonus (ZAR)***</th>";
     echo "</tr>";
     foreach (array_keys($author_earnings) as $a){
         echo "<tr>";
@@ -231,6 +244,12 @@ echo "<p><sup>
 echo "<p><sup>
     ** Total downloads, counting each IP address only once, over the first 28 days of the HDRI's publication.
     </sup></p>";
+
+if ($T != 0){
+    echo "<p><sup>
+        *** If you reached this page from anything other than the <a href=\"/p/finance-reports.php\">official finance reports</a> spreadsheets, the exact earnings shown here may not be accurate since they are derrived from a URL parameter and can easily be changed.
+        </sup></p>";
+}
 
 echo '</div>';
 
