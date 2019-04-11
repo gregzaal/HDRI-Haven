@@ -15,7 +15,7 @@ $current_url = $_SERVER['PHP_SELF'];
         <div class="dropdown">
             <?php
             foreach (array_keys($sort_options) as $o) {
-                echo "<a href='{$current_url}?c={$category}&amp;o={$o}&amp;s={$search}'";
+                echo "<a href='{$current_url}?c={$category}&amp;o={$o}&amp;s={$search}' ";
                 echo "title=\"".$sort_options[$o]."\">";
                 echo '<div class="dropdown-item">';
                 if ($sort == $o) {

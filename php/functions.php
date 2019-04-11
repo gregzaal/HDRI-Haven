@@ -756,7 +756,11 @@ function make_grid_item($i, $category="all"){
     $html .= "<div class='grid-item'>";
 
     $html .= "<div class='thumbnail-wrapper'>";
-    $html .= "<img class='thumbnail' src=\"/files/hdri_images/thumbnails/{$slug}.jpg\" />";
+    $html .= "<img ";
+    $html .= "class='thumbnail' ";
+    $html .= "src=\"/files/hdri_images/thumbnails/{$slug}.jpg\" ";
+    $html .= "alt=\"HDRI: {$i['name']}\" ";
+    $html .= "/>";
 
     $problem = $i['problem'];
     if ($problem){
