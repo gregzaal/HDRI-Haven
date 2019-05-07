@@ -131,6 +131,14 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     echo "<div class='col-2'>";
     echo "<h2>Download</h2>";
+    if ($info['nsfw']){
+        echo "<p class='center red-text' style='margin-bottom: 0'>";
+        echo "Warning: ";
+        echo "<abbr title=\"This HDRI contains mature content. You must be 18+ to download it.\">";
+        echo "<b>NSFW</b>";
+        echo "</abbr>";
+        echo "</p>";
+    }
     echo "<div class='download-buttons'>";
 
     $ext = $info['ext'];
