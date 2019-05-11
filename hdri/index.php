@@ -352,31 +352,29 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo '<div id="user-renders">';
         echo '<div class="flex-images">';
         foreach ($renders as $r){
-            if ($r['approval_pending'] == 0){
-                $src = "/files/gallery/S/".$r['file_name'];
-                $src_L = "/files/gallery/L/".$r['file_name'];
-                $real_src = $GLOBALS['SYSTEM_ROOT'].$src;
-                $size = getimagesize($real_src);
-                if ($r['author_link'] == "" || $r['author_link'] == "none"|| $r['author_link'] == "http://"){
-                    $r['author_link'] = "#";
-                }
-                echo "<div class='item user-render' data-w='".$size[0]."' data-h='".$size[1]."'>";
-                echo "<div class='user-render-info'>";
-                echo "<p>";
-                echo "<i>{$r['artwork_name']}</i>";
-                echo " by ";
-                if ($r['author_link'] && $r['author_link'] !== "#"){
-                    echo "<a target=\"_blank\" href=\"{$r['author_link']}\">{$r['author']}</a>";
-                }else{
-                    echo $r['author'];
-                }
-                echo "</p>";
-                echo "</div>";
-                echo "<a href=\"".$src_L."\" target=\"_blank\">";
-                echo "<img src=\"".$src."\">";
-                echo "</a>";
-                echo "</div>";
+            $src = "/files/gallery/S/".$r['file_name'];
+            $src_L = "/files/gallery/L/".$r['file_name'];
+            $real_src = $GLOBALS['SYSTEM_ROOT'].$src;
+            $size = getimagesize($real_src);
+            if ($r['author_link'] == "" || $r['author_link'] == "none"|| $r['author_link'] == "http://"){
+                $r['author_link'] = "#";
             }
+            echo "<div class='item user-render' data-w='".$size[0]."' data-h='".$size[1]."'>";
+            echo "<div class='user-render-info'>";
+            echo "<p>";
+            echo "<i>{$r['artwork_name']}</i>";
+            echo " by ";
+            if ($r['author_link'] && $r['author_link'] !== "#"){
+                echo "<a target=\"_blank\" href=\"{$r['author_link']}\">{$r['author']}</a>";
+            }else{
+                echo $r['author'];
+            }
+            echo "</p>";
+            echo "</div>";
+            echo "<a href=\"".$src_L."\" target=\"_blank\">";
+            echo "<img src=\"".$src."\">";
+            echo "</a>";
+            echo "</div>";
         }
         echo "</div>";
         echo "</div>";
