@@ -692,11 +692,11 @@ function get_gallery_renders($all=false, $reuse_conn=NULL){
     }
     $row = 0; // Default incase of SQL error
     $sql = "SELECT * FROM gallery";
-    $sql .= " WHERE approval_pending=0";
     if (!$all){
-        $sql .= " AND (favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21)";
+        $sql .= " WHERE favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21";
     }
     $sql .= " ORDER BY POWER(clicks+10*click_weight, 0.7)/POWER(ABS(DATEDIFF(date_added, NOW()))+1, 1.1) DESC, clicks DESC, date_added DESC";
+    // $sql = "SELECT * FROM gallery WHERE favourite=1 OR TIMESTAMPDIFF(DAY, date_added, now()) < 21 ORDER BY POWER(clicks+10*click_weight, 0.7)/POWER(ABS(DATEDIFF(date_added, NOW()))+1, 1.1) DESC, clicks DESC, date_added DESC";
     $result = mysqli_query($conn, $sql);
 
     $array = array();
