@@ -526,6 +526,10 @@ function increment_download_count($id, $res, $reuse_conn=NULL){
     if (!$id){
         header("Location: /hdris/");
     }else{
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            // Use original IP instead of Cloudflare node IP
+            $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
+        }
         // Main download_counting table
         $sql = "INSERT INTO download_counting (`ip`, `hdri_id`, `res`) ";
         $sql .= "VALUES (INET_ATON(\"".$_SERVER['REMOTE_ADDR']."\"), \"".$id."\", \"".$res."\")";

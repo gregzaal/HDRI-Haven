@@ -28,6 +28,17 @@ if (isset($_GET["debug"])){
 $Y = htmlspecialchars($Y);
 $M = htmlspecialchars($M);
 
+$cf_workaround = false;
+if ($Y == 2019 && ($M == 4 || $M == 5)){
+    /*
+    From 2019/04/16 it seems Cloudflare started modifying the $_SERVER['REMOTE_ADDR'] variable,
+    replacing the user IP with the CF node IP and breaking the test for unique downloads.
+    From 2019/05/27 onwards uniqueness tracking should be reliable again.
+    So for 2019/04 and 2019/05, total (non-unique) downloads will be used instead.
+    */
+    $cf_workaround = true;
+}
+
 $conn = db_conn_read_only();
 
 $from_date = $Y.'/'.$M.'/01';
@@ -79,6 +90,12 @@ foreach ($hdris_this_month as $h){
             array_push($known_ips, $d['ip']);
         }
     }
+
+    // Workaround for Cloudflare IP mess...
+    if ($cf_workaround){
+        $unique_downloads = $all_downloads;
+    } 
+
     $row['unique_downloads'] = sizeof($unique_downloads);
 
     if ($debug){
@@ -139,6 +156,8 @@ foreach ($hdris_this_month as $h){
                 margin-bottom: 2px;
                 font-size: 12px;
                 color: white;
+                text-shadow: 1px 1px 1px black;
+                white-space: nowrap;
                 '>".$d." - ".$days[$d]."</div>";
             }
         }
@@ -165,7 +184,7 @@ echo "<tr>";
 echo "<th>HDRI</th>";
 echo "<th>Date Published</th>";
 echo "<th>Author</th>";
-echo "<th>Unique Downloads**</th>";
+echo "<th>".($cf_workaround == True ? "" : "Unique")." Downloads**</th>";
 echo "<th>Popularity*</th>";
 if ($T != 0){
     echo "<th>Bonus (ZAR)***</th>";
@@ -236,13 +255,13 @@ if ($T != 0){
 }
 
 echo "<p><sup>
-    * Popularity rating is determined by unique downloads over the first 28 days of the HDRI's publication, with some basic statistical maniplulation to lower the influence of large spikes and troughs in downloads.<br>
+    * Popularity rating is determined by ".($cf_workaround == True ? "" : "unique")." downloads over the first 28 days of the HDRI's publication, with some basic statistical maniplulation to lower the influence of large spikes and troughs in downloads.<br>
     This is to account for inconsistent social media influence, public holidays and server instabilities, and thus attempt to provide a fairer comparison of quality and usefulness between HDRIs.<br>
     Details about the exact calculations can be found in the <a href=\"https://github.com/gregzaal/HDRI-Haven/blob/master/contrib/popularity.php\" target='_blank'>source code</a> for this page.
     </sup></p>";
 
 echo "<p><sup>
-    ** Total downloads, counting each IP address only once, over the first 28 days of the HDRI's publication.
+    ** Total downloads".($cf_workaround == True ? "" : ", counting each IP address only once,")." over the first 28 days of the HDRI's publication.
     </sup></p>";
 
 if ($T != 0){
