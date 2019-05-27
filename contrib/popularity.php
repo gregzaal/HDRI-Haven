@@ -69,6 +69,7 @@ foreach ($hdris_this_month as $h){
         "date_published" => $h['date_published'],
         "author" => $h['author'],
         "backplates" => $h['backplates'],
+        "prepaid" => $h['prepaid'],
     ];
 
     $sql = "SELECT * FROM `download_counting`
@@ -195,7 +196,7 @@ $author_earnings = [];
 foreach ($rows as $r){
     $age = ((time() - strtotime($r['date_published']))/86400);
     $relative_popularity = $r['popularity']/$total_popularity;
-    $earnings = ($T/100)*$relative_popularity;
+    $earnings = ($r['prepaid'] == 1 ? 0 : ($T/100)*$relative_popularity);
     if (array_key_exists($r['author'], $author_earnings)){
         $author_earnings[$r['author']] = $author_earnings[$r['author']] + $earnings;
     }else{
@@ -221,7 +222,11 @@ foreach ($rows as $r){
     echo "<td>".$r['unique_downloads']."</td>";
     echo "<td>".number_format($relative_popularity*100, 2, '.', ' ')."%</td>";
     if ($T != 0){
-        echo "<td>R".fmoney($earnings)."</td>";
+        echo "<td>R".fmoney($earnings);
+        if ($r['prepaid']){
+            echo " <abbr title='This HDRI was paid for in full up-front and will not earn any bonus itself, but will still be used to calculate the bonuses fairly for other HDRIs.'>[P]</abbr>";
+        }
+        echo "</td>";
     }
     echo "</tr>";
 }
