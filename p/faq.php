@@ -95,6 +95,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <p>
         When a particularly high dynamic range is needed (e.g. capturing the sun or bright street lights), I shoot the whole HDRI with a medium dynamic range and then capture the light sources again separately using a very strong ND filter or two to make sure they're not clipped. Then, after correcting color casts and accounting for the exposure change, combine that with the rest of the HDRI.
     </p>
+    <p>
+        More details about this process are described in my article here: <a href="https://blog.hdrihaven.com/how-to-shoot-the-sun/" target="_blank">https://blog.hdrihaven.com/how-to-shoot-the-sun/</a>
+    </p>
 
 
     <div class="anchor-wrapper"><a class="anchor" name="exr"></a></div>
@@ -120,10 +123,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <div class="anchor-wrapper"><a class="anchor" name="software"></a></div>
     <a href="#equipment"><h2>What equipment/software do you use?</h2></a>
     <p>
-        This changes fairly often, so take a look at my long ass article on <a href="http://adaptivesamples.com/2016/03/16/make-your-own-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
+        This changes every now and then, so take a look at my long ass article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
     </p>
     <p>
-        There you'll find several sections explaining the various advantages and disadvantages of different types of equipment and software - there are many ways to skin a cat, though some are more effective than others.
+        If you're brand new to creating HDRIs, my <a href="http://adaptivesamples.com/2016/03/16/make-your-own-hdri/" target="_blank">previous article</a> might be easier to follow.
     </p>
 
 
