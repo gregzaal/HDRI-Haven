@@ -112,7 +112,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         Generally 32-bit losslessly compressed EXR files are at least double the size of HDR files, while the difference between them (both the files themselves and the lighting they produce) is impossible to distinguish with the naked eye even when zooming in to potentially worst-case-scenario regions and flicking back and forth between them.
     </p>
     <p>
-        This file size difference would more than double the stress on the server while not providing any significant improvement to the quality of the HDRIs, as well as increase your loading (i.e. rendering) times in your 3D software.
+        This file size difference would more than double the stress on the server, which already struggles with more than 30TB of bandwidth each month, while not providing any significant improvement to the quality of the HDRIs. It would also increase your loading (i.e. rendering) times in your 3D software.
     </p>
     <p>
         Lossy EXR compression methods do exist (e.g. DWAA) and would reduce the file size even further, however they are not widely supported and often have serious deal-breaking artifacts around bright light sources.
