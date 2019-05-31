@@ -344,6 +344,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<h2>";
     echo "User Renders ";
     echo "<a href=\"/gallery/submit.php?h=".$slug."\"><i class='material-icons'>add_circle_outline</i></a>";
+    # TODO filter out approval_pending here
     if (!$renders){
         echo " <sup style='font-size: 65%; color: black; font-style: italic; opacity: 0.5'>None yet, be the first!</sup>";
     }
