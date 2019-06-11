@@ -87,6 +87,10 @@ p {
     margin: 1em 0;
 }
 
+b {
+    font-weight: 900;
+}
+
 a.no-underline {
     text-decoration: none !important;
 }
@@ -212,7 +216,6 @@ form {
 
 #product-list {
     table {
-        margin: 1em 0;
         width: 100%;
         border-spacing: 0;
     }
@@ -222,8 +225,8 @@ form {
     }
 
     td {
-        padding: 0.5em;
         text-align: center;
+        vertical-align: middle;
         border-bottom: 1px solid rgba(0,0,0, 0.1);
     }
     tr:first-child td {
@@ -259,8 +262,14 @@ form {
     }
 
     img.thumbnail {
-        width: 35px;
-        vertical-align: middle;
+        width: 80px;
+        margin-bottom: -3px;
+        @include transition(0.2s);
+
+        &:hover {
+            @include scale(3);
+            @include transition(0.1s);
+        }
     }
 }
 

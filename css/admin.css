@@ -176,6 +176,9 @@ h2.subheader {
 p, q {
   margin: 1em 0; }
 
+b {
+  font-weight: 900; }
+
 a.no-underline {
   text-decoration: none !important; }
 
@@ -265,14 +268,13 @@ form {
       padding-left: 0.35em; }
 
 #product-list table {
-  margin: 1em 0;
   width: 100%;
   border-spacing: 0; }
 #product-list tr.header-row {
   font-weight: 600; }
 #product-list td {
-  padding: 0.5em;
   text-align: center;
+  vertical-align: middle;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 #product-list tr:first-child td {
   border-top: 1px solid rgba(0, 0, 0, 0.1); }
@@ -294,8 +296,12 @@ form {
 #product-list td.buttons .button .fa {
   vertical-align: baseline; }
 #product-list img.thumbnail {
-  width: 35px;
-  vertical-align: middle; }
+  width: 80px;
+  margin-bottom: -3px;
+  transition: all 0.2s ease; }
+  #product-list img.thumbnail:hover {
+    transform: scale(3);
+    transition: all 0.1s ease; }
 
 .fa-exclamation-triangle {
   color: #53a1b8; }
