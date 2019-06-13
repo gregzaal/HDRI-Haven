@@ -1048,11 +1048,17 @@ ul#navbar {
     @include transition(0.2s);
 
     .thumbnail-wrapper {
-        padding: 1em;
+        margin: 1em;
     }
     .thumbnail {
-        width: 100%; 
+        width: 100%;
+        min-height: 200px;
         box-shadow: 0 0 2px 1px rgba(black,0.05);
+    }
+    .thumbnail-proxy {
+        position: absolute;
+        width: calc(100% - 2em);
+        @include transition(0.2s);
     }
 
     .description-wrapper {

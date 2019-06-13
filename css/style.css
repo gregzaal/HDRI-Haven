@@ -865,10 +865,15 @@ ul#navbar {
   width: calc(33.33% - 1em - 2px);
   transition: all 0.2s ease; }
   .grid-item .thumbnail-wrapper {
-    padding: 1em; }
+    margin: 1em; }
   .grid-item .thumbnail {
     width: 100%;
+    min-height: 200px;
     box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.05); }
+  .grid-item .thumbnail-proxy {
+    position: absolute;
+    width: calc(100% - 2em);
+    transition: all 0.2s ease; }
   .grid-item .description-wrapper {
     position: absolute;
     bottom: 0;

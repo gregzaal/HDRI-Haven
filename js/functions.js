@@ -219,6 +219,35 @@ var on_load = function(){
     if ($('#pannellum-wrapper').width() < 760){
         $('#pannellum-frame').attr('src', $('#pannellum-frame').attr('src')+"&hfov=70");
     }
+
+    // Lazy image loading
+    const images = document.querySelectorAll('[data-src]');
+    const config = {
+        rootMargin: '0px 0px 50px 0px',
+        threshold: 0
+    };
+    let loaded = 0;
+    let observer = new IntersectionObserver(function (entries, self) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // console.log(`${entry.target.alt} is in the viewport!`);
+            preloadImage(entry.target);
+            // Stop watching and load the image
+            self.unobserve(entry.target);
+        }
+    });
+    }, config);
+    images.forEach(image => {
+        observer.observe(image);
+    });
+    function preloadImage(img) {
+        const src = img.getAttribute('data-src');
+        if (!src) { return; }
+        $(img).on('load', function(){
+            $(img).siblings('.thumbnail-proxy').addClass('hide');
+        });
+        img.src = src;
+    }
 };
 
 $(document).ready(click_functions);
