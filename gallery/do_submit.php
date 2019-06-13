@@ -113,8 +113,6 @@ if ($result == 1){
     $subject = "New Gallery Image Submission";
     $email_message = "<html><body>";
     $img_url = "https://hdrihaven.com/files/gallery/upload/".$file_name;
-    $img_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "gallery", "upload", $file_name);
-    $email_message .= "<p><img style=\"max-width:800px\" src=\"data:image/gif;base64,".base64_encode(file_get_contents($img_file))."\"></p>\r\n";
     $email_message .= "<p><a style='background-color: rgb(83, 161, 184);display:inline-block;padding: 0.75em 1em;color: white;text-decoration: none !important' href=\"".$img_url."\">Image</a></p>\r\n";
     $email_message .= "<p>Author: ".$_POST["author"]."</p>\r\n";
     $email_message .= "<p>Artwork Name: ".$_POST["artwork-name"]."</p>\r\n";
