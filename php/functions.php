@@ -796,7 +796,11 @@ function make_grid_item($i, $category="all"){
     $html .= "<h3>".$i['name']."</h3>";
     $html .= "</div>";
     
-    $html .= "<p class='age'>".time_ago($i['date_published'])."</p>";
+    $html .= "<p class='age'>";
+    $html .= time_ago($i['date_published']);
+    $html .= " &sdot; ";
+    $html .= $i['author'];
+    $html .= "</p>";
 
     $html .= "</div>";  // description
 
