@@ -11,6 +11,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="/js/functions.js"></script>
 </head>
 <body>
 
@@ -56,7 +57,7 @@ foreach ($array as $info){
     echo "</td>";
 
     echo "<td>";
-    echo "<img class='thumbnail' src='/files/hdri_images/meta/".$info['slug'].".jpg'>";
+    echo "<img class='thumbnail' data-src='/files/hdri_images/meta/".$info['slug'].".jpg'>";
     echo "</td>";
 
     echo "<td>";
