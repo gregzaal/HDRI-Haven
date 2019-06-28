@@ -61,6 +61,7 @@ echo "<p>The popularity rating* is used to determine the bonus earnings for the 
 echo "<p>The purpose of rewarding more popular HDRIs is to encourage HDRI contributions that are more useful or more wanted by users.</p>";
 
 $rows = [];
+$prepaid_hdris = [];
 $total_popularity = 0;
 foreach ($hdris_this_month as $h){
     $row = [
@@ -71,6 +72,14 @@ foreach ($hdris_this_month as $h){
         "backplates" => $h['backplates'],
         "prepaid" => $h['prepaid'],
     ];
+
+    // From 2019/05 onwards, prepaid HDRIs will simply be ignored in the bonus caluclations, since the full amount was deducted before the total bonus funds were calculated.
+    if ($Y >= 2019 && $M >= 5){
+        if ($row['prepaid']){
+            array_push($prepaid_hdris, $row);
+            continue;
+        }
+    }
 
     $sql = "SELECT * FROM `download_counting`
             WHERE hdri_id = ".$h['id']." AND
@@ -241,6 +250,19 @@ if ($age_warning){
     echo "<h3 class='red-text' style='margin: 0.7em 1em'>Warning:</h3>";
     echo "<p>At least one of the HDRIs above is not yet older than 28 days, meaning the popularity values have not yet fully stabilized and are likely inaccurate.</p>";
     echo "</div>";
+}
+
+if (!empty($prepaid_hdris)){
+    echo "<p class='small' style='margin-bottom: 0'>";
+    echo "The following HDRIs published this month were paid for in full up-front and were not included in the bonus earning calculations:";
+    echo "</p>";
+    echo "<ul class='small' style='margin-top: 0.5em'>";
+    foreach ($prepaid_hdris as $r){
+        echo "<li>";
+        echo "<a href=\"/hdri/?h=".$r['slug']."\">".$r['name']."</a>";
+        echo "</li>";
+    }
+    echo "</ul>";
 }
 
 if ($T != 0){
