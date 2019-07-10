@@ -18,7 +18,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <div id="lightbox-close"><i class="material-icons">close</i></div>
 </div>
 
-<h1 class='center' style="padding-top:1.5em">Render Gallery</h1>
+<h1 class='center' style="padding-top:1.5em; padding-bottom:0">Render Gallery</h1>
+<p class='center'><em>Artwork submitted by dozens of users, created using our HDRIs.</em></p>
 
 <div id="gallery-wrapper">
 <div class="flex-images">
