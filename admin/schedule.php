@@ -47,10 +47,10 @@ foreach ($array as $info){
 
     echo "<td";
     if (strtotime($info['date_published']) > time()){
-        echo " style='background-color: rgb(255, 150, 150)'";
+        echo " style='background-color: rgb(150, 150, 255)'";
     }
     if (date("Y-m-d", strtotime($info['date_published'])) == date("Y-m-d", time())){
-        echo " style='background-color: rgb(150, 150, 255)'";
+        echo " style='background-color: rgb(215, 255, 150)'";
     }
     echo ">";
     echo date("D d M Y", strtotime($info['date_published']));
