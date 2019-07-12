@@ -126,7 +126,7 @@ if ($result == 1){
     }
     $vars = [
         "category" => $pcat,
-        "name" => $name,
+        "name" => urlencode($name),
         "link" => "https://hdrihaven.com/hdri/?h=".$slug,
     ];
     function format_vars($str, $vars){
