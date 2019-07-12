@@ -177,7 +177,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     
     <div class="form-item">
     <h2>Facebook/Twitter:</h2>
-    <input id="form-twitface" type="text" name="twitface" value="New ##category## HDRI - ##name##: ##link## #b3d #free #hdri #cc0">
+    <input id="form-twitface" type="text" name="twitface" value="New ##category## HDRI by ##author## - ##name##: ##link## #b3d #free #hdri #cc0">
     </div>
     
     <div class="form-item">
