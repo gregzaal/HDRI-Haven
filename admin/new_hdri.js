@@ -130,7 +130,7 @@ var go = function(){
 
     // Form changes
     var validateSlug = function(str){
-            str = str.toLowerCase().replace(/ /g, "_");
+            str = str.toLowerCase().replace(/ /g, "_").replace(/&/g, "and");
             return allowedCharsOnly(str, "qwertyuiopasdfghjklzxcvbnm_-0123456789");
     }
     var autoSlug = function(){
