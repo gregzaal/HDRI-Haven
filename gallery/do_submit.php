@@ -110,11 +110,29 @@ if ($result == 1){
     }
     echo "</p>";
 
+    $author = mysqli_real_escape_string($conn, $_POST["author"]);
+    $author_email = mysqli_real_escape_string($conn, $_POST["author-email"]);
+    $row = 0; // Default incase of SQL error
+    $sql = "SELECT COUNT(*) as C FROM gallery WHERE (";
+    $sql .= "author LIKE '".$author."'";
+    if ($author_email != ""){
+        $sql .= " OR author_email LIKE '".$author_email."'";
+    }
+    $sql .= ")";
+    $sql .= " AND TIMESTAMPDIFF(DAY, date_added, now()) < 31";
+    $result = mysqli_query($conn, $sql);
+    $count = 0;
+    if ($result){
+        if (mysqli_num_rows($result) > 0) {
+            $count = mysqli_fetch_assoc($result)['C'];
+        }
+    }
+
     $subject = "New Gallery Image Submission";
     $email_message = "<html><body>";
     $img_url = "https://hdrihaven.com/files/gallery/upload/".$file_name;
     $email_message .= "<p><a style='background-color: rgb(83, 161, 184);display:inline-block;padding: 0.75em 1em;color: white;text-decoration: none !important' href=\"".$img_url."\">Image</a></p>\r\n";
-    $email_message .= "<p>Author: ".$_POST["author"]."</p>\r\n";
+    $email_message .= "<p>Author: ".$_POST["author"]." (".$count.")</p>\r\n";
     $email_message .= "<p>Artwork Name: ".$_POST["artwork-name"]."</p>\r\n";
     $email_message .= "<p>Email: ".$_POST["author-email"]."</p>\r\n";
     $email_message .= "<p>Link: ".$_POST["author-link"]."</p>\r\n";
