@@ -403,6 +403,8 @@ ul#navbar {
       text-decoration: underline; }
     #footer .footer-patrons .button, #footer .footer-patrons .button-light, #footer .footer-patrons .button-inline, #footer .footer-patrons .button-red {
       margin: 0 1em; }
+  #footer .commercial_sponsors img {
+    margin-top: 0; }
   #footer .social {
     padding-top: 1em;
     border-top: 1px solid rgba(255, 255, 255, 0.25); }
@@ -416,8 +418,9 @@ ul#navbar {
     color: #f6f6f6; }
   #footer a:hover {
     text-decoration: underline; }
-  #footer h2 {
-    color: #f6f6f6; }
+  #footer h2, #footer h3 {
+    color: #f6f6f6;
+    padding: 0.5em; }
 
 .footer-cat {
   margin-left: 210px; }
@@ -457,6 +460,18 @@ ul#navbar {
     #email-form .gumroad-follow-form-embed button:hover {
       background: #fa7e6d;
       transition: 0.2s ease; }
+
+.commercial_sponsors a {
+  text-decoration: none !important; }
+.commercial_sponsors img {
+  display: inline-block;
+  max-width: 200px;
+  max-height: 100px;
+  margin: 1em;
+  transition: all 0.2s ease; }
+  .commercial_sponsors img:hover {
+    filter: contrast(70%) brightness(130%) drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.5));
+    transition: all 0.1s ease; }
 
 #push-footer {
   min-height: calc(100vh - 54px - 328px);

@@ -82,6 +82,17 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         </div>
     </div>
 
+    <div class="segment-a">
+        <div class="segment-inner">
+            <h2>Also supported by:</h2>
+            <div class="commercial_sponsors">
+                <a href="http://dawid.nz/" target="_blank">
+                    <img src="/files/site_images/commercial_sponsors/DAWID.NZ_Logo_Black.png" />
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="segment-montage">
         <a href="/hdris">
             <div class='button'>Browse 200+ HDRIs</div>

@@ -15,6 +15,14 @@ echo ">";
             }
             ?>
         </div>
+        
+        <h3>Also supported by:</h3>
+        <div class="commercial_sponsors">
+            <a href="http://dawid.nz/" target="_blank">
+                <img src="/files/site_images/commercial_sponsors/DAWID.NZ_Logo_White.png" />
+            </a>
+        </div>
+
         <a href="https://www.patreon.com/hdrihaven/overview">
             <div class="button-red">
                 Join the ranks, support HDRI Haven on Patreon.
