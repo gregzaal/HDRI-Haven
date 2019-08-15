@@ -46,14 +46,15 @@ var next_image = function(direction) {
 var now_playing = null;
 var on_load = function(){
     images = [
-    ["robert_bodis_red_straight.jpg", "<a href=\"http://www.owlempires.com/\">Robert Bodis</a>"],
-    ["jan-morek-1.jpg", "<a href=\"http://www.janmorek.com/\">J&#225;n Morek</a>"],
-    ["alberto_merc.jpg", "<a href=\"https://www.behance.net/AlbertoLuque\">Alberto Luque</a>"],
-    ["hussein_interior.jpg", "<a href=\"http://www.formlab.co.ke/\">FormLab Studio</a>"],
-    ["parking_garage.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
-    ["zach_final_takeoff.jpg", "<a href=\"http://zachariasreinhardt.com/\">Zacharias Reinhardt</a>"],
-    ["pink_road.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
-    ["hamburg.jpg", "<a href=\"http://gregzaal.com/\">Greg</a>, <a href=\"https://racoon.media/\">Jim van Hazendonk</a> and <a href=\"https://www.artstation.com/cameroncasey\">Cameron Casey</a>"],
+        ["robert_bodis_red_straight.jpg", "<a href=\"http://www.owlempires.com/\">Robert Bodis</a>"],
+        ["jan-morek-1.jpg", "<a href=\"http://www.janmorek.com/\">J&#225;n Morek</a>"],
+        ["mondlicht_studios_bmw_lagoon.jpg", "<a href=\"http://mondlicht-studios.de/\">Mondlicht Studios</a>"],
+        ["alberto_merc.jpg", "<a href=\"https://www.behance.net/AlbertoLuque\">Alberto Luque</a>"],
+        ["hussein_interior.jpg", "<a href=\"http://www.formlab.co.ke/\">FormLab Studio</a>"],
+        ["parking_garage.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
+        ["zach_final_takeoff.jpg", "<a href=\"http://zachariasreinhardt.com/\">Zacharias Reinhardt</a>"],
+        ["pink_road.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
+        ["hamburg.jpg", "<a href=\"http://gregzaal.com/\">Greg</a>, <a href=\"https://racoon.media/\">Jim van Hazendonk</a> and <a href=\"https://www.artstation.com/cameroncasey\">Cameron Casey</a>"],
     ];
 
     setTimeout(function(){
