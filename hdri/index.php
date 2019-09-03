@@ -249,7 +249,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     $tag_str = substr($tag_str, 0, -2);  // Remove ", " at end
     echo "<b>Tags:</b> {$tag_str}";
     echo "</li>";
-    
+
     $downloads_per_day = round($info['download_count']/((time() - strtotime($info['date_published']))/86400));
     echo "<li title=\" (".$downloads_per_day." per day)\">";
     echo "<b>Downloads:</b> ".$info['download_count'];
@@ -304,7 +304,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
                         $dl_jpg_plain = "/files/backplates/".$slug."/jpg_plain/".$f;
 
                         $raw_folder = "/files/backplates/".$slug."/raw/";
-                        $possible_extensions = ["ARW", "DNG", "CR2"];
+                        $possible_extensions = ["ARW", "DNG", "CR2", "NEF"];
                         $dl_raw = "";
                         foreach ($possible_extensions as $ext){
                             $possible_path = $raw_folder.$basename.".".$ext;
@@ -318,7 +318,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
                                 break;
                             }
                         }
-                        
+
                         echo "<div class='item lightbox-trigger'";
                         echo " lightbox-src=\"".$thumb_l."\"";
                         echo " dlbp-pretty=\"".$dl_jpg_pretty."\"";
