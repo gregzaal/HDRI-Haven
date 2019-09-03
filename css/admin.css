@@ -210,11 +210,14 @@ form {
   form .form-item:first-child {
     border-top: 1px solid rgba(0, 0, 0, 0.15); }
   form .cat-option, form .tag-option {
-    padding: 0.5em 0.75em;
+    padding: 0.3em 0.4em;
     margin: 0.1em;
     font-size: 1em;
     color: white;
     cursor: pointer; }
+  form .tag-option {
+    margin: 0.5px;
+    vertical-align: middle; }
   form .show-tooltip {
     padding: 0.45em;
     vertical-align: middle;

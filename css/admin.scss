@@ -132,7 +132,7 @@ form {
     }
 
     .cat-option {
-        padding: 0.5em 0.75em;
+        padding: 0.3em 0.4em;
         margin: 0.1em;
         font-size: 1em;
         color: white;
@@ -140,6 +140,8 @@ form {
     }
     .tag-option {
         @extend .cat-option;
+        margin: 0.5px;
+        vertical-align: middle;
     }
 
     .show-tooltip {
