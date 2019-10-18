@@ -1,5 +1,5 @@
 </div>  <!-- #push-footer -->
-<?php 
+<?php
 echo "<div id='footer'";
 if (starts_with($_SERVER['REQUEST_URI'], "/hdris/category/")){
     echo " class='footer-cat'";
@@ -15,7 +15,7 @@ echo ">";
             }
             ?>
         </div>
-        
+
         <h3>Also supported by:</h3>
         <div class="commercial_sponsors">
             <a href="http://dawid.nz/" target="_blank">
@@ -33,13 +33,13 @@ echo ">";
     <div class='social'>
         <a href="https://www.facebook.com/hdrihaven/"><img src="/files/site_images/icons/facebook.svg"></a>
         <a href="https://twitter.com/HDRIHaven"><img src="/files/site_images/icons/twitter.svg"></a>
-        <div id='email-form'>
+        <a href="https://discord.gg/Dms7Mrs"><img src="/files/site_images/icons/discord.svg"></a>
+        <!-- <div id='email-form'>
             <form action='https://gumroad.com/follow_from_embed_form' class='form gumroad-follow-form-embed' method='post'>
                 <input name='seller_id' type='hidden' value='798267932401'>
-                <input name='email' placeholder='Monthly email updates' type='email'><!--
-                --><button data-custom-highlight-color='' type='submit'>Subscribe</button>
+                <input name='email' placeholder='Monthly email updates' type='email'><button data-custom-highlight-color='' type='submit'>Subscribe</button>
             </form>
-        </div>
+        </div> -->
     </div>
 
     <ul class='footer-links'>
