@@ -86,7 +86,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         Unfortunately there is no standardized way for measuring the dynamic range of an HDRI. Different people use different methods, so there's no reliable way that you as a user can tell whether website-A that claims 50 EVs of dynamic range is actually better than website-B that has 20 EVs.
     </p>
     <p>
-        The main thing to look out for is whether an HDRI is <b>unclipped</b> or not. They usually don't mention anything if it is indeed clipped, so watch out. Being unclipped means the <b>full range of brightness in the scene</b> was captured, including the super crazy bright sunshine. If an HDRI is clipped (aka "clamped"), it will produce unrealistic lighting which is usually flat and lacking contrast.
+        The main thing to look out for is whether an HDRI is <a href="http://blog.hdrihaven.com/what-is-clipping/" target="_blank">unclipped</a> or not. They usually don't mention anything if it is indeed clipped, so watch out. Being unclipped means the <b>full range of brightness in the scene</b> was captured, including the super crazy bright sunshine. If an HDRI is clipped (aka "clamped"), it will produce unrealistic lighting which is usually flat and lacking contrast.
     </p>
 
 
@@ -96,7 +96,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         When a particularly high dynamic range is needed (e.g. capturing the sun or bright street lights), I shoot the whole HDRI with a medium dynamic range and then capture the light sources again separately using a very strong ND filter or two to make sure they're not clipped. Then, after correcting color casts and accounting for the exposure change, combine that with the rest of the HDRI.
     </p>
     <p>
-        More details about this process are described in my article here: <a href="https://blog.hdrihaven.com/how-to-shoot-the-sun/" target="_blank">https://blog.hdrihaven.com/how-to-shoot-the-sun/</a>
+        More details about this process are described in my article here: <a href="https://blog.hdrihaven.com/how-to-shoot-the-sun/" target="_blank">How to Shoot the Sun</a>
     </p>
 
 
@@ -123,7 +123,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <div class="anchor-wrapper"><a class="anchor" name="software"></a></div>
     <a href="#equipment"><h2>What equipment/software do you use?</h2></a>
     <p>
-        This changes every now and then, so take a look at my article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
+        This changes every now and then, and there are now multiple photographers shooting HDRIs for this site, so take a look at my article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
     </p>
     <p>
         If you're brand new to creating HDRIs, my <a href="http://adaptivesamples.com/2016/03/16/make-your-own-hdri/" target="_blank">previous article</a> might be easier to follow.
