@@ -123,10 +123,26 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <div class="anchor-wrapper"><a class="anchor" name="software"></a></div>
     <a href="#equipment"><h2>What equipment/software do you use?</h2></a>
     <p>
-        This changes every now and then, so take a look at my long ass article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
+        This changes every now and then, so take a look at my article on <a href="https://blog.hdrihaven.com/how-to-create-high-quality-hdri/" target="_blank">creating your own HDRIs</a> to answer your actual question ;)
     </p>
     <p>
         If you're brand new to creating HDRIs, my <a href="http://adaptivesamples.com/2016/03/16/make-your-own-hdri/" target="_blank">previous article</a> might be easier to follow.
+    </p>
+
+
+    <div class="anchor-wrapper"><a class="anchor" name="360cam"></a></div>
+    <a href="#360cam"><h2>Why don't you use a 360 camera?</h2></a>
+    <p>
+        There are two main reasons: Resolution, and highlight clipping...
+    </p>
+    <p>
+        360 cameras generally have a very low resolution, simply due to the nature of their size and inherent quality of lenses that size. The <a href="https://www.threesixtycameras.com/360-degree-camera-comparison/" target="_blank">highest resolution</a> dual camera 360 cam at the time of writing this (October 2019) can produce a 7k panorama, which is a quarter of the total pixels needed at a <a href="http://blog.gregzaal.com/2016/02/23/what-makes-good-hdri/#Resolution" target="_blank">bare minimum</a> for HDRIs in my opinion (which is 14k). There is <a href="https://www.panono.com/en/hardware/" target="_blank">one 360 cam</a> I know of that uses a few dozen wide angle lenses and can produce 16k HDRIs, but it's sold as a service charging you per panorama and doesn't seem to give you much control over the output, and still has the clipping issue...
+    </p>
+    <p>
+        <a href="http://blog.hdrihaven.com/what-is-clipping/" target="_blank">Preventing highlight clipping</a> is absolutely paramount when making high quality HDRIs that accurately capture light from the real world. 360 cameras use multiple fisheye lenses that have a bulbus front element, which makes it impossible to fit an <a href="https://en.wikipedia.org/wiki/Neutral-density_filter" target="_blank">ND filter</a> on the lenses, which makes it impossible to avoid clipping.
+    </p>
+    <p>
+        So, 360 cams might be a useful tool for your own personal use, or for TDs on a film set that need to be fast and are willing to sacrifice on quality, but as a tool for producing the highest quality HDRIs for public consumption, they're not a good option at all.
     </p>
 
 
