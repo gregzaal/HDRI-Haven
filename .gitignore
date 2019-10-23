@@ -1,4 +1,5 @@
 *_cached.html
+/core
 /php/cache/
 /php/patreon_data/
 /php/patreon_tokens.json
