@@ -3,6 +3,7 @@
 /php/cache/
 /php/patreon_data/
 /php/patreon_tokens.json
+*.css
 *.css.map
 .sass-cache
 .htaccess
