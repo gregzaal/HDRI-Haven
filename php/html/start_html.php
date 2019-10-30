@@ -9,7 +9,6 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
 
     <!-- CSS -->
     <link href='/css/style.css' rel='stylesheet' type='text/css' />
-    <link href='/css/style_large.css' rel='stylesheet' media='screen and (max-width: 2559px)' type='text/css' />
     <link href='/css/style_medium.css' rel='stylesheet' media='screen and (max-width: 1299px)' type='text/css' />
     <link href='/css/style_small.css' rel='stylesheet' media='screen and (max-width: 759px)' type='text/css' />
 
