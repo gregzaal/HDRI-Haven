@@ -11,3 +11,4 @@ secret_config.php
 /utils
 /analytics
 /.vscode
+.gitmodules
