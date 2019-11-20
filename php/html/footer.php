@@ -1,7 +1,7 @@
 </div>  <!-- #push-footer -->
 <?php
 echo "<div id='footer'";
-if (starts_with($_SERVER['REQUEST_URI'], "/hdris/category/")){
+if (starts_with($_SERVER['REQUEST_URI'], "/hdris/")){
     echo " class='footer-cat'";
 }
 echo ">";
@@ -16,12 +16,29 @@ echo ">";
             ?>
         </div>
 
-        <h3>Also supported by:</h3>
-        <div class="commercial_sponsors">
-            <a href="http://dawid.nz/" target="_blank">
-                <img src="/files/site_images/commercial_sponsors/DAWID.NZ_Logo_White.png" />
-            </a>
-        </div>
+        <?php
+        $comm_sponsors = get_commercial_sponsors(isset($conn) ? $conn : NULL);
+        if (!empty($comm_sponsors)){
+            echo "<div class='segment-a'>";
+            echo "<div class='segment-inner'>";
+            echo "<h2>Also supported by:</h2>";
+            echo "<div class='commercial_sponsors'>";
+            foreach ($comm_sponsors as $s){
+                echo "<a href= \"".$s['link']."\" target='_blank'>";
+                echo "<img src=\"/files/site_images/commercial_sponsors/";
+                echo $s['logo'];
+                echo "\" alt=\"";
+                echo $s['name'];
+                echo "\" title=\"";
+                echo $s['name'];
+                echo "\"/>";
+                echo "</a>";
+            }
+            echo "</div>";
+            echo "</div>";
+            echo "</div>";
+        }
+        ?>
 
         <a href="https://www.patreon.com/hdrihaven/overview">
             <div class="button-red">

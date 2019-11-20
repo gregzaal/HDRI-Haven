@@ -16,7 +16,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 
     <div id='banner-title-wrapper'>
-        <img src="/files/site_images/logo.svg" id="banner-logo" />
+        <img src="/core/img/HDRI Haven Logo.svg" id="banner-logo" />
         <p>100% Free HDRIs, for Everyone.</p>
     </div>
 </div>
@@ -82,18 +82,33 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         </div>
     </div>
 
-    <div class="segment-a">
-        <div class="segment-inner">
-            <h2>Also supported by:</h2>
-            <div class="commercial_sponsors">
-                <a href="http://dawid.nz/" target="_blank">
-                    <img src="/files/site_images/commercial_sponsors/DAWID.NZ_Logo_Black.png" />
-                </a>
-            </div>
-        </div>
-    </div>
+    <?php
+    $conn = db_conn_read_only();
+    $comm_sponsors = get_commercial_sponsors($conn);
+    if (!empty($comm_sponsors)){
+        echo "<div class='segment-a'>";
+        echo "<div class='segment-inner'>";
+        echo "<h2>Also supported by:</h2>";
+        echo "<div class='commercial_sponsors'>";
+        foreach ($comm_sponsors as $s){
+            echo "<a href= \"".$s['link']."\" target='_blank'>";
+            echo "<img src=\"/files/site_images/commercial_sponsors/";
+            echo $s['logo'];
+            echo "\" alt=\"";
+            echo $s['name'];
+            echo "\" title=\"";
+            echo $s['name'];
+            echo "\"/>";
+            echo "</a>";
+        }
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
 
     <div class="segment-montage">
+        <div class="segment-montage-hover"></div>
         <a href="/hdris">
             <div class='button'>Browse 200+ HDRIs</div>
         </a>
@@ -114,6 +129,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             </p>
             <p>
                 If you like what I do and want to keep this site alive, consider <a href="https://www.patreon.com/hdrihaven/overview">supporting me on Patreon</a>.
+            </p>
+            <p>
+                I also help run HDRI Haven's two sister sites: <a href="https://texturehaven.com/">Texture Haven</a> and <a href="https://3dmodelhaven.com/">3D Model Haven</a>.
             </p>
         </div>
         <div style="clear: both"></div>
