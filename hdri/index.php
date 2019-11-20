@@ -256,6 +256,26 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</li>";
     echo "<li>";
     echo "<b>Author:</b> <a href=\"/hdris/?a=".$info['author']."\">".$info['author']."</a>";
+    $author_info = get_author_info($info['author'], $conn);
+    if($author_info){
+        echo "<span>";
+        if ($author_info['link']){
+            echo "<a href=\"".$author_info['link']."\">";
+            echo "<i class='material-icons'>link</i>";
+            echo "</a>";
+        }
+        if ($author_info['email']){
+            echo "<a href=\"mailto:".$author_info['email']."\">";
+            echo "<i class='material-icons'>mail_outline</i>";
+            echo "</a>";
+        }
+        if ($author_info['donate']){
+            echo "<a href=\"".$author_info['donate']."\">";
+            echo "<i class='material-icons'>favorite_border</i>";
+            echo "</a>";
+        }
+        echo "</span>";
+    }
     echo "</li>";
     echo "</ul>";
 
@@ -346,7 +366,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<a href=\"/gallery/submit.php?h=".$slug."\"><i class='material-icons'>add_circle_outline</i></a>";
     # TODO filter out approval_pending here
     if (!$renders){
-        echo " <sup style='font-size: 65%; color: black; font-style: italic; opacity: 0.5'>None yet, be the first!</sup>";
+        echo " <sup style='font-size: 65%; font-style: italic; opacity: 0.5'>None yet, be the first!</sup>";
     }
     echo "</h2>";
     if ($renders){
