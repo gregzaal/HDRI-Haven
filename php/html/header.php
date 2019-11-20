@@ -1,20 +1,30 @@
 <div id="header">
-    <div id="header-logo">
-        <a href="/"><img src="/files/site_images/logo_line.svg" width="256" /></a>
+    <div id="header-logos">
+        <a href="/">
+            <img src="/core/img/HDRI Haven Logo.svg" />
+            <p class="this-haven"><b>HDRI</b>H<sub>AVEN</sub></p>
+        </a>
+        <a href="https://texturehaven.com/">
+            <img class="other-haven" src="/core/img/Texture Haven Logo.svg" />
+            <p><b>T<sub>EXTURE</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p>
+        </a>
+        <a href="https://3dmodelhaven.com/">
+            <img class="other-haven" src="/core/img/Model Haven Logo.svg" />
+            <p><sub>3D</sub><b>M<sub>ODEL</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p>
+        </a>
     </div>
 
     <div id="navbar-toggle"><i class="material-icons">menu</i></div>
 
     <ul id="navbar">
         <a href="/hdris"><li>HDRIs</li></a><!--
-        --><a class='shrink-hack' href="https://texturehaven.com/"><li>Textures</li></a><!--
         --><a class='shrink-hack' href="https://www.patreon.com/hdrihaven/posts?public=true"><li>News</li></a><!--
         --><a href="/gallery"><li>Gallery</li></a><!--
-        --><a href="https://www.patreon.com/hdrihaven/overview"><li>Support Me</li></a><!--
+        --><a href="https://www.patreon.com/hdrihaven/overview"><li>Support Us</li></a><!--
         --><a href="/p/about-contact.php"><li>About/Contact</li></a>
     </ul>
 
-    <div class='patreon-bar-wrapper' title="Next goal on Patreon: <?php 
+    <div class='patreon-bar-wrapper' title="Next goal on Patreon: <?php
         echo goal_title($GLOBALS['PATREON_CURRENT_GOAL']);
         echo " ($";
         echo $GLOBALS['PATREON_EARNINGS'];
@@ -30,7 +40,7 @@
                     <div class='patreon-bar-text'>
                         <img src="/files/site_images/icons/patreon_logo.svg">
                         <span class="text">
-                        <?php 
+                        <?php
                         echo "$";
                         echo ($GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100) - $GLOBALS['PATREON_EARNINGS'];
                         echo " to go";
