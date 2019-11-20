@@ -1,77 +1,94 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
-include_start_html("HDRIs");
+
+// Parameters
+// Defaults:
+$sort = "popular";
+$search = "all";
+$category = "all";
+$author = "all";
+
+// Get params (if they were passed)
+$none_set = true;
+if (isset($_GET["o"]) && trim($_GET["o"])){
+    $sort = $_GET["o"];
+    $none_set = false;
+}
+if (isset($_GET["s"]) && trim($_GET["s"])){
+    $search = $_GET["s"];
+    $none_set = false;
+}
+if (isset($_GET["c"]) && trim($_GET["c"])){
+    $category = $_GET["c"];
+    $none_set = false;
+}
+if (isset($_GET["a"]) && trim($_GET["a"])){
+    $author = $_GET["a"];
+    $none_set = false;
+}
+
+$sort = htmlspecialchars($sort);
+$search = htmlspecialchars($search);
+$category = htmlspecialchars($category);
+$author = htmlspecialchars($author);
+
+$canonical = "https://hdrihaven.com/hdris/?";
+$canonical .= "c=".$category;
+if ($author != "all"){
+    $canonical .= "&a=".$author;
+}
+if ($search != "all"){
+    $canonical .= "&s=".$search;
+}
+include_start_html("HDRIs: ".nice_name($category, "category"), "", $canonical, "");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
-$conn = db_conn_read_only();
+
+$conn = db_conn_read_write();
+
+track_search($search, $category, $reuse_conn=NULL)
 ?>
 
-<div id='hdris-landing-page'>
-    <div class='segment-a'>
-        <div class='segment-inner'>
-            <div class='col-4'>
-                <img class="hdri-landing-banner-icon" src="/files/site_images/icons/zoom.svg">
-                <h2>16k</h2>
-                <p>That's 134 megapixels, enough to give you crystal clear reflections and backgrounds.</p>
-            </div>
-            <div class='col-4'>
-                <img class="hdri-landing-banner-icon" src="/files/site_images/icons/sun.svg">
-                <h2>Unclipped</h2>
-                <p>Up to 26 EVs of dynamic range, producing extremely realistic lighting.</p>
-            </div>
-            <div class='col-4'>
-                <img class="hdri-landing-banner-icon" src="/files/site_images/icons/download.svg">
-                <h2>100% Free</h2>
-                <p>No sign-up or silly email forms, download immediately. CC0 license for complete freedom.</p>
-            </div>
-            <div class='col-4'>
-                <img class="hdri-landing-banner-icon" src="/files/site_images/icons/patreon_logo.svg">
-                <h2>Supported by You</h2>
-                <p><a href="https://www.patreon.com/hdrihaven/overview" target="_blank">Join <?php echo sizeof($GLOBALS['PATRON_LIST']) ?> generous patrons</a> and help grow the quality and quantity of HDRIs here.</p>
-            </div>
-        </div>
-    </div>
+<div id="sidebar-toggle"><i class="material-icons">apps</i></div>
 
-    <div class='segment-b category-segment'>
-        <div class='category-list-images'>
-            <ul>
-                <?php 
-                $pop = most_popular_in_each_category($conn);
-                $i = 0;
-                foreach (array_keys($GLOBALS['STANDARD_CATEGORIES']) as $c){
-                    $i++;
-                    echo "<a href='/hdris/category/?c=".$c."'>";
-                    echo "<li title=\"".$GLOBALS['STANDARD_CATEGORIES'][$c]."\">";
-                    echo "<div class='background-image'";
-                    if ($i == 1){
-                        echo " id='list-start-pos'";
-                    }
-                    echo " style=\"background: url(/files/hdri_images/tonemapped/180/".$pop[$c].".jpg) no-repeat center center\"";
-                    echo "></div>";
-                    echo "<p>".nice_name($c, "category")."</p>";
-                    echo "</li>";
-                    echo "</a>";
-                }
-                ?>
-                <li id="list-end-pos" style="visibility:hidden"></li>
-            </ul>
-        </div>
-        <div class='fade-gradient-left hide hide-mobile'></div>
-        <div class='fade-gradient-right hide-mobile'></div>
-        <i class="material-icons hide hide-mobile" id="scroll-cat-left">keyboard_arrow_left</i>
-        <i class="material-icons hide-mobile" id="scroll-cat-right">keyboard_arrow_right</i>
-    </div>
-
-    <div class="segment-a">
-        <h1>Latest HDRIs</h1>
-        <div id='hdri-grid'>
+<div id="sidebar">
+    <div class="sidebar-inner">
+        <h3>Categories</h3>
         <?php
-        echo make_hdri_grid("date_published", "all", "all", "all", $conn, 8);
+        make_category_list($sort, $conn, $category, false);
         ?>
-        </div>
-        <a href="/hdris/category?c=all">
-            <div class='button'>More ></div>
-        </a>
     </div>
+</div>
+
+<div id="item-grid-wrapper">
+    <?php
+    if ($none_set){
+        include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_banner.php');
+    }
+    echo "<div class='title-bar'>";
+    echo "<h1>";
+    if ($search != "all") {
+        echo "Search: \"".$search."\"";
+        if ($category != "all") {
+            echo " in category: ".nice_name($category, "category");
+        }
+    }else if ($category == "all"){
+        echo "All HDRIs";
+    }else{
+        echo "Category: ".nice_name($category, "category");
+    }
+    if ($author != "all") {
+        echo " by ".$author;
+    }
+    echo "</h1>";
+
+    include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_options.php');
+
+    echo "</div>";  // .title-bar
+
+    echo "<div id='item-grid'>";
+    echo make_item_grid($sort, $search, $category, $author, $conn, 0);
+    echo "</div>"
+    ?>
 </div>
 
 <?php

@@ -41,7 +41,7 @@ foreach (array_keys($GLOBALS['STANDARD_CATEGORIES']) as $c){
     if ($c){
         if ($c != 'all'){
             echo "<url>\n";
-            echo "<loc>https://hdrihaven.com/hdris/category/?c=".$c."</loc>\n";
+            echo "<loc>https://hdrihaven.com/hdris/?c=".$c."</loc>\n";
             echo "<priority>0.5</priority>\n";
             echo "<changefreq>weekly</changefreq>\n";
             echo "</url>\n";

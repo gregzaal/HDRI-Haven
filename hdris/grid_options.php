@@ -3,7 +3,6 @@ $sort_options = ["popular" => "Downloads per day, with recent HDRIs weighted mor
                  "downloads" => "Total downloads over all time",
                  "date_published" => "When they were uploaded",
                  "date_taken" => "When they were original photgraphed"];
-$current_url = $_SERVER['PHP_SELF'];
 ?>
 
 <div class="grid-option-wrapper">
@@ -15,7 +14,7 @@ $current_url = $_SERVER['PHP_SELF'];
         <div class="dropdown">
             <?php
             foreach (array_keys($sort_options) as $o) {
-                echo "<a href='{$current_url}?c={$category}&amp;o={$o}&amp;s={$search}' ";
+                echo "<a href=\"".make_grid_link($o, $search, $category, $author)."\" ";
                 echo "title=\"".$sort_options[$o]."\">";
                 echo '<div class="dropdown-item">';
                 if ($sort == $o) {
@@ -31,13 +30,14 @@ $current_url = $_SERVER['PHP_SELF'];
     </div>
 
     <div class="grid-option search-box">
-        <form action="/hdris/category" method="GET" class="search-form">
+        <form action="/hdris" method="GET" class="search-form">
             <button class="search"><i class="material-icons">search</i></button>
 
             <?php
             // Include existing/default URL params
             echo '<input type="hidden" name="o" value="'.$sort.'" />';
             echo '<input type="hidden" name="c" value="'.$category.'" />';
+            echo '<input type="hidden" name="a" value="'.$author.'" />';
 
             $search_box_text = "Search...";
             $classes = "search";
@@ -49,7 +49,7 @@ $current_url = $_SERVER['PHP_SELF'];
             ?>
         <?php
         if ($search != 'all') {
-            echo "<a href='{$current_url}?o={$sort}&amp;c={$category}'>";
+            echo "<a href=\"".make_grid_link($sort, "all", $category, $author)."\">";
             echo '<i class="material-icons search-reset">close</i>';
             echo '</a>';
         }

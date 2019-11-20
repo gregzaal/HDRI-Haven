@@ -1,4 +1,4 @@
-<?php 
+<?php
 // If parameter is not recieved, redirect to home
 if (count($_GET) == 0){
     header( "Location: /hdris/" );
@@ -30,7 +30,7 @@ $filepath = $GLOBALS['SYSTEM_ROOT']."/files/hdris/{$filename}";
 
 // Redirect to search if the HDRI is not in the DB.
 if (sizeof($info) <= 1){
-    header("Location: /hdris/category/?s=".$slug);
+    header("Location: /hdris/?s=".$slug);
 }
 
 $canonical = "https://hdrihaven.com/hdri/?h=".$slug;
@@ -55,7 +55,7 @@ if (file_exists($filepath)){
     echo '<p>Your download should be starting now - if not, try this <a href="'.$url.'" download="'.$filename.'">direct link</a>.</p>';
     echo '<iframe width="1" height="1" frameborder="0" src="'.$url.'"></iframe>';
 }else{
-    echo "<h1>File not found :(</h1>";    
+    echo "<h1>File not found :(</h1>";
     echo "<p>If there should be something here, please let us know that you're getting this error by emailing ";
     insert_email();
     echo ".</p>";
@@ -69,4 +69,4 @@ echo "</div>";
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/footer.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/end_html.php');
 ?>
- 
+

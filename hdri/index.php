@@ -27,7 +27,7 @@ $info = get_item_from_db($slug, $conn);
 
 // Redirect to search if the HDRI is not in the DB.
 if (sizeof($info) <= 1){
-    header("Location: /hdris/category/?s=".$slug);
+    header("Location: /hdris/?s=".$slug);
 }
 
 $canonical = "https://hdrihaven.com/hdri/?h=".$slug;
@@ -59,9 +59,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 <?php
 
-echo "<div id='hdri-page'>";
+echo "<div id='item-page'>";
 
-echo "<div id='hdri-preview' style='background-image: url(/files/hdri_images/tonemapped/1500/{$slug}.jpg)'>";
+echo "<div id='item-preview' style='background-image: url(/files/hdri_images/tonemapped/1500/{$slug}.jpg)'>";
 
 echo "<div class='darken'></div>";
 
@@ -95,16 +95,16 @@ echo "</div>";  // .button-overlay
 echo "</div>";  // #pannellum-wrapper
 
 
-echo "</div>";  // #hdri-preview
+echo "</div>";  // #item-preview
 
 echo "<h1>";
-echo "<a href='/hdris/category/?c=all'>";
+echo "<a href='/hdris/?c=all'>";
 echo "HDRIs";
 echo "</a>";
 echo " >";
 if ($category != "all"){
     echo " ";
-    echo "<a href='/hdris/category/?c={$category}'>";
+    echo "<a href='/hdris/?c={$category}'>";
     echo nice_name($category, 'category');
     echo "</a>";
     echo " >";
@@ -120,14 +120,14 @@ if($info['problem']){
 echo "<div id='page-wrapper'>";
 echo "<div id='hdri-renders'>";
 echo "<img src='/files/hdri_images/spheres/{$slug}.jpg' class='spheres'>";
-echo "</div>";  // .hdri-renders
+echo "</div>";  // #hdri-renders
 
 
 if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     if ($GLOBALS['WORKING_LOCALLY'] && is_in_the_past($info['date_published']) == False){
         echo "<p style='text-align:center;opacity:0.5;'>(working locally on a yet-to-be-published HDRI)</p>";
     }
-    echo "<div id='hdri-info'>";
+    echo "<div id='item-info'>";
 
     echo "<div class='col-2'>";
     echo "<h2>Download</h2>";
@@ -175,7 +175,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     echo "<div class='col-2'>";
     echo "<h2>Info</h2>";
-    echo "<ul class='hdri-info-list'>";
+    echo "<ul class='item-info-list'>";
     echo "<li>";
     $evs = $info['evs_cap'];
     if ($evs == 0){
@@ -230,7 +230,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     $category_arr = explode(';', $info['categories']);
     sort($category_arr);
     foreach ($category_arr as $category) {
-        $category_str .= '<a href="/hdris/category/?c='.$category.'">'.$category.'</a>, ';
+        $category_str .= '<a href="/hdris/?c='.$category.'">'.$category.'</a>, ';
     }
     $category_str = substr($category_str, 0, -2);  // Remove ", " at end
     echo "<b>Categories:</b> {$category_str}";
@@ -244,7 +244,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         array_push($tag_arr, "backplates");
     }
     foreach ($tag_arr as $tag) {
-        $tag_str .= '<a href="/hdris/category/?s='.$tag.'">'.$tag.'</a>, ';
+        $tag_str .= '<a href="/hdris/?s='.$tag.'">'.$tag.'</a>, ';
     }
     $tag_str = substr($tag_str, 0, -2);  // Remove ", " at end
     echo "<b>Tags:</b> {$tag_str}";
@@ -255,13 +255,13 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<b>Downloads:</b> ".$info['download_count'];
     echo "</li>";
     echo "<li>";
-    echo "<b>Author:</b> <a href=\"/hdris/category/?a=".$info['author']."\">".$info['author']."</a>";
+    echo "<b>Author:</b> <a href=\"/hdris/?a=".$info['author']."\">".$info['author']."</a>";
     echo "</li>";
     echo "</ul>";
 
     echo "</div>";  // .col-2
 
-    echo "</div>";  // .hdri-info
+    echo "</div>";  // .item-info
 
     echo "<div class='center'>";
     echo "<p class='small'>This HDRI is sponsored by:</p>";
@@ -357,26 +357,28 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
                 $src = "/files/gallery/S/".$r['file_name'];
                 $src_L = "/files/gallery/L/".$r['file_name'];
                 $real_src = $GLOBALS['SYSTEM_ROOT'].$src;
-                $size = getimagesize($real_src);
-                if ($r['author_link'] == "" || $r['author_link'] == "none"|| $r['author_link'] == "http://"){
-                    $r['author_link'] = "#";
+                if (file_exists($real_src)){
+                    $size = getimagesize($real_src);
+                    if ($r['author_link'] == "" || $r['author_link'] == "none"|| $r['author_link'] == "http://"){
+                        $r['author_link'] = "#";
+                    }
+                    echo "<div class='item user-render' data-w='".$size[0]."' data-h='".$size[1]."'>";
+                    echo "<div class='user-render-info'>";
+                    echo "<p>";
+                    echo "<i>{$r['artwork_name']}</i>";
+                    echo " by ";
+                    if ($r['author_link'] && $r['author_link'] !== "#"){
+                        echo "<a target=\"_blank\" href=\"{$r['author_link']}\">{$r['author']}</a>";
+                    }else{
+                        echo $r['author'];
+                    }
+                    echo "</p>";
+                    echo "</div>";
+                    echo "<a href=\"".$src_L."\" target=\"_blank\">";
+                    echo "<img src=\"".$src."\">";
+                    echo "</a>";
+                    echo "</div>";
                 }
-                echo "<div class='item user-render' data-w='".$size[0]."' data-h='".$size[1]."'>";
-                echo "<div class='user-render-info'>";
-                echo "<p>";
-                echo "<i>{$r['artwork_name']}</i>";
-                echo " by ";
-                if ($r['author_link'] && $r['author_link'] !== "#"){
-                    echo "<a target=\"_blank\" href=\"{$r['author_link']}\">{$r['author']}</a>";
-                }else{
-                    echo $r['author'];
-                }
-                echo "</p>";
-                echo "</div>";
-                echo "<a href=\"".$src_L."\" target=\"_blank\">";
-                echo "<img src=\"".$src."\">";
-                echo "</a>";
-                echo "</div>";
             }
         }
         echo "</div>";
@@ -391,8 +393,8 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<h2>";
         echo "Similar HDRIs";
         echo "</h2>";
-        echo "<div id='similar-hdris'>";
-        echo "<div id='hdri-grid'>";
+        echo "<div id='similar-items'>";
+        echo "<div id='item-grid'>";
         foreach ($similar as $s){
             echo make_grid_item($s);
         }
