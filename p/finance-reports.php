@@ -33,7 +33,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
 
     <h2>Detailed Monthly Reports</h2>
     <ul>
-    <?php 
+    <?php
     $sql = "SELECT * FROM `finance_reports` ORDER BY `datetime` desc";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
@@ -92,7 +92,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
             <th>Description</th>
             <th>Amount</th>
         </tr>
-        <?php 
+        <?php
         foreach($travel as $x){
             echo "<tr>";
             echo "<td>".date("Y-m-d", strtotime($x['datetime']))."</td>";
@@ -126,7 +126,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
             <th>Description</th>
             <th>Amount</th>
         </tr>
-        <?php 
+        <?php
         foreach($equipment as $x){
             echo "<tr>";
             echo "<td>".date("Y-m-d", strtotime($x['datetime']))."</td>";
@@ -151,7 +151,6 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
 </div>
 
 <?php
-$conn->close();
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/footer.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/end_html.php');
 ?>

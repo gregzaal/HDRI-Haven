@@ -1,4 +1,4 @@
-<?php 
+<?php
 include('/home/gregzaal/hdrihaven.com/php/secret_config.php');
 
 $servername = $GLOBALS['DB_SERV'];
@@ -23,7 +23,7 @@ foreach($array as $post){
     if (!$post['published']){
         $sql = "UPDATE social_media SET published=1 WHERE id=".$post['id'];  // Do this first in case something breaks and we get stuck in an infinite loop of trying to publish the same thing.
         $result = mysqli_query($conn, $sql);
-        
+
         echo "Running id: ".$post['id']."<br>";
         // Facebook and Twitter
         $text = $post['twitface'];
@@ -53,7 +53,5 @@ foreach($array as $post){
         break;
     }
 }
-
-$conn->close();
 
 ?>

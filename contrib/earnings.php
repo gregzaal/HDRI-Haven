@@ -36,7 +36,6 @@ if (mysqli_num_rows($result) > 0) {
         $array[$row['name']] = $row;
     }
 }
-$conn->close();
 
 echo '<div id="page-wrapper" class="contrib-earnings-page">';
 echo '<h1>Earnings for '.$date_str.'</h1>';

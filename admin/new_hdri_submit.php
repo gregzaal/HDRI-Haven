@@ -104,7 +104,7 @@ if ($result == 1){
     echo "successfully added to the database.";
     echo "</p>";
     echo "<p>If you need to edit or update this product, you can do so from the <a href='https://service.byte.nl/phpmyadmin/index.php?server=10160'>phpMyAdmin interface</a>.</p>";
-    
+
     echo '<a href="/admin" class="no-underline">';
     echo '<div class="button"><i class="fa fa-home" aria-hidden="true"></i> Admin Home</div>';
     echo '</a> ';
@@ -172,16 +172,10 @@ if ($result == 1){
     echo '</a> ';
 }
 
-
-$conn->close();
-
 ?>
 
-
-
 </div>
 </div>
-
 
 </body>
 </html>

@@ -104,7 +104,7 @@ foreach ($hdris_this_month as $h){
     // Workaround for Cloudflare IP mess...
     if ($cf_workaround){
         $unique_downloads = $all_downloads;
-    } 
+    }
 
     $row['unique_downloads'] = sizeof($unique_downloads);
 
@@ -298,8 +298,6 @@ if ($T != 0){
 }
 
 echo '</div>';
-
-$conn->close();
 
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/footer.php');
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/end_html.php');
