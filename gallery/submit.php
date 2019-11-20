@@ -45,7 +45,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             <input type="text" name="artwork-name" placeholder="Star Wars" value="">
             <p><em>(optional)</em></p>
         </div>
-            
+
         <div class="form-item">
             <h2>Your name:</h2>
             <input type="text" name="author" placeholder="George Lucas" value="" required>
@@ -56,13 +56,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             <input type="text" name="author-email" placeholder="george@starwars.com" value="">
             <p><em>(optional)</em><br>Used to notify you when your artwork is published. Stored securely and not shared with anyone.</p>
         </div>
-            
+
         <div class="form-item">
             <h2>Link:</h2>
             <input type="text" name="author-link" placeholder="http://www.starwars.com/" value="">
             <p><em>(optional)</em> Your website/portfolio.</p>
         </div>
-            
+
         <div class="form-item">
             <h2>HDRI Used:</h2>
             <?php
@@ -72,9 +72,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             }
             echo "\" required>";
             ?>
-            <p>The name of the HDRI you used in this render. <a href="/hdris/category/?c=all">See the list here</a>.</p>
+            <p>The name of the HDRI you used in this render. <a href="/hdris/?c=all">See the list here</a>.</p>
         </div>
-            
+
         <div class="form-item">
             <h2>Software Used:</h2>
             <input type="text" name="software-used" placeholder="Blender, Maya, Daz 3D..." value="">

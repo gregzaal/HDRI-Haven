@@ -11,7 +11,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         by
         <a id="author-link" target="_blank" href=""><span id="author-name"></span></a>
         using
-        <a id="hdri-used-link" target="_blank" href=""><span id="hdri-used-name"></span></a>
+        <a id="item-used-link" target="_blank" href=""><span id="item-used-name"></span></a>
     </p>
     <div class='item-info'>
     </div>
@@ -47,8 +47,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 echo " artwork-name=\"".$r['artwork_name']."\"";
                 echo " author-name=\"".$r['author']."\"";
                 echo " author-link=\"".$r['author_link']."\"";
-                echo " hdri-used-name=\"".$hdri_names[$r['hdri_used']]."\"";
-                echo " hdri-used-link=\"/hdri/?h=".$r['hdri_used']."\"";
+                echo " item-used-name=\"".$hdri_names[$r['hdri_used']]."\"";
+                echo " item-used-link=\"/hdri/?h=".$r['hdri_used']."\"";
                 echo ">";
                 echo "<img src=\"".$src."\">";
                 echo "</div>";

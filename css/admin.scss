@@ -1,6 +1,11 @@
-@import "colors";
-@import "mixins";
-@import "standard";
+// These variables are only needed so SCSS doesn't throw an error when importing the core
+$c-accent: rgb(65, 187, 217);
+$hide_header_patreon_bar: 1102px;
+$shrink_hack_width: 850px;
+$default_banner_img: url(/files/site_images/landing/robert_bodis_red_straight.jpg);
+$display_banner_credit: block;  // Hide if it's only our own work
+
+@import "../core/core";
 
 body {
     margin: 0;

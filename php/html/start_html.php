@@ -13,7 +13,7 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <link href='/css/style_small.css' rel='stylesheet' media='screen and (max-width: 759px)' type='text/css' />
 
     <!-- Google Fonts and Icons -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:900,500,400,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:900,400|Roboto:900,500,300" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
@@ -41,6 +41,7 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <script src="/js/jquery.min.js"></script>
     %GALLERYJS%
 
+    <script src="/core/core.js"></script>
     <script src="/js/functions.js"></script>
     %LANDINGJS%
 
