@@ -44,7 +44,7 @@ function searchFor(_selector, _subject) {
     }
     return null; // will/should never get here
 }
-  
+
 
 var go = function(){
 
@@ -139,6 +139,7 @@ var go = function(){
             $("#form-slug").val(validateSlug(name));
             $('#form-slug-actual').val($('#form-slug').val());
         }
+        document.title = "Add: "+$('#form-name').val();
     }
     var updateImage = function(){
         var img = $("#preview-img");
