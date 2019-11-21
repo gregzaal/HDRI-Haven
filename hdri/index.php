@@ -250,9 +250,10 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<b>Tags:</b> {$tag_str}";
     echo "</li>";
 
-    $downloads_per_day = round($info['download_count']/((time() - strtotime($info['date_published']))/86400));
+    $download_count = get_download_count($info['id'], $conn);
+    $downloads_per_day = round($download_count/((time() - strtotime($info['date_published']))/86400));
     echo "<li title=\" (".$downloads_per_day." per day)\">";
-    echo "<b>Downloads:</b> ".$info['download_count'];
+    echo "<b>Downloads:</b> ".$download_count;
     echo "</li>";
     echo "<li>";
     echo "<b>Author:</b> <a href=\"/hdris/?a=".$info['author']."\">".$info['author']."</a>";
