@@ -222,6 +222,9 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo $cy.', '.$cx;
         echo "</a>";
         echo " (approx.)";
+        echo "<a href=\"/p/map.php?show={$slug}\">";
+        echo "<i class='material-icons'>map</i>";
+        echo "</a>";
         echo "</li>";
     }
 

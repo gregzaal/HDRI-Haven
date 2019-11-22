@@ -2,14 +2,22 @@
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 include_start_html("Map");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
+
+if (isset($_GET["show"]) && trim($_GET["show"])){
+    $show = $_GET["show"];
+}
 ?>
 
 <div id='map'></div>
 
 <script>
-    function addMarker(props){
+    var click_marker = null;
+    function addMarker(props, click=false){
         var marker = L.marker(props.coords).addTo(map);
         marker.bindPopup(props.content).openPopup();
+        if (click){
+            click_marker = marker;
+        }
     }
     map = L.map('map');
     L.tileLayer('https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
@@ -31,7 +39,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
             $html = "<a href='/hdri/?h={$i['slug']}' title='{$i['name']}'>";
             $html .= "<img class='popup' src='/files/hdri_images/thumbnails/{$i['slug']}.jpg'>";
             $html .= "</a>";
-            echo "addMarker({\"coords\": [{$lat}, {$lon}], \"content\": \"{$html}\"});";
+            $click = "false";
+            if (isset($show)){
+                if ($show == $i['slug']){
+                    $click = "true";
+                }
+            }
+            echo "addMarker({\"coords\": [{$lat}, {$lon}], \"content\": \"{$html}\"}, {$click});\n";
             $min_lat = min($min_lat, $lat);
             $max_lat = max($max_lat, $lat);
             $min_lon = min($min_lon, $lon);
@@ -42,6 +56,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     $middle_lon = ($min_lon + $max_lon) / 2;
     echo "map.setView([{$middle_lat}, {$middle_lat}], 3);";  // Center view
     ?>
+    setTimeout(function () {
+        click_marker.fire('click');
+    }, 1000);
 </script>
 
 <?php
