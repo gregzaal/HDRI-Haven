@@ -407,3 +407,11 @@ $display_banner_credit: block;  // Hide if it's only our own work
 #ev-calc-form {
     text-align: center;
 }
+
+#map {
+    height: calc(100vh - #{$header-height});
+
+    img.popup {
+        width: 200px;
+    }
+}

@@ -37,6 +37,8 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
 
     %TEXTURESONE%
 
+    %MAP%
+
     <!-- jQuery -->
     <script src="/js/jquery.min.js"></script>
     %GALLERYJS%
