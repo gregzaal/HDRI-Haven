@@ -410,8 +410,13 @@ $display_banner_credit: block;  // Hide if it's only our own work
 
 #map {
     height: calc(100vh - #{$header-height});
+    background-color: $c-background;
 
     img.popup {
         width: 200px;
+    }
+
+    img.leaflet-tile {
+        filter: invert(1) hue-rotate(180deg) brightness(1.4) contrast(1.08) saturate(2);
     }
 }

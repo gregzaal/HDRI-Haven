@@ -156,8 +156,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
             $filesize = round($filesize, $d);
 
             echo "<a href='/hdri/download.php?h={$slug}&amp;r={$r}'>";
-            echo "<div class='button";
-            echo "'>";
+            echo "<div class='button'>";
             echo "<b>";
             echo $r;
             echo "</b>";
