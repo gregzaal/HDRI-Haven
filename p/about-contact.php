@@ -28,7 +28,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         All HDRIs here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it however.
     </p>
     <p>
-        HDRI Haven is officially linked with <a href="https://texturehaven.com">Texture Haven</a>. Greg Zaal (who runs this site) is involved in building and maintaining Texture Haven as well providing guidance and technical support.
+        HDRI Haven is officially linked with <a href="https://texturehaven.com">Texture Haven</a> and <a href="https://3dmodelhaven.com">3D Model Haven</a>.
     </p>
 
     <h1>Get Involved</h1>

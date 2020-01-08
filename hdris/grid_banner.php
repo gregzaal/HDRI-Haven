@@ -3,7 +3,7 @@
         <div class='segment-inner'>
             <div class='col-4'>
                 <img class="grid-banner-icon" src="/core/img/icons/res.svg">
-                <h2>16k</h2>
+                <h2>16k+</h2>
                 <p>That's 134 megapixels, giving you sharp reflections and backgrounds.</p>
             </div>
             <div class='col-4'>
