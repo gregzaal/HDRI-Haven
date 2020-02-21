@@ -27,20 +27,24 @@ var click_functions = function(){
         });
     });
     function set_evs(e){
-        // TODO wait for image load before changing
         var img = $("#exposure-img");
         var src_folder = img.attr("src").split('/');
         src_folder.pop();
         src_folder = src_folder.join('/');
 
-        img.attr('src', src_folder+"/"+e+".jpg");
-        img.attr('ev', e);
+        var new_img = src_folder+"/"+e+".jpg";
+        $("#btn-exposure-reset").html("<img src='/core/img/icons/loading_dark.svg' />")
+        $('<img/>').attr('src', new_img).on('load', function(){  // Load image in dummy tag
+            $(this).remove();
+            img.attr('src', new_img);
+            img.attr('ev', e);
 
-        var estr = e;
-        if (e > 0){
-            estr = "+"+e;
-        }
-        $('#btn-exposure-reset').html(estr+" EVs");
+            var estr = e;
+            if (e > 0){
+                estr = "+"+e;
+            }
+            $('#btn-exposure-reset').html(estr+" EVs");
+        });
     }
     $('.btn-exposure-adj').click(function() {
         var direction = $(this).html();
