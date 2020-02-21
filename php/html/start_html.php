@@ -35,6 +35,9 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <meta property="og:site_name" content="HDRI Haven" />
     <meta property="og:image" content="%FEATURE%" />
 
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+
     %TEXTURESONE%
 
     %MAP%
