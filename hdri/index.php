@@ -145,29 +145,42 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r){
         $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug.'_'.$r.'.'.$ext);
         if (file_exists($local_file)){
-            $filesize = filesize($local_file)/1024/1024;  // size in MB
-            if ($filesize > 10){
-                $d = 0;
-            }else if ($filesize > 1){
-                $d = 1;
-            }else{
-                $d = 2;
-            }
-            $filesize = round($filesize, $d);
-
             echo "<a href='/hdri/download.php?h={$slug}&amp;r={$r}'>";
             echo "<div class='button'>";
-            echo "<b>";
-            echo $r;
-            echo "</b>";
+            echo "<b>{$r}</b>";
             echo " &sdot; ";
-            echo $filesize." MB";
+            echo human_filesize(filesize($local_file));
             echo " &sdot; ";
             echo strtoupper($ext);
             echo "</div>";
             echo "</a>";
         }
     }
+
+    echo "</div>";
+    echo "<div class='download-buttons'>";
+
+    $tonemapped = join_paths($GLOBALS['SYSTEM_ROOT'], "files/hdri_images/tonemapped/8192", $slug.".jpg");
+    echo "<a href='/files/hdri_images/tonemapped/8192/{$slug}.jpg' download='{$slug}.jpg'>";
+    echo "<div class='button'>";
+    echo "8K Tonemapped JPG";
+    echo " &sdot; ";
+    echo human_filesize(filesize($tonemapped));
+    echo "</div>";
+    echo "</a>";
+
+    $macbeth_fp = join_paths($GLOBALS['SYSTEM_ROOT'], "files/colorcharts", $slug.".jpg");
+    if (file_exists($macbeth_fp)){
+        echo "<a href='/files/colorcharts/{$slug}.jpg' download='{$slug}_macbeth.jpg'>";
+        echo "<div class='button'>";
+        echo "<img src='/core/img/icons/macbeth.svg' style='height:20px;vertical-align:top;margin-right: 0.5em'>";
+        echo "ColorChecker";
+        echo " &sdot; ";
+        echo human_filesize(filesize($macbeth_fp));
+        echo "</div>";
+        echo "</a>";
+    }
+
     echo "</div>";
     echo "<p class='center'>License: <a href='/p/license.php'>CC0</a></p>";
     echo "</div>";
