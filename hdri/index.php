@@ -189,6 +189,36 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<h2>Info</h2>";
     echo "<ul class='item-info-list'>";
     echo "<li>";
+    echo "<b>Author:</b>";
+    echo "<a href=\"/hdris/?a=".$info['author']."\">";
+    $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$info['author']."_50p.jpg");
+    if (file_exists($author_pic)){
+        echo "<img class='me-sml' src=\"".filepath_to_url($author_pic)."\" />";
+    }
+    echo $info['author']."</a>";
+    $author_info = get_author_info($info['author'], $conn);
+    if($author_info){
+        echo "<span>";
+        if ($author_info['link']){
+            echo "<a href=\"".$author_info['link']."\">";
+            echo "<i class='material-icons'>link</i>";
+            echo "</a>";
+        }
+        if ($author_info['email']){
+            echo "<a href=\"mailto:".$author_info['email']."\">";
+            echo "<i class='material-icons'>mail_outline</i>";
+            echo "</a>";
+        }
+        // if ($author_info['donate']){
+        //     echo "<a href=\"".$author_info['donate']."\">";
+        //     echo "<i class='material-icons'>favorite_border</i>";
+        //     echo "</a>";
+        // }
+        echo "</span>";
+    }
+    echo "</li>";
+
+    echo "<li>";
     $evs = $info['evs_cap'];
     if ($evs == 0){
         $evs= "Unknown, but unclipped";
@@ -269,29 +299,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     $downloads_per_day = round($download_count/((time() - strtotime($info['date_published']))/86400));
     echo "<li title=\" (".$downloads_per_day." per day)\">";
     echo "<b>Downloads:</b> ".$download_count;
-    echo "</li>";
-    echo "<li>";
-    echo "<b>Author:</b> <a href=\"/hdris/?a=".$info['author']."\">".$info['author']."</a>";
-    $author_info = get_author_info($info['author'], $conn);
-    if($author_info){
-        echo "<span>";
-        if ($author_info['link']){
-            echo "<a href=\"".$author_info['link']."\">";
-            echo "<i class='material-icons'>link</i>";
-            echo "</a>";
-        }
-        if ($author_info['email']){
-            echo "<a href=\"mailto:".$author_info['email']."\">";
-            echo "<i class='material-icons'>mail_outline</i>";
-            echo "</a>";
-        }
-        if ($author_info['donate']){
-            echo "<a href=\"".$author_info['donate']."\">";
-            echo "<i class='material-icons'>favorite_border</i>";
-            echo "</a>";
-        }
-        echo "</span>";
-    }
     echo "</li>";
     echo "</ul>";
 

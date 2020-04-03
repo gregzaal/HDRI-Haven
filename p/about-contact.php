@@ -6,21 +6,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 <div id="page-wrapper">
     <div class='me-wrapper'>
-        <img class='me' src="/files/site_images/me_256.jpg">
+        <img style="max-width:256px;float:left;margin-right:2em" src="/core/img/HDRI Haven Logo.svg">
     </div>
     <h1>Hi there!</h1>
-    <p>My name is Greg Zaal, I'm a CG artist and Open Source advocate.</p>
-    <p>I've worked on a few short films, Blender add-ons and training material for sites like <a href="http://cgcookie.com/" target="_blank">CG Cookie</a>, <a href="https://cgmasters.net/training-courses/character-creation-volume-3-5-cycles-convert/" target="_blank">CG Masters</a> and <a href="https://www.blenderguru.com/search?q=greg+zaal" target="_blank">BlenderGuru</a>.</p>
-    <p>Other places where you can find info about me:
-        <a href="https://www.blendernetwork.org/greg-zaal" target="_blank">Blender Network</a>,
-        <a href="http://portfolio.gregzaal.com" target="_blank">Portfolio</a>,
-        <a href="http://adaptivesamples.com" target="_blank">Blog</a>,
-        <a href="https://twitter.com/gregzaal" target="_blank">Twitter</a>.
-    </p>
-
-    <div style="clear: both"></div>
-
-    <h1>About</h1>
     <p>
         HDRI Haven is where you can find high quality HDRIs for free, no catch.
     </p>
@@ -30,6 +18,66 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     <p>
         HDRI Haven is officially linked with <a href="https://texturehaven.com">Texture Haven</a> and <a href="https://3dmodelhaven.com">3D Model Haven</a>.
     </p>
+
+    <div style="clear: both"></div>
+
+    <div class="author-list">
+    <h1>HDRI Authors:</h1>
+    <ul>
+    <?php
+    $conn = db_conn_read_only();
+    $row = 0; // Default incase of SQL error
+    $sql = "SELECT * FROM authors ORDER BY `id`";
+    $result = mysqli_query($conn, $sql);
+    $array = array();
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($array, $row);
+        }
+    }
+
+    $items = get_from_db("popular", "all", "all", "all", $conn);
+
+    foreach ($array as $a){
+        $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$a['name']."_150p.jpg");
+        if (file_exists($author_pic)){
+            echo "<li>";
+            echo "<img class='me-med' src=\"".filepath_to_url($author_pic)."\" />";
+            echo "<p>";
+            echo "<b>".$a['name']."</b>";
+            echo "<br>";
+            if ($a['link']){
+                echo "<a href=\"".$a['link']."\">";
+                echo "<i class='material-icons'>link</i>";
+                echo "</a>";
+            }
+            if ($a['email']){
+                echo "<a href=\"mailto:".$a['email']."\">";
+                echo "<i class='material-icons'>mail_outline</i>";
+                echo "</a>";
+            }
+            // if ($a['donate']){
+            //     echo "<a href=\"".$a['donate']."\">";
+            //     echo "<i class='material-icons'>favorite_border</i>";
+            //     echo "</a>";
+            // }
+            echo "<br>";
+            echo "<a href=\"/hdris/?a=".$a['name']."\">";
+            $n_items = 0;
+            foreach ($items as $i){
+                if ($i['author'] == $a['name']){
+                    $n_items++;
+                }
+            }
+            echo $n_items;
+            echo " hdris</a>";
+            echo "</p>";
+            echo "</li>";
+        }
+    }
+    ?>
+    </ul>
+    </div>
 
     <h1>Get Involved</h1>
     <p>
