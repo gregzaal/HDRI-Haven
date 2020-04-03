@@ -23,7 +23,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 
 <div class="col-2">
 
-<form action="/admin/new_hdri_submit.php" method="GET" id="new-hdri-form">
+<form action="/admin/new_hdri_submit.php" method="POST" enctype="multipart/form-data" id="new-hdri-form">
     <div class="form-item">
     <h2>Name:</h2>
     <input id="form-name" type="text" name="name" value="">
@@ -151,6 +151,11 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     <div class="form-item">
     <h2>Backplates:</h2>
     <input id="form-backplates" type="checkbox" name="backplates" value="">
+    </div>
+
+    <div class="form-item">
+    <h2>Color chart:</h2>
+    <input type="file" name="colorchart" id="colorchart">
     </div>
 
     <div class="form-item">
