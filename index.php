@@ -6,7 +6,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 <div id='landing-banner-wrapper'>
     <div id='banner-img-a'>
-        <div class='banner-img-credit'>Render by <a href="http://www.owlempires.com/">Robert Bodis</a></div>
+        <div class='banner-img-credit'>Render by <a href="http://mondlicht-studios.de/">Mondlicht Studios</a></div>
     </div>
     <div id='banner-img-b' class='hide'>
         <div class='banner-img-credit'></a></div>
