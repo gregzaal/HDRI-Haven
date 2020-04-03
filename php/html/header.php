@@ -1,16 +1,16 @@
 <div id="header">
     <div id="header-logos">
-        <a href="/">
-            <img src="/core/img/HDRI Haven Logo.svg" />
-            <p class="this-haven"><b>HDRI</b>H<sub>AVEN</sub></p>
-        </a>
-        <a href="https://texturehaven.com/">
-            <img class="other-haven" src="/core/img/Texture Haven Logo.svg" />
-            <p><b>T<sub>EXTURE</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p>
-        </a>
-        <a href="https://3dmodelhaven.com/">
-            <img class="other-haven" src="/core/img/Model Haven Logo.svg" />
-            <p><sub>3D</sub><b>M<sub>ODEL</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p>
+        <a href="/"><!--
+            --><img src="/core/img/HDRI Haven Logo.svg" /><!--
+            --><p class="this-haven"><b>HDRI</b>H<sub>AVEN</sub></p><!--
+        --></a><!--
+        --><a href="https://texturehaven.com/"><!--
+            --><img class="other-haven" src="/core/img/Texture Haven Logo.svg" /><!--
+            --><p><b>T<sub>EXTURE</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p><!--
+        --></a><!--
+        --><a href="https://3dmodelhaven.com/"><!--
+            --><img class="other-haven" src="/core/img/Model Haven Logo.svg" /><!--
+            --><p><sub>3D</sub><b>M<sub>ODEL</sub></b>H<sub>AVEN</sub> <i class="material-icons">open_in_new</i></p>
         </a>
     </div>
 
