@@ -54,7 +54,7 @@ track_search($search, $category, $reuse_conn=NULL)
     <div class="sidebar-inner">
         <h3>Categories</h3>
         <?php
-        make_category_list($sort, $conn, $category, false);
+        make_category_list($sort, $conn, $category, true);
         ?>
     </div>
 </div>
