@@ -50,7 +50,7 @@ $display_banner_credit: block;  // Hide if it's only our own work
 
     .description-wrapper {
         position: absolute;
-        bottom: 0;
+        bottom: -0.5px;
         height: 25%;
         width: calc(100% - 2em);
         margin: 0 1em 1em;
@@ -125,31 +125,6 @@ $display_banner_credit: block;  // Hide if it's only our own work
         padding: 1.44em 3em;
         width: calc(100% - 8em);
         @include transition();
-    }
-
-    .new {
-        position: absolute;
-        top: 1.65em;
-        right: 1em;
-        color: #eee;
-        transform: rotate(45deg);
-        font-weight: bold;
-        text-shadow: 1px 1px 2px rgba(0,0,0, 0.2);
-        font-size: $std-font-size;
-    }
-    .new-triangle, .new-triangle-shadow {
-        position: absolute;
-        top: 1em;
-        right: 1em;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 0 4em 4em 0;
-        border-color: transparent $c-green transparent transparent;
-    }
-    .new-triangle-shadow {
-        border-width: 0 51px 51px 0;
-        border-color: transparent rgba(0,0,0,0.15) transparent transparent;
     }
 
     .has-backplates {
