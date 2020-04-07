@@ -8,9 +8,13 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     <title>Schedule / History</title>
     <link href='/css/style.css' rel='stylesheet' type='text/css' />
     <link href='/css/admin.css' rel='stylesheet' type='text/css' />
+
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <script src="/core/core.js"></script>
     <script src="/js/functions.js"></script>
 </head>
 <body>
