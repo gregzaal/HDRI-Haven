@@ -91,7 +91,7 @@ function make_sort_SQL($sort) {
             $sql = "ORDER BY date_taken DESC, download_count DESC, date_published ASC";
             break;
         case "popular":
-            $sql = "ORDER BY download_count/POWER(ABS(DATEDIFF(date_published, NOW()))+1, 1.2) DESC, download_count DESC, date_taken DESC";
+            $sql = "ORDER BY download_count/POWER(ABS(DATEDIFF(date_published, NOW()))+1, 1.7) DESC, download_count DESC, date_taken DESC";
             break;
         case "downloads":
             $sql = "ORDER BY download_count DESC, date_published DESC, date_taken DESC";
