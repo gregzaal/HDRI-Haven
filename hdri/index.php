@@ -328,7 +328,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "</li>";
     }
     echo "</ul>";
-    echo "<p><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> and add your name here.</p>";
+    echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> and add your name here.</p>";
     echo "</div>";
 
     if ($info['backplates']){
