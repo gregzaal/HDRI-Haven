@@ -8,9 +8,9 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <title>%TITLE%</title>
 
     <!-- CSS -->
-    <link href='/css/style.css' rel='stylesheet' type='text/css' />
-    <link href='/css/style_medium.css' rel='stylesheet' media='screen and (max-width: 1299px)' type='text/css' />
-    <link href='/css/style_small.css' rel='stylesheet' media='screen and (max-width: 759px)' type='text/css' />
+    <link href='<?php content_hashed_url("/css/style.css"); ?>' rel='stylesheet' type='text/css' />
+    <link href='<?php content_hashed_url("/css/style_medium.css"); ?>' rel='stylesheet' media='screen and (max-width: 1299px)' type='text/css' />
+    <link href='<?php content_hashed_url("/css/style_small.css"); ?>' rel='stylesheet' media='screen and (max-width: 759px)' type='text/css' />
 
     <!-- Google Fonts and Icons -->
     <link href="https://fonts.googleapis.com/css?family=Lato:900,400|Roboto:900,500,300" rel="stylesheet">
@@ -46,8 +46,8 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     <script src="/js/jquery.min.js"></script>
     %GALLERYJS%
 
-    <script src="/core/core.js"></script>
-    <script src="/js/functions.js"></script>
+    <script src='<?php content_hashed_url("/core/core.js"); ?>'></script>
+    <script src='<?php content_hashed_url("/js/functions.js"); ?>'></script>
     %LANDINGJS%
 
     <!-- Google analytics -->
