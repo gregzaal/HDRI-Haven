@@ -116,8 +116,8 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
 
 
     <div class='col-2' style='vertical-align: top'>
-    <h2>Equipment Savings</h2>
-    <p>Savings to spend on camera gear or other hardware necessary to shooting and stitching HDRIs.</p>
+    <h2>Equipment/General Savings</h2>
+    <p>Savings to spend on camera gear, hardware, or any other infrequent expenses.</p>
     <p>Current equipment balance: <b class='<?php echo ($balance_equipment>0?"green":"red"); ?>-text'>R<?php echo fmoney($balance_equipment); ?></b> (<a href="https://www.google.co.za/search?q=<?php echo abs($balance_equipment) ?>+zar+in+usd" target="_blank">ZAR</a>)</p>
 
     <table cellspacing=0>
