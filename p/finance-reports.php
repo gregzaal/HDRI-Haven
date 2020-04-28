@@ -32,7 +32,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
     </p>
 
     <h2>Detailed Monthly Reports</h2>
-    <ul>
+    <p style="font-size: 1em">
     <?php
     $sql = "SELECT * FROM `finance_reports` ORDER BY `datetime` desc";
     $result = mysqli_query($conn, $sql);
@@ -40,13 +40,13 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
         while ($row = mysqli_fetch_assoc($result)) {
             $link = $row['link'];
             $month = date("F Y", strtotime($row['datetime']));
-            echo "<li>";
-            echo "<a href=\"{$link}\">{$month}</a>";
-            echo "</li>";
+            echo "<a href=\"{$link}\">";
+            echo "<span class='button-inverse-small'>{$month}</span>";
+            echo "</a>";
         }
     }
     ?>
-    </ul>
+    </p>
 
     <p>
         For a quick visual overview of how HDRI Haven has grown over time, I recommend checking out the <a href="https://graphtreon.com/creator/hdrihaven">Graphtreon page</a>.
