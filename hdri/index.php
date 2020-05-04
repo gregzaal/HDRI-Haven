@@ -169,9 +169,19 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</div>";
     echo "</a>";
 
-    $macbeth_fp = join_paths($GLOBALS['SYSTEM_ROOT'], "files/colorcharts", $slug.".jpg");
+    $possible_extensions = ["HDR", "ARW", "DNG", "CR2", "NEF", "PNG", "JPG"];
+    foreach($possible_extensions as $pext){
+        $macbeth_fp = join_paths($GLOBALS['SYSTEM_ROOT'], "files/colorcharts", $slug.".".strtolower($pext));
+        if (file_exists($macbeth_fp)){
+            break;
+        }
+        $macbeth_fp = join_paths($GLOBALS['SYSTEM_ROOT'], "files/colorcharts", $slug.".".$pext);
+        if (file_exists($macbeth_fp)){
+            break;
+        }
+    }
     if (file_exists($macbeth_fp)){
-        echo "<a href='/files/colorcharts/{$slug}.jpg' download='{$slug}_macbeth.jpg'>";
+        echo "<a href='".filepath_to_url($macbeth_fp)."' download='{$slug}_macbeth.".pathinfo($macbeth_fp, PATHINFO_EXTENSION)."'>";
         echo "<div class='button'>";
         echo "<img src='/core/img/icons/macbeth.svg' style='height:20px;vertical-align:top;margin-right: 0.5em'>";
         echo "ColorChecker";
