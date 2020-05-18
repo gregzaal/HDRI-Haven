@@ -155,14 +155,7 @@ if ($result == 1){
     $email_message .= "<p><a style='background-color: rgb(83, 161, 184);display:inline-block;padding: 0.75em 1em;color: white;text-decoration: none !important' href=\"".$mod_url."&d=n"."&f=0"."&u=".$hdri_used."\">Reject</a></p>\r\n";
     $email_message .= "</body></html>";
 
-    $email_to = $GLOBALS['ADMIN_EMAIL'];
-    $email_from = "info@hdrihaven.com";
-    $headers = 'From: '.$email_from."\r\n".
-    'Reply-To: '.$email_from."\r\n" .
-    'MIME-Version: 1.0' . "\r\n" .
-    'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
-    'X-Mailer: PHP/' . phpversion();
-    @mail($email_to, $subject, clean_email_string($email_message), $headers);
+    send_email($GLOBALS['ADMIN_EMAIL'], $subject, $email_message);
 
 }else{
     echo "<h1>Error :(</h1>";

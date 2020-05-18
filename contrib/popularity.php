@@ -141,7 +141,7 @@ foreach ($hdris_this_month as $h){
             $vc = max(min($days[$d], $q3), $q1);  // Clamped inside IQR
             array_push($days_clamped, $vc);
             if ($debug){
-            $bg_color = "black";
+            $bg_color = "white";
             switch(true){
                 case $v == $max:
                     $bg_color = "red";

@@ -72,14 +72,7 @@ if (in_array($hash, array_column($renders, 'hash'))){
                     $email_message .= "<p>Your image has been <b>approved</b> and will be visible online soon.</p>";
                     $email_message .= "</body></html>";
 
-                    $email_to = $email;
-                    $email_from = "info@hdrihaven.com";
-                    $headers = 'From: '.$email_from."\r\n".
-                    'Reply-To: '.$email_from."\r\n" .
-                    'MIME-Version: 1.0' . "\r\n" .
-                    'Content-type: text/html; charset=iso-8859-1' . "\r\n" .
-                    'X-Mailer: PHP/' . phpversion();
-                    @mail($email_to, $subject, clean_email_string($email_message), $headers);
+                    send_email($email, $subject, $email_message);
                     echo "<p>Email sent.</p>";
                 }
             }
