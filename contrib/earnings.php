@@ -121,7 +121,7 @@ echo "</table>";
 
 if ($T != 0){
     echo "<p>";
-    echo "<sup>* Earnings shown may not be accurate as the values displayed are derrived from parameters in the URL. Check the finance reports for exact values. However, the ratios between earnings are correct.</sup>";
+    echo "<sup>* Earnings shown may not be accurate as the values displayed are derived from parameters in the URL. Check the finance reports for exact values. However, the ratios between earnings are correct.</sup>";
     echo "</p>";
 }
 if ($any_prepaid){
