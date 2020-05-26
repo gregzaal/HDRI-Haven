@@ -2,7 +2,7 @@
 $sort_options = ["popular" => "Downloads per day, with recent HDRIs weighted more",
                  "downloads" => "Total downloads over all time",
                  "date_published" => "When they were uploaded",
-                 "date_taken" => "When they were original photgraphed"];
+                 "date_taken" => "When they were original photographed"];
 ?>
 
 <div class="grid-option-wrapper">
