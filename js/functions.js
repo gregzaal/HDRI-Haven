@@ -63,6 +63,12 @@ var click_functions = function(){
     });
 
 
+    // Download tracking
+    $('.dl-btn').click(function() {
+        $.post("dl_click.php", {id: $(this).attr("id"), res: $(this).attr("res")});
+    });
+
+
     // 16k popup
     $('#toggle-16k-info').click(function(e) {
         e.stopPropagation();

@@ -142,11 +142,14 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<div class='download-buttons'>";
 
     $ext = $info['ext'];
+    $hdri_id = $info['id'];
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r){
-        $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug.'_'.$r.'.'.$ext);
+        $fname = $slug.'_'.$r.'.'.$ext;
+        $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $fname);
+        $dl_url = filepath_to_url($local_file);
         if (file_exists($local_file)){
-            echo "<a href='/hdri/download.php?h={$slug}&amp;r={$r}'>";
-            echo "<div class='button'>";
+            echo "<a href=\"{$dl_url}\" download=\"{$fname}\" target='_blank'>";
+            echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"{$r}\">";
             echo "<b>{$r}</b>";
             echo " &sdot; ";
             echo human_filesize(filesize($local_file));
@@ -162,7 +165,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     $tonemapped = join_paths($GLOBALS['SYSTEM_ROOT'], "files/hdri_images/tonemapped/8192", $slug.".jpg");
     echo "<a href='/files/hdri_images/tonemapped/8192/{$slug}.jpg' download='{$slug}.jpg'>";
-    echo "<div class='button'>";
+    echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"tm\">";
     echo "8K Tonemapped JPG";
     echo " &sdot; ";
     echo human_filesize(filesize($tonemapped));
@@ -182,7 +185,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     }
     if (file_exists($macbeth_fp)){
         echo "<a href='".filepath_to_url($macbeth_fp)."' download='{$slug}_macbeth.".pathinfo($macbeth_fp, PATHINFO_EXTENSION)."'>";
-        echo "<div class='button'>";
+        echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"cc\">";
         echo "<img src='/core/img/icons/macbeth.svg' style='height:20px;vertical-align:top;margin-right: 0.5em'>";
         echo "ColorChecker";
         echo " &sdot; ";

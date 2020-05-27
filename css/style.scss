@@ -262,7 +262,7 @@ $display_banner_credit: block;  // Hide if it's only our own work
     margin-right: 1em;
     border-bottom: 1px solid $c-background-light;
 
-    .button {
+    .dl-btn {
         @extend .button-inverse;
         position: relative;
         display: block;
