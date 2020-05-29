@@ -43,9 +43,7 @@ if ($search != "all"){
 include_start_html("HDRIs: ".nice_name($category, "category"), "", $canonical, "");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
-$conn = db_conn_read_write();
-
-track_search($search, $category, $reuse_conn=NULL)
+$conn = db_conn_read_only();
 ?>
 
 <div id="sidebar-toggle"><i class="material-icons">apps</i></div>
