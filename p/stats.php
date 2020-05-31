@@ -187,7 +187,6 @@ var chart = new Chart(ctx, {
             borderColor: col_yellow,
             backgroundColor: col_yellow,
             fill: false,
-		    yAxisID: 'A',
         },
         {
             label: "Total downloads",
@@ -195,7 +194,6 @@ var chart = new Chart(ctx, {
             borderColor: col_blue,
             backgroundColor: col_blue,
             fill: false,
-		    yAxisID: 'A',
         },
         {
             label: "Users",
@@ -203,7 +201,6 @@ var chart = new Chart(ctx, {
             borderColor: col_purple,
             backgroundColor: col_purple,
             fill: false,
-		    yAxisID: 'A',
         }]
     },
     options: {
@@ -219,22 +216,9 @@ var chart = new Chart(ctx, {
         },
         scales: {
             yAxes: [{
-                id: 'A',
-                type: 'linear',
-                position: 'left',
                 ticks: {
                     beginAtZero: true,
                 }
-            }, {
-                id: 'B',
-                type: 'linear',
-                position: 'right',
-                ticks: {
-                    beginAtZero: true,
-                },
-                gridLines: {
-                    drawOnChartArea: false,
-                },
             }]
         },
         tooltips: {
