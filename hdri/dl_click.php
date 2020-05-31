@@ -7,17 +7,18 @@
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 
 if(isset($_POST['id']) and isset($_POST['res'])){
-    $id = $_POST['id'];
-    $res = $_POST['res'];
 
     $conn = db_conn_read_write();
+
+    $id = mysqli_real_escape_string($conn, $_POST['id']);
+    $res = mysqli_real_escape_string($conn, $_POST['res']);
 
     // Main download_counting table
     if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
         // Use original IP instead of Cloudflare node IP
         $_SERVER['REMOTE_ADDR'] = $_SERVER["HTTP_CF_CONNECTING_IP"];
     }
-    $ip_hash = simple_hash($_SERVER['REMOTE_ADDR']);
+    $ip_hash = mysqli_real_escape_string($conn, simple_hash($_SERVER['REMOTE_ADDR']));
     $sql = "INSERT INTO download_counting (`ip`, `hdri_id`, `res`) ";
     $sql .= "VALUES (\"".$ip_hash."\", \"".$id."\", \"".$res."\")";
 
