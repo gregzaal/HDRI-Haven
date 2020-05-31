@@ -7,7 +7,6 @@
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 
 if(isset($_POST['id']) and isset($_POST['res'])){
-
     $conn = db_conn_read_write();
 
     $id = mysqli_real_escape_string($conn, $_POST['id']);

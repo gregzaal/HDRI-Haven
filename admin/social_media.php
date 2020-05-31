@@ -9,6 +9,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+mysqli_set_charset($conn, 'utf8');
 
 $sql = "SELECT * FROM social_media WHERE post_datetime <= NOW() ORDER BY post_datetime ASC";
 $result = mysqli_query($conn, $sql);
