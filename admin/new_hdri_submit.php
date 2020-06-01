@@ -28,13 +28,9 @@ $fileformat = mysqli_real_escape_string($conn, $_POST["fileformat"]);
 $slug = $_POST["slug"];
 
 if (!empty($_FILES['colorchart']['name'])) {
-    $target_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "colorcharts", $slug.".jpg");
-    $tmp_file = $_FILES['colorchart']['tmp_name'];
     $ext = strtolower(pathinfo(basename($_FILES['colorchart']['name']),PATHINFO_EXTENSION));
-    if ($ext != 'jpg'){
-        echo "Color chart must be a JPG";
-        die();
-    }
+    $target_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "colorcharts", $slug.".".$ext);
+    $tmp_file = $_FILES['colorchart']['tmp_name'];
     move_uploaded_file($tmp_file, $target_file);
 }
 
