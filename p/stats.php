@@ -20,22 +20,30 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         <div class="col-2">
             <canvas id="chart-dayname"></canvas>
         </div>
-
         <div class="col-2">
             <canvas id="chart-hour"></canvas>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="col-2">
+            <canvas id="chart-monthly-published"></canvas>
         </div>
     </div>
 
     <!--
     Top categories
     Top resolutions
+    Patreon earnings over time (bar graph of total earnings, overlay line graph of gained/lost/net patrons)
+    "Value" of each patreon tier (patrons * cost)
+    Downloads in the last 48h vs last week for the same period
     -->
 
     <?php
     $all_data = array();
     $conn = db_conn_read_only();
 
-    $sql = "SELECT date(datetime) as date, count(*) as num, count(DISTINCT ip, hdri_id) as numu, count(DISTINCT ip) as users ";
+    $sql = "SELECT date(datetime) as date, count(*) as num, count(DISTINCT ip, ".$GLOBALS['CONTENT_TYPE_SHORT']."_id) as numu, count(DISTINCT ip) as users ";
     $sql .= "FROM `download_counting` ";
     $sql .= "WHERE datetime > (NOW() - INTERVAL 3 MONTH) ";
     $sql .= "GROUP BY date ";
@@ -51,7 +59,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         }
     }
 
-    $sql = "SELECT date_format(datetime, \"%Y-%m\") as date, count(*) as num, count(DISTINCT ip, hdri_id) as numu, count(DISTINCT ip) as users ";
+    $sql = "SELECT date_format(datetime, \"%Y-%m\") as date, count(*) as num, count(DISTINCT ip, ".$GLOBALS['CONTENT_TYPE_SHORT']."_id) as numu, count(DISTINCT ip) as users ";
     $sql .= "FROM `download_counting` ";
     $sql .= "GROUP BY date ";
     $sql .= "ORDER BY date";
@@ -99,6 +107,22 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     $max = max($all_data["hour"][1]);
     foreach ($all_data["hour"][1] as $k => $n){
         $all_data["hour"][1][$k] = round($n / $max * 100, 2);
+    }
+
+    $sql = "SELECT date_format(date_published, \"%Y-%m\") as date, ";
+    $sql .= "count(*) as num ";
+    $sql .= "FROM `".$GLOBALS['CONTENT_TYPE']."` ";
+    $sql .= "WHERE date_published > (NOW() - INTERVAL 24 MONTH) AND date_published <= NOW() ";
+    $sql .= "GROUP BY date ";
+    $sql .= "ORDER BY date";
+    debug_console($sql);
+    $result = mysqli_query($conn, $sql);
+    $all_data["monthly-published"] = [array(), array()];
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($all_data["monthly-published"][0], $row['date']);
+            array_push($all_data["monthly-published"][1], $row['num']);
+        }
     }
 
     echo "<div id='all_data' class='hidden'>".json_encode($all_data)."</div>"
@@ -315,6 +339,38 @@ var chart = new Chart(ctx, {
             }]
         },
         tooltips: opt_tooltip_percentage
+    }
+});
+
+// Chart: monthly-published
+var ctx = document.getElementById('chart-monthly-published').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: all_data["monthly-published"][0],
+        datasets: [{
+            backgroundColor: col_purple,
+            data: all_data["monthly-published"][1]
+        }]
+    },
+    options: {
+        layout: {
+            padding: 16
+        },
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: '<?php echo ucwords($GLOBALS['CONTENT_TYPE_NAME']) ?> published per month'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     }
 });
 </script>
