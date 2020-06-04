@@ -29,6 +29,9 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         <div class="col-2">
             <canvas id="chart-monthly-published"></canvas>
         </div>
+        <div class="col-2">
+            <canvas id="chart-48h"></canvas>
+        </div>
     </div>
 
     <!--
@@ -36,7 +39,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     Top resolutions
     Patreon earnings over time (bar graph of total earnings, overlay line graph of gained/lost/net patrons)
     "Value" of each patreon tier (patrons * cost)
-    Downloads in the last 48h vs last week for the same period
     -->
 
     <?php
@@ -115,13 +117,44 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     $sql .= "WHERE date_published > (NOW() - INTERVAL 24 MONTH) AND date_published <= NOW() ";
     $sql .= "GROUP BY date ";
     $sql .= "ORDER BY date";
-    debug_console($sql);
     $result = mysqli_query($conn, $sql);
     $all_data["monthly-published"] = [array(), array()];
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             array_push($all_data["monthly-published"][0], $row['date']);
             array_push($all_data["monthly-published"][1], $row['num']);
+        }
+    }
+
+    $sql = "SELECT * FROM (
+        SELECT
+        HOUR(TIMEDIFF(NOW(), datetime))-(7*24) as hour_o,
+        count(*) as num_o,
+        count(DISTINCT ip) as users_o
+        FROM `download_counting`
+        WHERE datetime > (NOW() - INTERVAL 9 DAY) AND datetime < (NOW() - INTERVAL 7 DAY)
+        GROUP BY hour_o
+    ) as o
+    LEFT OUTER JOIN (
+        SELECT
+        HOUR(TIMEDIFF(NOW(), datetime)) as hour,
+        count(*) as num,
+        count(DISTINCT ip) as users
+        FROM `download_counting`
+        WHERE datetime > (NOW() - INTERVAL 48 HOUR)
+        GROUP BY hour
+    ) as n
+    ON o.hour_o=n.hour
+    ORDER BY o.hour_o DESC";
+    $result = mysqli_query($conn, $sql);
+    $all_data["48h"] = [array(), array(), array(), array(), array()];
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            array_push($all_data["48h"][0], $row['hour_o']);
+            array_push($all_data["48h"][1], $row['num']);
+            array_push($all_data["48h"][2], $row['num_o']);
+            array_push($all_data["48h"][3], $row['users']);
+            array_push($all_data["48h"][4], $row['users_o']);
         }
     }
 
@@ -143,8 +176,11 @@ var opt_tooltip_percentage = {
 
 // Colors:
 var col_blue = 'rgb(65, 187, 217)';
+var col_blue_dark = 'rgba(65, 187, 217, 0.3)';
 var col_yellow = 'rgb(242, 191, 56)';
+var col_yellow_dark = 'rgba(242, 191, 56, 0.3)';
 var col_purple = 'rgb(190, 111, 255)';
+var col_purple_dark = 'rgba(190, 111, 255, 0.3)';
 
 // Chart: daily-downloads
 var ctx = document.getElementById('chart-daily-downloads').getContext('2d');
@@ -370,6 +406,65 @@ var chart = new Chart(ctx, {
                     beginAtZero: true
                 }
             }]
+        }
+    }
+});
+
+// Chart: 48h
+var ctx = document.getElementById('chart-48h').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: all_data["48h"][0],
+        datasets: [{
+            data: all_data["48h"][1],
+            borderColor: col_blue,
+            backgroundColor: col_blue,
+            fill: false,
+            pointRadius: 0
+        },
+        {
+            data: all_data["48h"][2],
+            borderColor: col_blue_dark,
+            backgroundColor: col_blue_dark,
+            fill: false,
+            pointRadius: 0
+        },
+        {
+            data: all_data["48h"][3],
+            borderColor: col_purple,
+            backgroundColor: col_purple,
+            fill: false,
+            pointRadius: 0
+        },
+        {
+            data: all_data["48h"][4],
+            borderColor: col_purple_dark,
+            backgroundColor: col_purple_dark,
+            fill: false,
+            pointRadius: 0
+        }]
+    },
+    options: {
+        layout: {
+            padding: 16
+        },
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: 'Downloads & users in last 48h vs. last week'
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                }
+            }]
+        },
+        tooltips: {
+            enabled: false
         }
     }
 });
