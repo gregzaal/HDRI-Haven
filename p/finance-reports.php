@@ -55,7 +55,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
     <hr />
 
     <p>
-        The following tables show my personal montly savings towards improving the content on this site.
+        The following tables show my personal monthly savings towards improving the content on this site.
     </p>
     <p>
         As I'm no longer the only photographer publishing work on HDRI Haven, this only includes my small portion of the Patreon income. Other photographers may be spending or saving their earnings differently.
