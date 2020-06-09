@@ -35,10 +35,12 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </div>
 
     <!--
+    New HDRIs per month relative to patron growth; Total HDRIs vs total patreon income
     Top categories
     Top resolutions
     Patreon earnings over time (bar graph of total earnings, overlay line graph of gained/lost/net patrons)
     "Value" of each patreon tier (patrons * cost)
+    Software used in gallery renders
     -->
 
     <?php
@@ -189,17 +191,17 @@ var chart = new Chart(ctx, {
     data: {
         labels: all_data["daily-downloads"][0].slice(1, -1),
         datasets: [{
-            label: "Unique downloads",
-            data: all_data["daily-downloads"][1].slice(1, -1),
-            borderColor: col_yellow,
-            backgroundColor: col_yellow,
-            fill: false,
-        },
-        {
             label: "Total downloads",
             data: all_data["daily-downloads"][2].slice(1, -1),
             borderColor: col_blue,
             backgroundColor: col_blue,
+            fill: false,
+        },
+        {
+            label: "Unique downloads",
+            data: all_data["daily-downloads"][1].slice(1, -1),
+            borderColor: col_yellow,
+            backgroundColor: col_yellow,
             fill: false,
         },
         {
@@ -242,17 +244,17 @@ var chart = new Chart(ctx, {
     data: {
         labels: all_data["monthly-downloads"][0],
         datasets: [{
-            label: "Unique downloads",
-            data: all_data["monthly-downloads"][1],
-            borderColor: col_yellow,
-            backgroundColor: col_yellow,
-            fill: false,
-        },
-        {
             label: "Total downloads",
             data: all_data["monthly-downloads"][2],
             borderColor: col_blue,
             backgroundColor: col_blue,
+            fill: false,
+        },
+        {
+            label: "Unique downloads",
+            data: all_data["monthly-downloads"][1],
+            borderColor: col_yellow,
+            backgroundColor: col_yellow,
             fill: false,
         },
         {
