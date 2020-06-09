@@ -62,6 +62,9 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
     </script>
     <meta name="google-site-verification" content="lQBTSj6zheJOtznpvHO_x1GjXffWy__cJy7B-lcE3y0" />
 
+    <!-- Google AdSense -->
+    <script data-ad-client="ca-pub-2284751191864068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 </head>
 <body>
 
