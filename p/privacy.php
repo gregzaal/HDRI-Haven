@@ -9,14 +9,16 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
     <h2>Third Party Cookies</h2>
     <p>
-        We use some third party services (Google Analytics and Disqus) which store cookies on your device that are necessary for using their services, and track data about you for their own purposes. You can read more about what data they store and how they use it on their own Privacy Policies:
+        We use some third party services (Google Analytics, Google AdSense, and Disqus) which store cookies on your device that are necessary for using their services, and track data about you for their own purposes. You can read more about what data they store and how they use it on their own Privacy Policies:
     </p>
     <ul>
-        <li><a href="https://policies.google.com/technologies/partner-sites">Google</a> (site analytics)</li>
+        <li><a href="https://policies.google.com/technologies/partner-sites">Google</a> (site analytics & ads)</li>
         <li><a href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy">Disqus</a> (comment system)</li>
     </ul>
     <p>
-        If you are not comfortable with this, you can use an ad-blocker such as <a href="https://github.com/gorhill/uBlock">uBlock Origin</a>.
+    Third party vendors, including Google, use cookies to serve ads based on your prior visits to our website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
+    <p>
+        If you are not comfortable with this, you can opt out of personalized advertising in your <a href="https://www.google.com/settings/ads">Ads Settings</a>, or use an ad-blocker such as <a href="https://github.com/gorhill/uBlock">uBlock Origin</a>.
     </p>
 
     <h2>IP Logging</h2>
