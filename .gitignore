@@ -14,3 +14,4 @@ secret_config.php
 /.vscode
 /vendor
 .gitmodules
+ads.txt
