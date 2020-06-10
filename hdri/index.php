@@ -344,6 +344,19 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> and add your name here.</p>";
     echo "</div>";
 
+    ?>
+    <div class="adsense-unit">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-2284751191864068"
+        data-ad-slot="9245777627"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <?php
+
     if ($info['backplates']){
         $backplates_scan_dir = $GLOBALS['SYSTEM_ROOT']."/files/backplates/".$slug."/thumbs/S/";
         if (file_exists($backplates_scan_dir)){
@@ -457,6 +470,21 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "</div>";
         echo "</div>";
     }
+
+    ?>
+    <div class="adsense-unit">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-2284751191864068"
+        data-ad-slot="7458392547"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+    <?php
 
 }else{
     echo "<h1 class='coming-soon'>Coming soon :)</h1>";

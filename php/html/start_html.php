@@ -66,6 +66,13 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
 
     <!-- Google AdSense -->
     <script data-ad-client="ca-pub-2284751191864068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <?php
+    if ($GLOBALS['WORKING_LOCALLY']) {
+        echo '<style>';
+        echo 'ins { background-color: rgba(255,0,0,0.35); }';
+        echo '</style>';
+    }
+    ?>
 
 </head>
 <body>

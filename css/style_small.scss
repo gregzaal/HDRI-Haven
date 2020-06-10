@@ -17,3 +17,8 @@
 #hdris-landing-page .grid-item {
     width: auto;
 }
+
+#item-grid .adsense-unit {
+    width: calc(100% - 2px);
+    margin: 0;
+}

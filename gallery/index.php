@@ -31,6 +31,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     foreach ($hdris as $h){
         $hdri_names[$h['slug']] = $h['name'];
     }
+    $n = -9;
+    $ad_count = 0;
     foreach ($renders as $r){
         if (in_array($r['hdri_used'], array_column($hdris, 'slug'))){
             if ($r['approval_pending'] == 0){
@@ -50,8 +52,25 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 echo " item-used-name=\"".$hdri_names[$r['hdri_used']]."\"";
                 echo " item-used-link=\"/hdri/?h=".$r['hdri_used']."\"";
                 echo ">";
-                echo "<img src=\"".$src."\">";
+                echo "<img class='flex-item' src=\"".$src."\">";
                 echo "</div>";
+                $n++;
+                if ($n % 15 == 0 && $ad_count < 4){
+                    echo "<div class='item' data-w='300' data-h='250'>";
+                    echo "<div class='flex-item adsense-unit'>";
+                    echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+                    <!-- Render Gallery -->
+                    <ins class=\"adsbygoogle\"
+                         style=\"display:inline-block;width:300px;height:250px\"
+                         data-ad-client=\"ca-pub-2284751191864068\"
+                         data-ad-slot=\"8342925341\"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>";
+                    echo "</div>";
+                    echo "</div>";
+                    $ad_count++;
+                }
             }
         }
     }
@@ -65,7 +84,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 </div>
 
 <script type="text/javascript">
-    $('#gallery-wrapper').flexImages({rowHeight: 400});
+    $('#gallery-wrapper').flexImages({rowHeight: 400, object: '.flex-item'});
 </script>
 
 

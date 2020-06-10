@@ -256,4 +256,19 @@ function make_grid_item($i, $category="all"){
     return $html;
 }
 
+function make_grid_adunit() {
+    $html = "";
+    $html .= "<div class='adsense-unit'>";
+    $html .= "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+    <ins class=\"adsbygoogle\"
+         style=\"display:inline-block;width:336px;height:280px\"
+         data-ad-client=\"ca-pub-2284751191864068\"
+         data-ad-slot=\"2670483182\"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>";
+    $html .= "</div>";
+    return $html;
+}
+
 ?>
