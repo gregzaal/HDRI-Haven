@@ -266,6 +266,20 @@ $display_banner_credit: block;  // Hide if it's only our own work
     }
 }
 
+#text-section-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    .adsense-unit {
+        margin: 0.5em;
+        margin-left: 0;
+    }
+
+    #text-section {
+        flex-grow: 100;
+    }
+}
+
 .download-buttons {
     position: relative;
     margin-top: 1em;

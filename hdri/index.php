@@ -42,6 +42,8 @@ $t1 ['tags'] = implode(',', array_merge($category_arr, $tag_arr));
 include_start_html("HDRI: {$info['name']}", $slug, $canonical, $t1);
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
+$ads_testing = rand(1, 2);  // A/B testing for ad placement
+
 ?>
 
 <div id="lightbox-wrapper" class="hide">
@@ -127,6 +129,24 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     if ($GLOBALS['WORKING_LOCALLY'] && is_in_the_past($info['date_published']) == False){
         echo "<p style='text-align:center;opacity:0.5;'>(working locally on a yet-to-be-published HDRI)</p>";
     }
+
+    echo "<div id='text-section-wrapper'>";
+
+    if ($ads_testing == 1){
+        echo "<div class='adsense-unit'>";  // TODO desktop-only
+        echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+            <!-- HDRI Vertical DL -->
+            <ins class=\"adsbygoogle\"
+                style=\"display:inline-block;width:160px;height:600px\"
+                data-ad-client=\"ca-pub-2284751191864068\"
+                data-ad-slot=\"9108485753\"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>";
+        echo "</div>";
+    }
+
+    echo "<div id='text-section'>";
     echo "<div id='item-info'>";
 
     echo "<div class='col-2'>";
@@ -344,18 +364,21 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> and add your name here.</p>";
     echo "</div>";
 
-    ?>
-    <div class="adsense-unit">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:970px;height:90px"
-        data-ad-client="ca-pub-2284751191864068"
-        data-ad-slot="9245777627"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    </div>
-    <?php
+    echo "</div>";  // text-section-wrapper
+    echo "</div>";  // text-section
+
+    if ($ads_testing == 2){
+    echo "<div class='adsense-unit'>
+        <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+        <ins class=\"adsbygoogle\"
+            style=\"display:inline-block;width:970px;height:90px\"
+            data-ad-client=\"ca-pub-2284751191864068\"
+            data-ad-slot=\"9245777627\"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        </div>";
+    }
 
     if ($info['backplates']){
         $backplates_scan_dir = $GLOBALS['SYSTEM_ROOT']."/files/backplates/".$slug."/thumbs/S/";
