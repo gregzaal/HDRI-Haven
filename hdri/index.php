@@ -471,21 +471,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "</div>";
     }
 
-    ?>
-    <div class="adsense-unit">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-2284751191864068"
-        data-ad-slot="7458392547"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    </div>
-    <?php
-
 }else{
     echo "<h1 class='coming-soon'>Coming soon :)</h1>";
 }
