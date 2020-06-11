@@ -340,10 +340,10 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</div>";  // .item-info
 
     echo "<div class='center'>";
-    echo "<p class='small'>This HDRI is sponsored by:</p>";
-    echo "<ul id='sponsor-list'>";
     $sponsors = get_sponsors($slug, $conn);
     if ($sponsors){
+        echo "<p class='small'>This HDRI is sponsored by:</p>";
+        echo "<ul id='sponsor-list'>";
         foreach ($sponsors as $s){
             echo "<li>";
             if ($s['url'] != "none" && $s['url'] != ""){
@@ -355,13 +355,27 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
             }
             echo "</li>";
         }
+        echo "</ul>";
+        echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> to add your name here.</p>";
     }else{
-        echo "<li style='font-weight:300'>";
-        echo "No one yet :(";
-        echo "</li>";
+        echo "<p class='small'>This HDRI is sponsored by: <b>No one yet :(</b></p>";
+        if ($ads_testing == 1){
+            echo "<div class='adsense-unit'>";
+            echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
+                <!-- HDRI Sponsor -->
+                <ins class=\"adsbygoogle\"
+                style=\"display:inline-block;width:728px;height:90px\"
+                data-ad-client=\"ca-pub-2284751191864068\"
+                data-ad-slot=\"4052983086\"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>";
+            echo "</div>";
+            echo "<p class='small'>Support us on <a href='https://www.patreon.com/hdrihaven/overview'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
+        }else{
+            echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> to add your name here.</p>";
+        }
     }
-    echo "</ul>";
-    echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> and add your name here.</p>";
     echo "</div>";
 
     echo "</div>";  // text-section-wrapper
