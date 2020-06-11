@@ -100,7 +100,7 @@ echo "</div>";  // #pannellum-wrapper
 echo "</div>";  // #item-preview
 
 echo "<h1>";
-echo "<a href='/hdris/?c=all'>";
+echo "<a href='/hdris'>";
 echo "HDRIs";
 echo "</a>";
 echo " >";
