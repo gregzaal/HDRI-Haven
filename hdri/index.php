@@ -134,18 +134,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     if ($ads_testing == 1){
         echo "<div class='adsense-unit'>";
-        echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-            <!-- HDRI Vertical DL -->
-            <style>
-            .ad-hdri-vertical-dl{display:inline-block;width:160px;height:600px}
-            @media all and (max-width: 759px){.ad-hdri-vertical-dl{width:300px;height:250px}}
-            </style>
-            <ins class=\"adsbygoogle ad-hdri-vertical-dl\"
-                data-ad-client=\"ca-pub-2284751191864068\"
-                data-ad-slot=\"9108485753\"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>";
+        insert_ad("HDRI Vertical DL");
         echo "</div>";
     }
 
@@ -364,15 +353,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<p class='small'>This HDRI is sponsored by: <b>No one yet :(</b></p>";
         if ($ads_testing == 1){
             echo "<div class='adsense-unit'>";
-            echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-                <!-- HDRI Sponsor -->
-                <ins class=\"adsbygoogle\"
-                style=\"display:inline-block;width:728px;height:90px\"
-                data-ad-client=\"ca-pub-2284751191864068\"
-                data-ad-slot=\"4052983086\"></ins>
-                <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>";
+            insert_ad("HDRI Sponsor");
             echo "</div>";
             echo "<p class='small'>Support us on <a href='https://www.patreon.com/hdrihaven/overview'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
         }else{
@@ -385,16 +366,9 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</div>";  // text-section
 
     if ($ads_testing == 2){
-    echo "<div class='adsense-unit'>
-        <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
-        <ins class=\"adsbygoogle\"
-            style=\"display:inline-block;width:970px;height:90px\"
-            data-ad-client=\"ca-pub-2284751191864068\"
-            data-ad-slot=\"9245777627\"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        </div>";
+    echo "<div class='adsense-unit'>";
+    insert_ad("HDRI Small Banner");
+    echo "</div>";
     }
 
     if ($info['backplates']){

@@ -56,14 +56,7 @@ $conn = db_conn_read_only();
         ?>
         </div>
     <div class="adsense-unit" id="ads-sidebar">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <ins class="adsbygoogle"
-        style="display:inline-block;width:200px;height:200px"
-        data-ad-client="ca-pub-2284751191864068"
-        data-ad-slot="4181153207"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <?php insert_ad("Sidebar"); ?>
     </div>
     <!-- <a href="https://www.patreon.com/hdrihaven" target="_blank"> -->
     <div class="button-inverse-small" id="remove-ads"
