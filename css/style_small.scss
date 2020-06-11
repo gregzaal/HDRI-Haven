@@ -22,3 +22,7 @@
     width: calc(100% - 2px);
     margin: 0;
 }
+
+#text-section-wrapper {
+    flex-direction: column-reverse;
+}

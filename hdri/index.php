@@ -133,11 +133,14 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<div id='text-section-wrapper'>";
 
     if ($ads_testing == 1){
-        echo "<div class='adsense-unit'>";  // TODO desktop-only
+        echo "<div class='adsense-unit'>";
         echo "<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>
             <!-- HDRI Vertical DL -->
-            <ins class=\"adsbygoogle\"
-                style=\"display:inline-block;width:160px;height:600px\"
+            <style>
+            .ad-hdri-vertical-dl{display:inline-block;width:160px;height:600px}
+            @media all and (max-width: 759px){.ad-hdri-vertical-dl{width:300px;height:250px}}
+            </style>
+            <ins class=\"adsbygoogle ad-hdri-vertical-dl\"
                 data-ad-client=\"ca-pub-2284751191864068\"
                 data-ad-slot=\"9108485753\"></ins>
             <script>
