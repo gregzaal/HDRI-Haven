@@ -132,11 +132,9 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     echo "<div id='text-section-wrapper'>";
 
-    if ($ads_testing == 1){
-        echo "<div class='adsense-unit'>";
-        insert_ad("HDRI Vertical DL");
-        echo "</div>";
-    }
+    echo "<div class='adsense-unit'>";
+    insert_ad("HDRI Vertical DL");
+    echo "</div>";
 
     echo "<div id='text-section'>";
     echo "<div id='item-info'>";
@@ -351,25 +349,15 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> to add your name here.</p>";
     }else{
         echo "<p class='small'>This HDRI is sponsored by: <b>No one yet :(</b></p>";
-        if ($ads_testing == 1){
-            echo "<div class='adsense-unit'>";
-            insert_ad("HDRI Sponsor");
-            echo "</div>";
-            echo "<p class='small'>Support us on <a href='https://www.patreon.com/hdrihaven/overview'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
-        }else{
-            echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> to add your name here.</p>";
-        }
+        echo "<div class='adsense-unit'>";
+        insert_ad("HDRI Sponsor");
+        echo "</div>";
+        echo "<p class='small'>Support us on <a href='https://www.patreon.com/hdrihaven/overview'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
     }
     echo "</div>";
 
     echo "</div>";  // text-section-wrapper
     echo "</div>";  // text-section
-
-    if ($ads_testing == 2){
-    echo "<div class='adsense-unit'>";
-    insert_ad("HDRI Small Banner");
-    echo "</div>";
-    }
 
     if ($info['backplates']){
         $backplates_scan_dir = $GLOBALS['SYSTEM_ROOT']."/files/backplates/".$slug."/thumbs/S/";
