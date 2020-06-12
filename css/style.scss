@@ -268,7 +268,7 @@ $display_banner_credit: block;  // Hide if it's only our own work
         margin-right: auto;
     }
 
-    #similar-banner {
+    .similar-banner {
         width: 160px;
         color: $c-text-light;
         display: inline-block;
@@ -283,14 +283,22 @@ $display_banner_credit: block;  // Hide if it's only our own work
         }
     }
 
-    .adsense-unit, #similar-banner-wrapper {
+    .adsense-unit, .similar-banner-wrapper {
         flex-grow: 100;
         position: relative;
     }
 }
 @media all and (max-width: 1520px){
-    #similar-banner-wrapper {
+    .similar-banner-wrapper {
         display: none;
+    }
+    #similar-banner-backup {
+        display: unset;
+    }
+}
+@media all and (max-width: 1270px){
+    #similar-banner-backup{
+        display: none !important;
     }
 }
 

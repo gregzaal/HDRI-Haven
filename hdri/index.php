@@ -69,8 +69,8 @@ echo "<div id='item-preview' style='background-image: url(/files/hdri_images/ton
 
 echo "<div class='darken'></div>";
 
-echo "<div id='similar-banner-wrapper'>";
-echo "<div id='similar-banner'>";
+echo "<div class='similar-banner-wrapper'>";
+echo "<div class='similar-banner'>";
 echo "<p>Similar HDRIs:</p>";
 $n = 0;
 foreach ($similar as $s){
@@ -82,8 +82,8 @@ foreach ($similar as $s){
         echo "</a>";
     }
 }
-echo "</div>";  // #similar-banner
-echo "</div>";  // #similar-banner-wrapper
+echo "</div>";  // .similar-banner
+echo "</div>";  // .similar-banner-wrapper
 
 echo "<div id='main-preview-wrapper'>";
 echo "<div id='main-preview'>";
@@ -109,6 +109,22 @@ echo "</div>";  // #main-preview
 echo "</div>";  // #main-preview-wrapper
 
 insert_ad("HDRI Vertical Preview");
+
+echo "<div class='similar-banner-wrapper hidden' id='similar-banner-backup'>";
+echo "<div class='similar-banner'>";
+echo "<p>Similar HDRIs:</p>";
+$n = 0;
+foreach ($similar as $s){
+    $n++;
+    if ($n > 3){
+        $ss = $s['slug'];
+        echo "<a href=\"/hdri/?h={$ss}\">";
+        echo "<img src=\"/files/hdri_images/tonemapped/180/{$ss}.jpg\" alt=\"".$s['name']."\">";
+        echo "</a>";
+    }
+}
+echo "</div>";  // .similar-banner
+echo "</div>";  // .similar-banner-wrapper
 
 echo "<div id='pannellum-wrapper'>";
 echo "<iframe id='pannellum-frame' title='pannellum panorama viewer' style='border-style:none;' src=\"/files/hdri_images/pannellum/pannellum.htm?config={$slug}/config.json\" style='position: absolute; width: 100%;'></iframe>";

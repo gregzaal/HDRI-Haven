@@ -1,5 +1,5 @@
 <div class="adsense-unit">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="$('#similar-banner-backup').removeClass('hidden')"></script>
 <!-- HDRI Vertical Preview -->
 <style>
 .ad-hdri-vertical-preview{display:inline-block;width:160px;height:600px}
