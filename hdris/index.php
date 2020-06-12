@@ -86,6 +86,10 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
     }
     echo "</h1>";
 
+    if (!$none_set){
+        insert_ad("Grid Top");
+    }
+
     include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_options.php');
 
     echo "</div>";  // .title-bar
