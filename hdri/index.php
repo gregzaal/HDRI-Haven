@@ -30,6 +30,8 @@ if (sizeof($info) <= 1){
     header("Location: /hdris/?s=".$slug);
 }
 
+$similar = get_similar($slug, $conn);
+
 $canonical = "https://hdrihaven.com/hdri/?h=".$slug;
 $t1 = [];
 $t1 ['name'] = $info['name'];
@@ -67,6 +69,23 @@ echo "<div id='item-preview' style='background-image: url(/files/hdri_images/ton
 
 echo "<div class='darken'></div>";
 
+echo "<div id='similar-banner-wrapper'>";
+echo "<div id='similar-banner'>";
+echo "<p>Similar HDRIs:</p>";
+$n = 0;
+foreach ($similar as $s){
+    $n++;
+    if ($n <= 3){
+        $ss = $s['slug'];
+        echo "<a href=\"/hdri/?h={$ss}\">";
+        echo "<img src=\"/files/hdri_images/tonemapped/180/{$ss}.jpg\" alt=\"".$s['name']."\">";
+        echo "</a>";
+    }
+}
+echo "</div>";  // #similar-banner
+echo "</div>";  // #similar-banner-wrapper
+
+echo "<div id='main-preview-wrapper'>";
 echo "<div id='main-preview'>";
 echo "<img src='/files/hdri_images/tonemapped/1500/{$slug}.jpg'>";
 echo "<div class='button-overlay'>";
@@ -87,7 +106,9 @@ echo "</div>";  // .exposure-button-overlay
 echo "</div>";  // #exposure-wrapper
 
 echo "</div>";  // #main-preview
+echo "</div>";  // #main-preview-wrapper
 
+insert_ad("HDRI Vertical Preview");
 
 echo "<div id='pannellum-wrapper'>";
 echo "<iframe id='pannellum-frame' title='pannellum panorama viewer' style='border-style:none;' src=\"/files/hdri_images/pannellum/pannellum.htm?config={$slug}/config.json\" style='position: absolute; width: 100%;'></iframe>";
@@ -459,7 +480,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "</script>";
     }
 
-    $similar = get_similar($slug, $conn);
     if ($similar){
         echo "<h2>";
         echo "Similar HDRIs";

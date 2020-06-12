@@ -163,6 +163,9 @@ $display_banner_credit: block;  // Hide if it's only our own work
 // ============================================================================
 
 #item-preview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: relative;
     width: 100%;
     text-align: center;
@@ -263,6 +266,31 @@ $display_banner_credit: block;  // Hide if it's only our own work
         max-width: 1500px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    #similar-banner {
+        width: 160px;
+        color: $c-text-light;
+        display: inline-block;
+
+        a {
+            display: inline-block;
+            margin-bottom: 0.8em;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .adsense-unit, #similar-banner-wrapper {
+        flex-grow: 100;
+        position: relative;
+    }
+}
+@media all and (max-width: 1520px){
+    #similar-banner-wrapper {
+        display: none;
     }
 }
 
