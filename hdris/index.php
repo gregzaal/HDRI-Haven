@@ -44,11 +44,13 @@ include_start_html("HDRIs: ".nice_name($category, "category"), "", $canonical, "
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
 $conn = db_conn_read_only();
+
+$ads_testing = rand(1, 2);  // A/B testing for ad placement
 ?>
 
 <div id="sidebar-toggle"><i class="material-icons">apps</i></div>
 
-<div id="sidebar">
+<div id="sidebar" <?php if($ads_testing == 2){echo "style='flex-direction:column-reverse'";}?> >
     <div class="sidebar-inner">
         <h3>Categories</h3>
         <?php
@@ -56,13 +58,10 @@ $conn = db_conn_read_only();
         ?>
         </div>
     <div class="adsense-unit" id="ads-sidebar">
-    <?php insert_ad("Sidebar"); ?>
+    <?php
+    insert_ad(($ads_testing == 1) ? "Sidebar" : "Sidebar Top");
+    ?>
     </div>
-    <!-- <a href="https://www.patreon.com/hdrihaven" target="_blank"> -->
-    <div class="button-inverse-small" id="remove-ads"
-    style="display: block; margin: 0; text-align: center; cursor:not-allowed; font-size: 95%"
-    title="While we're figuring out ad placement based on Patron feedback, removal of ads is not yet implemented. In future all patrons (from $1 and up) will be able to remove ads."><strike>Remove Ads</strike> <em>Coming soon</em></div>
-    <!-- </a> -->
 </div>
 
 <div id="item-grid-wrapper">
