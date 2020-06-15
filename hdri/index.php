@@ -44,7 +44,7 @@ $t1 ['tags'] = implode(',', array_merge($category_arr, $tag_arr));
 include_start_html("HDRI: {$info['name']}", $slug, $canonical, $t1);
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
-$ads_testing = rand(1, 2);  // A/B testing for ad placement
+$ads_testing = rand(1, 3);  // A/B testing for ad placement
 
 ?>
 
@@ -167,10 +167,20 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<p style='text-align:center;opacity:0.5;'>(working locally on a yet-to-be-published HDRI)</p>";
     }
 
-    echo "<div id='text-section-wrapper'>";
+    echo "<div id='text-section-wrapper'";
+    if ($ads_testing > 1){
+        echo " style='flex-direction:column'";
+    }
+    echo ">";
 
     echo "<div class='adsense-unit'>";
-    insert_ad("HDRI Vertical DL");
+    if ($ads_testing == 1){
+        insert_ad("HDRI Vertical DL");
+    }else if ($ads_testing == 2){
+        insert_ad("HDRI Horizontal DL");
+    }else{
+        insert_ad("HDRI Horizontal DL L");
+    }
     echo "</div>";
 
     echo "<div id='text-section'>";
