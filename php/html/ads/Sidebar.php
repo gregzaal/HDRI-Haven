@@ -9,8 +9,8 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<!-- <a href="https://www.patreon.com/hdrihaven" target="_blank"> -->
+<a href="/p/remove-ads.php">
 <div class="button-inverse-small" id="remove-ads"
-    style="display: block; margin: 0; text-align: center; cursor:not-allowed; font-size: 95%"
-    title="While we're figuring out ad placement based on Patron feedback, removal of ads is not yet implemented. In future all patrons (from $1 and up) will be able to remove ads."><strike>Remove Ads</strike> <em>Coming soon</em></div>
-<!-- </a> -->
+    style="display: block; margin: 0; text-align: center; font-size: 95%"
+    title="Donate $1 to disable all ads, helping us fund future <?php echo $GLOBALS['CONTENT_TYPE_NAME']; ?> at the same time."><img src="/core/img/icons/heart.svg"> Remove Ads <img src="/core/img/icons/heart.svg"></div>
+</a>
