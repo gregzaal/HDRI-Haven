@@ -111,6 +111,11 @@ echo "</div>";  // #main-preview-wrapper
 insert_ad("HDRI Vertical Preview");
 
 echo "<div class='similar-banner-wrapper hidden' id='similar-banner-backup'>";
+echo "<script>
+if (localStorage.getItem('remove-ads') == 'yes'){
+    $('#similar-banner-backup').removeClass('hidden');
+}
+</script>";
 echo "<div class='similar-banner'>";
 echo "<p>Similar HDRIs:</p>";
 $n = 0;

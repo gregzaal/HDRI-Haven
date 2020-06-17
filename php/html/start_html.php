@@ -72,7 +72,13 @@ if (!in_array($_SERVER['PHP_SELF'], $GLOBALS['NO_CACHE'])){
         echo 'ins { background-color: rgba(255,0,0,0.35); }';
         echo '</style>';
     }
+    echo "<style id='hide-ads'></style>";
     ?>
+    <script>
+        if (localStorage.getItem("remove-ads") == "yes"){
+            $('#hide-ads').html(".adsense-unit{display: none !important}");
+        }
+    </script>
 
 </head>
 <body>
