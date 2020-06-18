@@ -42,7 +42,7 @@
                         <span class="text">
                         <?php
                         echo "$";
-                        echo ($GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100) - $GLOBALS['PATREON_EARNINGS'];
+                        echo max(0, ($GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100) - $GLOBALS['PATREON_EARNINGS']);
                         echo " to go";
                         ?>
                         </span>
