@@ -14,8 +14,6 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         if (code == "8c1e3e398a2584b8ee7f4f63bf959869"){
             localStorage.setItem("remove-ads", "yes");  // Totally secure and completely unhackable!
             $('#response').removeClass('hidden');
-        }else{
-            $('#response').addClass('hidden');
         }
     }
     $(document).ready(function(){
