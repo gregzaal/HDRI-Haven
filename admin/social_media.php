@@ -1,5 +1,5 @@
 <?php
-include('/home/gregzaal/hdrihaven.com/php/secret_config.php');
+include('/home/hdrhav/hdrihaven.com/php/secret_config.php');
 
 $servername = $GLOBALS['DB_SERV'];
 $dbname = $GLOBALS['DB_NAME'];

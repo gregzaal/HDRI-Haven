@@ -1,6 +1,6 @@
 <?php
 
-$backup_dir = "/home/gregzaal/backup/";
+$backup_dir = "/home/hdrhav/backup/";
 
 // Delete old files
 $older_than = 30;  // days
