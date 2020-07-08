@@ -234,7 +234,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</div>";
     echo "</a>";
 
-    $possible_extensions = ["HDR", "ARW", "DNG", "CR2", "NEF", "PNG", "JPG", "ZIP"];
+    $possible_extensions = ["ZIP", "HDR", "ARW", "DNG", "CR2", "NEF", "PNG", "JPG"];
     foreach($possible_extensions as $pext){
         $macbeth_fp = join_paths($GLOBALS['SYSTEM_ROOT'], "files/colorcharts", $slug.".".strtolower($pext));
         if (file_exists($macbeth_fp)){
