@@ -148,7 +148,7 @@ if ($result == 1){
     $sql_fields['reddit'] = format_vars(mysqli_real_escape_string($conn, $_POST["reddit"]), $vars);
     $sql_fields['link'] = "https://hdrihaven.com/hdri/?h=".$slug;
     $sql_fields['image'] = "https://hdrihaven.com/files/hdri_images/meta/".$slug.".jpg";
-    $sql_fields['post_datetime'] = date("Y-m-d H:i:s", strtotime('+7 hours', strtotime($date_published)));
+    $sql_fields['post_datetime'] = date_format(date_modify(date_create(date("Y-m-d", strtotime($date_published))), "+16 hour"), "Y-m-d H:i:s");
     foreach (array_keys($sql_fields) as $k){
         $sql_fields[$k] = "'".$sql_fields[$k]."'";
     }
