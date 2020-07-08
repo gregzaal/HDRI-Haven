@@ -144,6 +144,8 @@ if ($result == 1){
         return str_replace("  ", " ", $str);
     }
     $sql_fields = [];
+    $sql_fields['name'] = $name;
+    $sql_fields['author'] = $author;
     $sql_fields['twitface'] = format_vars(mysqli_real_escape_string($conn, $_POST["twitface"]), $vars);
     $sql_fields['reddit'] = format_vars(mysqli_real_escape_string($conn, $_POST["reddit"]), $vars);
     $sql_fields['link'] = "https://hdrihaven.com/hdri/?h=".$slug;

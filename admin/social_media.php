@@ -30,7 +30,7 @@ foreach($array as $post){
         $text = $post['twitface'];
         $img = $post['image'];
         $xml = "value1=".$text."&value2=".$img;
-        $hook_url = 'https://maker.ifttt.com/trigger/hdrihaven_social_media/with/key/c6_c5W0whsj8bQ-bGxvo67';
+        $hook_url = $GLOBALS['HOOK_FACEOOK'];
         $ch = curl_init($hook_url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
@@ -43,13 +43,50 @@ foreach($array as $post){
             $link = $post['link'];
             // NOTE: URL cannot contain an '&'
             $xml = "value1=".$text."&value2=".$link;
-            $hook_url = 'https://maker.ifttt.com/trigger/hdrihaven_reddit/with/key/c6_c5W0whsj8bQ-bGxvo67';
+            $hook_url = $GLOBALS['HOOK_REDDIT'];
             $ch = curl_init($hook_url);
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
             $response = curl_exec($ch);
             curl_close($ch);
         }
+
+        // Discord
+        $webhookurl = $GLOBALS['HOOK_DISCORD'];
+        $json_data = json_encode([
+            "username" => "HDRI Haven",
+            "avatar_url" => "https://hdrihaven.com/favicon.png",
+            "tts" => false,
+            "embeds" => [
+                [
+                    "title" => $post['name'],
+                    "type" => "rich",
+                    "url" => $post['link'],
+                    "color" => hexdec("41bbd9"),
+                    "footer" => [
+                        "text" => "by ".$post['author'],
+                        "icon_url" => "https://hdrihaven.com/files/site_images/authors/".$post['author']."_50p.jpg"
+                    ],
+                    "image" => [
+                        "url" => $post['image']
+                    ],
+                    "author" => [
+                        "name" => "New HDRI!",
+                        "url" => $post['link']
+                    ]
+                ]
+            ]
+
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+        $ch = curl_init( $webhookurl );
+        curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+        curl_setopt( $ch, CURLOPT_POST, 1);
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, $json_data);
+        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt( $ch, CURLOPT_HEADER, 0);
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+        $response = curl_exec( $ch );
+        curl_close( $ch );
 
         break;
     }
