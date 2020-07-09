@@ -339,15 +339,16 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         $coords = explode(",", $info['coords']);
         $cy = trim($coords[0]);
         $cx = trim($coords[1]);
-        $map_url = "https://www.google.com/maps/place/".$cy.'+'.$cx;
+        $google_maps_url = "https://www.google.com/maps/place/".$cy.'+'.$cx;
         echo "<li>";
         echo "<b>Location:</b> ";
-        echo "<a href=\"".$map_url."\", target=\"_blank\">";
         echo $cy.', '.$cx;
-        echo "</a>";
         echo " (approx.)";
         echo "<a href=\"/p/map.php?show={$slug}\">";
         echo "<i class='material-icons'>map</i>";
+        echo "</a>";
+        echo "<a href=\"".$google_maps_url."\" target=\"_blank\">";
+        echo "<i class='material-icons'>open_in_new</i>";
         echo "</a>";
         echo "</li>";
     }
