@@ -191,7 +191,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<div id='text-section'>";
     echo "<div id='item-info'>";
 
-    echo "<div class='col-2'>";
+    echo "<div class='col-2' style='position: relative'>";
     echo "<h2>Download</h2>";
     if ($info['nsfw']){
         echo "<p class='center red-text' style='margin-bottom: 0'>";
@@ -258,7 +258,14 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     echo "</div>";
     echo "<p class='center'>License: <a href='/p/license.php'>CC0</a></p>";
+    echo "<a href='https://www.patreon.com/hdrihaven/overview'>";
+    echo "<div id='btn-offline-access'>";
+    echo "<img src='/core/img/icons/patreon_logo_red.svg'>";
+    echo " Offline Access ";
+    echo "<i class='material-icons'>open_in_new</i>";
     echo "</div>";
+    echo "</a>";
+    echo "</div>"; // .col-2
 
     echo "<div class='col-2'>";
     echo "<h2>Info</h2>";

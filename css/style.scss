@@ -337,6 +337,27 @@ $display_banner_credit: block;  // Hide if it's only our own work
     }
 }
 
+#btn-offline-access {
+    @extend .button-inverse;
+    position: absolute;
+    top: 0.75em;
+    right: 1em;
+    padding: 0.5em 0.75em;
+    font-size: 90%;
+    color: $c-text-light;
+    border: 1px solid $c-background-light;
+
+    img {
+        height: 20px;
+        vertical-align: text-bottom;
+    }
+
+    i {
+        font-size: 90%;
+        vertical-align: text-top;
+    }
+}
+
 #item-info {
     padding-top: 0.75em;
 }
