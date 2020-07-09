@@ -30,7 +30,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </p>
 
     <p>
-        Already a patron? Enter the <a href="#TODO">secret code</a> below:
+        Already a patron? Enter the <a href="https://www.patreon.com/posts/38362368">secret code</a> below:
     </p>
     <div id="ad-removal-form">
         <input placeholder="Paste secret code here." value="" id="secret-code">
