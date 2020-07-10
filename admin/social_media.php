@@ -65,7 +65,7 @@ foreach($array as $post){
                     "color" => hexdec("41bbd9"),
                     "footer" => [
                         "text" => "by ".$post['author'],
-                        "icon_url" => "https://hdrihaven.com/files/site_images/authors/".$post['author']."_50p.jpg"
+                        "icon_url" => "https://hdrihaven.com/files/site_images/authors/".rawurlencode($post['author'])."_50p.jpg"
                     ],
                     "image" => [
                         "url" => $post['image']
