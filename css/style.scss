@@ -276,9 +276,16 @@ $display_banner_credit: block;  // Hide if it's only our own work
         a {
             display: inline-block;
             margin-bottom: 0.8em;
+            @include transition();
 
             &:last-of-type {
                 margin-bottom: 0;
+            }
+
+            &:hover {
+                filter: brightness(1.1);
+                box-shadow: 0 0 0 2px $c-accent;
+                @include transition();
             }
         }
     }
