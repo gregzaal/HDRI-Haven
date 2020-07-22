@@ -7,7 +7,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 <div id="page-wrapper">
     <h1>HDRI License</h1>
     <p>All HDRIs on this site are licensed as <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a> - which is the most liberal license I know of.</p>
-    <p>Here's an exerpt from the <a href="https://wiki.creativecommons.org/wiki/CC0_FAQ">CC0 FAQ page</a> to clarify:</p>
+    <p>Here's an excerpt from the <a href="https://wiki.creativecommons.org/wiki/CC0_FAQ">CC0 FAQ page</a> to clarify:</p>
     <q>Once the creator or a subsequent owner of a work applies CC0 to a work, the work is no longer his or hers in any meaningful sense under copyright law. Anyone can then use the work in any way and for any purpose, including commercial purposes, subject to other laws and the rights others may have in the work or how the work is used. Think of CC0 as the "no rights reserved" option. CC0 is a useful tool for clarifying that you do not claim copyright in a work anywhere in the world.</q>
     <p>In other words:</p>
     <ul>
