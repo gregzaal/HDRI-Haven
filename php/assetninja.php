@@ -3,9 +3,10 @@
 include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 include($_SERVER['DOCUMENT_ROOT'].'/php/html/cache_top.php');
 
-$latest_version = "1.0";
+$latest_version = "1.1";
 $available_versions = [
     "1.0",
+    "1.1",
 ];
 $version = $latest_version;
 if (isset($_GET["v"]) && trim($_GET["v"])){
@@ -45,7 +46,15 @@ foreach ($items as $i){
         $local_url = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug.'_'.$r.'.'.$ext);
         if (file_exists($local_url)){
             $url = "https://hdrihaven.com/files/hdris/{$slug}_{$r}.{$ext}";
-            array_push($files, $url);
+            if (version_compare($version, '1.1', '>=')) {
+                $file = array();
+                $file['url'] = $url;
+                $file['mtime'] = filemtime($local_url);
+                $file['size'] = filesize($local_url);
+                array_push($files, $file);
+            } else {
+                array_push($files, $url);
+            }
         }
     }
     $a['files'] = $files;
