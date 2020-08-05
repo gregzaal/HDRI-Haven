@@ -36,8 +36,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
             <div class="col-2">
                 <h1>16k, Unclipped</h1>
-                <p>Free stuff and quality stuff are not always mutually exclusive.</p>
-                <p>HDRIs here are some of the best you'll find, giving you crispy shadows, reflections and backgrounds.</p>
+                <p>"Free" and "quality" don't always have to be mutually exclusive.</p>
+                <p>The HDRIs here are some of the best you'll find, giving you crispy shadows, reflections and backgrounds.</p>
                 <a href="http://adaptivesamples.com/2016/02/23/what-makes-good-hdri/">
                     <div class='button'>Read more</div>
                 </a>
