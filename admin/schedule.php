@@ -45,7 +45,7 @@ foreach ($array as $info){
         if ($current_month != ""){
             echo "</table>\n";
         }
-        echo "\n<table cellspacing=0 style='width: 800px; margin-left: auto; margin-right: auto'>";
+        echo "\n<table cellspacing=0 style='width: 1024px; margin-left: auto; margin-right: auto'>";
     }
     echo "<tr>";
 
