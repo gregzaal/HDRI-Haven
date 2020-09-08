@@ -52,7 +52,7 @@ if ($uploadOk == 1) {
         $uploadOk = 1;
     } else {
         $uploadOk = 0;
-        $error = "Sorry, there was an unknown error uploading your file. Please submit it via email instead to ".inset_email();
+        $error = "Sorry, there was an unknown error uploading your file. Please try again later.";
     }
 }
 if ($uploadOk == 0) {
@@ -160,7 +160,8 @@ if ($result == 1){
 }else{
     echo "<h1>Error :(</h1>";
     echo "<p>";
-    echo "Something went wrong submitting your render. Please submit it by email instead to: ".insert_email();
+    echo "Something went wrong submitting your render. Please submit it by email instead to: ";
+    insert_email();
     echo "</p>";
 }
 echo "</div>";
