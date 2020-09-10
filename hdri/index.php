@@ -153,7 +153,14 @@ if ($category != "all"){
     echo "</a>";
     echo " >";
 }
-echo "<br><b>{$info['name']}</b></h1>";
+echo "<br><b>{$info['name']}</b>";
+if ($info['donated']){
+    echo " <abbr title=\"This HDRI was freely donated to HDRI Haven by ".$info['author'].".\">";
+    echo "<u><img src=\"/files/site_images/icons/heart.svg\" class='heart' style='padding-bottom: 0.2em; border-bottom: 1px solid #f96854; margin-left: 0.3em; padding-left:0'></u>";
+    echo "</abbr>";
+    echo "</p>";
+}
+echo "</h1>";
 
 if($info['problem']){
     echo "<p class='red-text center' style='font-weight: 900'>";
@@ -276,6 +283,8 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     $author_pic = join_paths($GLOBALS['SYSTEM_ROOT'], "/files/site_images/authors/".$info['author']."_50p.jpg");
     if (file_exists($author_pic)){
         echo "<img class='me-sml' src=\"".filepath_to_url($author_pic)."\" />";
+    }else{
+        echo " ";
     }
     echo $info['author']."</a>";
     $author_info = get_author_info($info['author'], $conn);
