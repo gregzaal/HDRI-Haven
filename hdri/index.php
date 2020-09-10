@@ -155,7 +155,7 @@ if ($category != "all"){
 }
 echo "<br><b>{$info['name']}</b>";
 if ($info['donated']){
-    echo " <abbr title=\"This HDRI was freely donated to HDRI Haven by ".$info['author'].".\">";
+    echo " <abbr title=\"This HDRI was freely donated to HDRI Haven by the author ".$info['author'].".\">";
     echo "<u><img src=\"/files/site_images/icons/heart.svg\" class='heart' style='padding-bottom: 0.2em; border-bottom: 1px solid #f96854; margin-left: 0.3em; padding-left:0'></u>";
     echo "</abbr>";
     echo "</p>";
