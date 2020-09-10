@@ -300,11 +300,11 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
             echo "<i class='material-icons'>mail_outline</i>";
             echo "</a>";
         }
-        // if ($author_info['donate']){
-        //     echo "<a href=\"".$author_info['donate']."\">";
-        //     echo "<i class='material-icons'>favorite_border</i>";
-        //     echo "</a>";
-        // }
+        if ($author_info['donate']){
+            echo "<a href=\"".$author_info['donate']."\">";
+            echo "<i class='material-icons'>favorite_border</i>";
+            echo "</a>";
+        }
         echo "</span>";
     }
     echo "</li>";
