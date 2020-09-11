@@ -51,9 +51,9 @@ $ads_testing = rand(1, 3);  // A/B testing for ad placement
 <div id="lightbox-wrapper" class="hide">
     <img id="lightbox-img" src="#">
     <p id="lightbox-text">Downloads:
-        <a href="/" download="" id="href-dlbp-pretty" target="_blank"><span class='button'><b>Pretty JPG</b> (as shown)</span></a>
-        <a href="/" download="" id="href-dlbp-plain" target="_blank"><span class='button'><b>Plain JPG</b> (no adjustments)</span></a>
-        <a href="/" download="" id="href-dlbp-raw" target="_blank"><span class='button'><b>RAW</b> (straight from camera)</span></a>
+        <a href="/" download="" id="href-dlbp-pretty" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='bp'><b>Pretty JPG</b> (as shown)</span></a>
+        <a href="/" download="" id="href-dlbp-plain" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='bl'><b>Plain JPG</b> (no adjustments)</span></a>
+        <a href="/" download="" id="href-dlbp-raw" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='br'><b>RAW</b> (straight from camera)</span></a>
         License: <a href="/p/license.php">CC0</a>
     </p>
     <div class='item-info'>

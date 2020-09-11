@@ -83,7 +83,8 @@ foreach ($hdris_this_month as $h){
 
     $sql = "SELECT * FROM `download_counting`
             WHERE hdri_id = ".$h['id']." AND
-            (`datetime` >= \"".$h['date_published']."\" and `datetime` < DATE_ADD(\"".$h['date_published']."\", INTERVAL 28 DAY))";
+            (`datetime` >= \"".$h['date_published']."\" and `datetime` < DATE_ADD(\"".$h['date_published']."\", INTERVAL 28 DAY)) AND
+            `res` NOT LIKE \"b%\"";
     $result = mysqli_query($conn, $sql);
 
     $all_downloads = array();
