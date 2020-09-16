@@ -117,7 +117,7 @@ echo "<div class='button-overlay'>";
 echo "<div class='button' id='btn-preview-360' title='360&deg; preview'><i class='material-icons'>panorama_horizontal</i></div>";
 echo "<div class='button' id='btn-exposure-preview' title='Exposure preview'><i class='material-icons'>exposure</i></div>";
 if ($ext == 'hdr'){
-    echo "<div class='button' id='btn-preview-lt' title='lt preview' onclick='showLT();'><i class='material-icons'>3d_rotation</i></div>";
+    echo "<div class='button' id='btn-preview-lt' title='3D lighting preview' onclick='showLT();'><img src='/files/site_images/icons/matball.png' style='width:24px; vertical-align:middle'/></div>";
 }
 echo "</div>";  // .button-overlay
 
