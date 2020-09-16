@@ -67,26 +67,30 @@ echo "<div id='item-page'>";
 
 echo "<div id='item-preview' style='background-image: url(/files/hdri_images/tonemapped/1500/{$slug}.jpg)'>";
 
-// LT
-echo "
-<div id='lt-frame' style='display:none; position: absolute; width: 100%; height: 100%; z-index: 99;'>
-    <div class='button-overlay'><div class='button' id='btn-preview-lt-exit' onclick='hideLT();'><i class='material-icons'>arrow_back</i></div></div>
-    <iframe id='lt-viewer' frameborder='0' allowfullscreen src='' width='100%' height='100%'></iframe>
-</div>";
+$ext = $info['ext'];
 
-echo "<script>
+// LT
+if ($ext == 'hdr'){
+    echo "
+    <div id='lt-frame' style='display:none; position: absolute; width: 100%; height: 100%; z-index: 99;'>
+        <div class='button-overlay'><div class='button' id='btn-preview-lt-exit' onclick='hideLT();'><i class='material-icons'>arrow_back</i></div></div>
+        <iframe id='lt-viewer' frameborder='0' allowfullscreen src='' width='100%' height='100%'></iframe>
+    </div>";
+
+    echo "<script>
 
     function showLT() {
-        document.getElementById('lt-viewer').src='http://lighttracer.org/embed-hdrihaven.html?open=https://f000.backblazeb2.com/file/lighttracer/models/10f88c79-3469-4fa1-90e4-ff2cfde8be4c/fd689964-bd98-4a4d-805c-fc39f261e880.lt&hdri=https://hdrihaven.com/files/hdris/{$slug}_4k.hdr';
-        document.getElementById('lt-frame').style.display = 'block'
-    }
-    function hideLT() {
-        document.getElementById('lt-viewer').src='';
-        document.getElementById('lt-frame').style.display = 'none'
-    }
+            document.getElementById('lt-viewer').src='http://lighttracer.org/embed-hdrihaven.html?open=https://f000.backblazeb2.com/file/lighttracer/models/846c0e1e-9e8b-4c50-bab7-99cf80273672/82329b20-2b13-4bc3-81f7-b5f9b366ac86.lt&hdri=https://hdrihaven.com/files/hdris/{$slug}_1k.hdr';
+            document.getElementById('lt-frame').style.display = 'block'
+        }
+        function hideLT() {
+            document.getElementById('lt-viewer').src='';
+            document.getElementById('lt-frame').style.display = 'none'
+        }
 
-</script>";
-// END LT
+    </script>";
+    // END LT
+}
 
 echo "<div class='darken'></div>";
 
@@ -112,6 +116,9 @@ echo "<img src='/files/hdri_images/tonemapped/1500/{$slug}.jpg'>";
 echo "<div class='button-overlay'>";
 echo "<div class='button' id='btn-preview-360' title='360&deg; preview'><i class='material-icons'>panorama_horizontal</i></div>";
 echo "<div class='button' id='btn-exposure-preview' title='Exposure preview'><i class='material-icons'>exposure</i></div>";
+if ($ext == 'hdr'){
+    echo "<div class='button' id='btn-preview-lt' title='lt preview' onclick='showLT();'><i class='material-icons'>3d_rotation</i></div>";
+}
 echo "</div>";  // .button-overlay
 
 echo "<div id='exposure-wrapper'>";
@@ -231,7 +238,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     }
     echo "<div class='download-buttons'>";
 
-    $ext = $info['ext'];
     $hdri_id = $info['id'];
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r){
         $fname = $slug.'_'.$r.'.'.$ext;
