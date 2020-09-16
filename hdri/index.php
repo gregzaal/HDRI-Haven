@@ -67,6 +67,27 @@ echo "<div id='item-page'>";
 
 echo "<div id='item-preview' style='background-image: url(/files/hdri_images/tonemapped/1500/{$slug}.jpg)'>";
 
+// LT
+echo "
+<div id='lt-frame' style='display:none; position: absolute; width: 100%; height: 100%; z-index: 99;'>
+    <div class='button-overlay'><div class='button' id='btn-preview-lt-exit' onclick='hideLT();'><i class='material-icons'>arrow_back</i></div></div>
+    <iframe id='lt-viewer' frameborder='0' allowfullscreen src='' width='100%' height='100%'></iframe>
+</div>";
+
+echo "<script>
+
+    function showLT() {
+        document.getElementById('lt-viewer').src='http://lighttracer.org/embed-hdrihaven.html?open=https://f000.backblazeb2.com/file/lighttracer/models/10f88c79-3469-4fa1-90e4-ff2cfde8be4c/fd689964-bd98-4a4d-805c-fc39f261e880.lt&hdri=https://hdrihaven.com/files/hdris/{$slug}_4k.hdr';
+        document.getElementById('lt-frame').style.display = 'block'
+    }
+    function hideLT() {
+        document.getElementById('lt-viewer').src='';
+        document.getElementById('lt-frame').style.display = 'none'
+    }
+
+</script>";
+// END LT
+
 echo "<div class='darken'></div>";
 
 echo "<div class='similar-banner-wrapper'>";
