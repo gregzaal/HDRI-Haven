@@ -80,7 +80,7 @@ if ($ext == 'hdr'){
     echo "<script>
 
     function showLT() {
-            document.getElementById('lt-viewer').src='http://lighttracer.org/embed-hdrihaven.html?open=https://f000.backblazeb2.com/file/lighttracer/models/846c0e1e-9e8b-4c50-bab7-99cf80273672/82329b20-2b13-4bc3-81f7-b5f9b366ac86.lt&hdri=https://hdrihaven.com/files/hdris/{$slug}_1k.hdr';
+            document.getElementById('lt-viewer').src='https://lighttracer.org/embed-hdrihaven.html?open=https://f000.backblazeb2.com/file/lighttracer/models/846c0e1e-9e8b-4c50-bab7-99cf80273672/82329b20-2b13-4bc3-81f7-b5f9b366ac86.lt&hdri=https://hdrihaven.com/files/hdris/{$slug}_1k.hdr';
             document.getElementById('lt-frame').style.display = 'block'
         }
         function hideLT() {
