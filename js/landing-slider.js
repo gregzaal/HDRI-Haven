@@ -51,7 +51,7 @@ var on_load = function(){
         ["robert_bodis_red_straight.jpg", "<a href=\"https://www.behance.net/robertbodis\">Robert Bodis</a>"],
         ["alberto_merc.jpg", "<a href=\"https://www.behance.net/AlbertoLuque\">Alberto Luque</a>"],
         ["hussein_interior.jpg", "<a href=\"http://www.formlab.co.ke/\">FormLab Studio</a>"],
-        ["parking_garage.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
+        ["timo-muraja-raptor-sand-web.jpg", "<a href=\"https://www.artstation.com/artwork/rAOqr2\">Timo Muraja</a>"],
         ["zach_final_takeoff.jpg", "<a href=\"http://zachariasreinhardt.com/\">Zacharias Reinhardt</a>"],
         ["pink_road.jpg", "<a href=\"https://www.behance.net/jackdarton\">Jackdarton</a>"],
         ["hamburg.jpg", "<a href=\"http://gregzaal.com/\">Greg</a>, <a href=\"https://racoon.media/\">Jim van Hazendonk</a> and <a href=\"https://www.artstation.com/cameroncasey\">Cameron Casey</a>"],
