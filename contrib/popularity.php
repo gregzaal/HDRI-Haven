@@ -3,6 +3,8 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
 include_start_html("HDRI Popularity");
 include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 
+set_time_limit(300);  // Lots of DB queries in this page, can be very slow.
+
 // Parameters
 // Defaults:
 $Y = date("Y");
@@ -145,7 +147,9 @@ foreach ($hdris_this_month as $h){
         $q1 = array_values($days_sorted)[round(sizeof($days)*0.75)];
         $q3 = array_values($days_sorted)[round(sizeof($days)*0.25)];
         $days_clamped = [];
-        foreach (array_keys($days) as $d){
+        $sorted_days = array_keys($days);
+        sort($sorted_days);
+        foreach ($sorted_days as $d){
             $v = $days[$d];
             $vc = max(min($days[$d], $q3), $q1);  // Clamped inside IQR
             array_push($days_clamped, $vc);
