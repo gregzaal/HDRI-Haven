@@ -62,6 +62,7 @@ echo "<p>The purpose of rewarding more popular HDRIs is to encourage HDRI contri
 
 $rows = [];
 $prepaid_hdris = [];
+$donated_hdris = [];
 $total_popularity = 0;
 foreach ($hdris_this_month as $h){
     $row = [
@@ -71,6 +72,7 @@ foreach ($hdris_this_month as $h){
         "author" => $h['author'],
         "backplates" => $h['backplates'],
         "prepaid" => $h['prepaid'],
+        "donated" => $h['donated'],
     ];
 
     // From 2019/05 onwards, prepaid HDRIs will simply be ignored in the bonus caluclations, since the full amount was deducted before the total bonus funds were calculated.
@@ -79,6 +81,12 @@ foreach ($hdris_this_month as $h){
             array_push($prepaid_hdris, $row);
             continue;
         }
+    }
+
+    if ($row['donated']){
+        // Ignore donated HDRIs so they don't affect bonus calculations.
+        array_push($donated_hdris, $row);
+        continue;
     }
 
     $sql = "SELECT * FROM `download_counting`
@@ -259,6 +267,19 @@ if (!empty($prepaid_hdris)){
     echo "</p>";
     echo "<ul class='small' style='margin-top: 0.5em'>";
     foreach ($prepaid_hdris as $r){
+        echo "<li>";
+        echo "<a href=\"/hdri/?h=".$r['slug']."\">".$r['name']."</a>";
+        echo "</li>";
+    }
+    echo "</ul>";
+}
+
+if (!empty($donated_hdris)){
+    echo "<p class='small' style='margin-bottom: 0'>";
+    echo "The following HDRIs published this month were donated by the author and were not included in the bonus earning calculations:";
+    echo "</p>";
+    echo "<ul class='small' style='margin-top: 0.5em'>";
+    foreach ($donated_hdris as $r){
         echo "<li>";
         echo "<a href=\"/hdri/?h=".$r['slug']."\">".$r['name']."</a>";
         echo "</li>";
