@@ -87,7 +87,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         All Patrons have access to a private Trello board where they can add ideas and vote on new locations, trips, and generally decide where the money goes.
     </p>
     <p>
-        If you want to get involved and help keep this site alive at the same time, consider supporting <a href="https://www.patreon.com/hdrihaven/overview">HDRI Haven on Patreon</a>.
+        If you want to get involved and help keep this site alive at the same time, consider supporting <a href="https://polyhaven.com/support-us">HDRI Haven on Patreon</a>.
     </p>
 
     <h1>Contact</h1>

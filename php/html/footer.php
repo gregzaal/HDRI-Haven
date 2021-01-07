@@ -40,7 +40,7 @@ echo ">";
         }
         ?>
 
-        <a href="https://www.patreon.com/hdrihaven/overview">
+        <a href="https://polyhaven.com/support-us">
             <div class="button-red">
                 Join the ranks, support HDRI Haven on Patreon.
             </div>

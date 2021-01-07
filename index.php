@@ -76,7 +76,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 <p>Not only can you contribute financially, but you can get directly involved in the process, helping decide what HDRIs I shoot, where I travel and ultimately how your money is spent (verified by <a href="/p/finance-reports.php" target="_blank">monthly finance reports</a>).</p>
             </div>
 
-            <a href="https://www.patreon.com/hdrihaven/overview" target="_blank">
+            <a href="https://polyhaven.com/support-us" target="_blank">
                 <div class='button-inline'>Read More / Become a Patron<img src="/files/site_images/icons/heart.svg" class='heart-inline'></div>
             </a>
         </div>
@@ -128,7 +128,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
                 All HDRIs here are <a href="/p/license.php">CC0</a> (public domain). No paywalls, accounts or email spam. Just download what you want, and use it however.
             </p>
             <p>
-                If you like what I do and want to keep this site alive, consider <a href="https://www.patreon.com/hdrihaven/overview">supporting me on Patreon</a>.
+                If you like what I do and want to keep this site alive, consider <a href="https://polyhaven.com/support-us">supporting me on Patreon</a>.
             </p>
             <p>
                 I also help run HDRI Haven's two sister sites: <a href="https://texturehaven.com/">Texture Haven</a> and <a href="https://3dmodelhaven.com/">3D Model Haven</a>.

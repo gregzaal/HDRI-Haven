@@ -19,7 +19,7 @@
             <div class='col-4'>
                 <img class="grid-banner-icon" src="/core/img/icons/patreon_logo_red.svg">
                 <h2>Supported by You</h2>
-                <p><a href="https://www.patreon.com/hdrihaven/overview" target="_blank">Join <?php echo sizeof($GLOBALS['PATRON_LIST']) ?> generous patrons</a> to help us keep making <?php echo $GLOBALS['CONTENT_TYPE_NAME'] ?>.</p>
+                <p><a href="https://polyhaven.com/support-us" target="_blank">Join <?php echo sizeof($GLOBALS['PATRON_LIST']) ?> generous patrons</a> to help us keep making <?php echo $GLOBALS['CONTENT_TYPE_NAME'] ?>.</p>
             </div>
         </div>
     </div>

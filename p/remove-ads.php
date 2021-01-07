@@ -26,7 +26,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 <div id="page-wrapper">
     <h1>Remove Ads on <?php echo $GLOBALS['SITE_NAME']; ?></h1>
     <p>
-        Don't like ads? Neither do we. <a href="https://www.patreon.com/hdrihaven/overview">Donate $1</a> (or more) to <?php echo $GLOBALS['SITE_NAME']; ?> to enable an ad-free experience across the whole site, helping us fund future <?php echo $GLOBALS['CONTENT_TYPE_NAME']; ?> at the same time.
+        Don't like ads? Neither do we. <a href="https://polyhaven.com/support-us">Donate $1</a> (or more) to <?php echo $GLOBALS['SITE_NAME']; ?> to enable an ad-free experience across the whole site, helping us fund future <?php echo $GLOBALS['CONTENT_TYPE_NAME']; ?> at the same time.
     </p>
 
     <p>

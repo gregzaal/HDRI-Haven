@@ -292,7 +292,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
 
     echo "</div>";
     echo "<p class='center'>License: <a href='/p/license.php'>CC0</a></p>";
-    echo "<a href='https://www.patreon.com/hdrihaven/overview'>";
+    echo "<a href='https://polyhaven.com/support-us'>";
     echo "<div id='btn-offline-access'>";
     echo "<img src='/core/img/icons/patreon_logo_red.svg'>";
     echo " Offline Access ";
@@ -442,13 +442,13 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
             echo "</li>";
         }
         echo "</ul>";
-        echo "<p class='small'><a href='https://www.patreon.com/hdrihaven/overview'>Support HDRI Haven</a> to add your name here.</p>";
+        echo "<p class='small'><a href='https://polyhaven.com/support-us'>Support HDRI Haven</a> to add your name here.</p>";
     }else{
         echo "<p class='small'>This HDRI is sponsored by: <b>No one yet :(</b></p>";
         echo "<div class='adsense-unit'>";
         insert_ad("HDRI Sponsor");
         echo "</div>";
-        echo "<p class='small'>Support us on <a href='https://www.patreon.com/hdrihaven/overview'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
+        echo "<p class='small'>Support us on <a href='https://polyhaven.com/support-us'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
     }
     echo "</div>";
 

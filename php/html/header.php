@@ -20,7 +20,7 @@
         <a href="/hdris"><li>HDRIs</li></a><!--
         --><a class='shrink-hack' href="https://www.patreon.com/hdrihaven/posts?public=true"><li>News</li></a><!--
         --><a href="/gallery"><li>Gallery</li></a><!--
-        --><a href="https://www.patreon.com/hdrihaven/overview"><li>Support Us</li></a><!--
+        --><a href="https://polyhaven.com/support-us"><li>Support Us</li></a><!--
         --><a href="/p/about-contact.php"><li>About/Contact</li></a>
     </ul>
 
@@ -32,7 +32,7 @@
         echo $GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100;
         echo ")";
         ?>">
-        <a href="https://www.patreon.com/hdrihaven/overview">
+        <a href="https://polyhaven.com/support-us">
         <div class="patreon-bar-outer">
             <div class="patreon-bar-inner-wrapper">
                 <div class="patreon-bar-inner" style="width: <?php

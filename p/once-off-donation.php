@@ -7,7 +7,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
 <div id="page-wrapper">
     <h1>Make a once-off donation</h1>
     <p>
-        While I prefer to receive donations regularly through <a href="https://www.patreon.com/hdrihaven/overview">Patreon</a> or <a href="https://liberapay.com/gregzaal">Liberapay</a> so that my budget is more predictable, I certainly won't say no to any other kind of donations :)
+        While I prefer to receive donations regularly through <a href="https://polyhaven.com/support-us">Patreon</a> or <a href="https://liberapay.com/gregzaal">Liberapay</a> so that my budget is more predictable, I certainly won't say no to any other kind of donations :)
     </p>
     <a href="https://paypal.me/polyhaven"><div class='button'>PayPal</div></a>
     <a href="#"><div class='button' id='btc-btn'>Bitcoin</div></a>

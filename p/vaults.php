@@ -63,7 +63,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         There are three vaults containing an increasing number of HDRIs, for a total of 120.
     </p>
     <p>
-        Each one will be unlocked and made available for <b>free for everyone</b> once their funding goal is met <a href="https://www.patreon.com/hdrihaven/overview">on Patreon</a>.
+        Each one will be unlocked and made available for <b>free for everyone</b> once their funding goal is met <a href="https://polyhaven.com/support-us">on Patreon</a>.
     </p>
     <p>
         The HDRIs in each vault are ones that were previously for sale on the old site. Right now, the only HDRIs on this site are either completely new ones, or ones that were already free on the old site.
@@ -83,10 +83,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
         The Vaults are not a paywall of any kind. <b>Donating on Patreon does not give you access to these vaults.</b> Like any good vault, it's physically impossible to get inside without the right key.
     </p>
     <p>
-        The only way to get them is to <a href="https://www.patreon.com/hdrihaven/overview">help donate on Patreon</a>, tell your friends about HDRI Haven, and eventually they will be released publically for everyone once their respective funding goals are met by the total monthy amount donated by the community.
+        The only way to get them is to <a href="https://polyhaven.com/support-us">help donate on Patreon</a>, tell your friends about HDRI Haven, and eventually they will be released publically for everyone once their respective funding goals are met by the total monthy amount donated by the community.
     </p>
     <div class='center' style='margin-top: 2em;'>
-        <a href="https://www.patreon.com/hdrihaven/overview">
+        <a href="https://polyhaven.com/support-us">
             <div class='button'>Help Unlock the Vaults</div>
         </a>
     </div>
