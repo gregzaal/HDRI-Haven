@@ -48,9 +48,9 @@ echo ">";
     </div>
 
     <div class='social'>
-        <a href="https://www.facebook.com/hdrihaven/"><img src="/files/site_images/icons/facebook.svg"></a>
-        <a href="https://twitter.com/HDRIHaven"><img src="/files/site_images/icons/twitter.svg"></a>
-        <a href="https://discord.gg/Dms7Mrs"><img src="/files/site_images/icons/discord.svg"></a>
+        <a href="https://polyhaven.com/facebook"><img src="/core/img/icons/facebook.svg"></a>
+        <a href="https://polyhaven.com/twitter"><img src="/core/img/icons/twitter.svg"></a>
+        <a href="https://discord.gg/Dms7Mrs"><img src="/core/img/icons/discord.svg"></a>
     </div>
 
     <ul class='footer-links'>
