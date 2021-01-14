@@ -79,6 +79,31 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </ul>
     </div>
 
+    <?php
+    $conn = db_conn_read_only();
+    $comm_sponsors = get_commercial_sponsors($conn);
+    if (!empty($comm_sponsors)){
+        echo "<div class='segment-a'>";
+        echo "<div class='segment-inner'>";
+        echo "<h2>Corporate Sponsors:</h2>";
+        echo "<div class='commercial_sponsors'>";
+        foreach ($comm_sponsors as $s){
+            echo "<a href= \"".$s['link']."\" target='_blank'>";
+            echo "<img src=\"/files/site_images/commercial_sponsors/";
+            echo $s['logo'];
+            echo "\" alt=\"";
+            echo $s['name'];
+            echo "\" title=\"";
+            echo $s['name'];
+            echo "\"/>";
+            echo "</a>";
+        }
+        echo "</div>";
+        echo "</div>";
+        echo "</div>";
+    }
+    ?>
+
     <h1>Get Involved</h1>
     <p>
         Since all of the income for this site comes from the community, it's only fair that the community gets to decide what happens with it.
