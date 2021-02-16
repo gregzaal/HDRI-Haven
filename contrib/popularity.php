@@ -45,6 +45,9 @@ $conn = db_conn_read_only();
 
 $from_date = $Y.'/'.$M.'/01';
 $to_date = $Y.'/'.($M+1).'/01';
+if ($M == 12){
+    $to_date = ($Y+1).'/01/01';
+}
 $sql = "SELECT * FROM `hdris` WHERE date_published >= \"".$from_date."\" and date_published < \"".$to_date."\"";
 $result = mysqli_query($conn, $sql);
 $hdris_this_month = array();
