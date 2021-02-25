@@ -80,28 +80,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/html/header.php');
     </div>
 
     <?php
-    $conn = db_conn_read_only();
-    $comm_sponsors = get_commercial_sponsors($conn);
-    if (!empty($comm_sponsors)){
-        echo "<div class='segment-a'>";
-        echo "<div class='segment-inner'>";
-        echo "<h2>Corporate Sponsors:</h2>";
-        echo "<div class='commercial_sponsors'>";
-        foreach ($comm_sponsors as $s){
-            echo "<a href= \"".$s['link']."\" target='_blank'>";
-            echo "<img src=\"/files/site_images/commercial_sponsors/";
-            echo $s['logo'];
-            echo "\" alt=\"";
-            echo $s['name'];
-            echo "\" title=\"";
-            echo $s['name'];
-            echo "\"/>";
-            echo "</a>";
-        }
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-    }
+    insert_commercial_sponsors($heading="Corporate Sponsors:", $reuse_conn=(isset($conn) ? $conn : NULL));
     ?>
 
     <h1>Get Involved</h1>
