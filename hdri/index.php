@@ -136,6 +136,8 @@ echo "</div>";  // #exposure-wrapper
 echo "</div>";  // #main-preview
 echo "</div>";  // #main-preview-wrapper
 
+insert_ad("HDRI Vertical Preview");
+
 echo "<div class='similar-banner-wrapper hidden' id='similar-banner-backup'>";
 echo "<script>
 if (localStorage.getItem('remove-ads') == 'yes'){

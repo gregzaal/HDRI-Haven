@@ -1,12 +1,9 @@
-<div class="adsense-unit" id="ads-grid-top">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- Grid Top -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-2284751191864068"
-     <?php if($GLOBALS['WORKING_LOCALLY']){echo "data-adtest=\"on\"";} ?>
-     data-ad-slot="2629641655"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+<span class="adsense-unit max-1500" style="padding: 0 0.5em">
+<span style="display:block; width:1024px; height:120px">
+
+<!-- Revive Adserver Hosted edition - Ad Management Asynchronous JS Tag - Generated with Revive Adserver Hosted edition v5.1.1 -->
+<ins data-revive-zoneid="8670" data-revive-id="727bec5e09208690b050ccfc6a45d384"></ins>
+<script async src="//servedby.revive-adserver.net/asyncjs.php"></script>
+
+</span>
+</span>

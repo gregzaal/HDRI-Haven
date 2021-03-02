@@ -65,6 +65,7 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
         include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_banner.php');
     }
     echo "<div class='title-bar'>";
+    echo "<div style='flex-grow:100'>";
     echo "<h1>";
     if ($search != "all") {
         echo "Search: \"".$search."\"";
@@ -82,6 +83,9 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
     echo "</h1>";
 
     include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_options.php');
+    echo "</div>";
+
+    insert_ad("Grid Top");
 
     echo "</div>";  // .title-bar
 
