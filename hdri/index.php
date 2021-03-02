@@ -581,13 +581,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<h1 class='coming-soon'>Coming soon :)</h1>";
 }
 
-// echo "<hr class='disqus' />";
-// echo "<p class='center'>Note: Comments have been temporarily disabled due to <a href='https://twitter.com/disqus'>Disqus</a> injecting multiple ads (including auto-playing videos).<br>I'm currently looking for an alternative, <a href='/p/about-contact.php'>let me know</a> if you can help.</p>";
-if (!$GLOBALS['WORKING_LOCALLY']){
-    echo "<hr class='disqus' />";
-    include_disqus('hdri_'.$slug);
-}
-
 echo "</div>";  // #page-wrapper
 echo "</div>";  // #hdri-page
 ?>
