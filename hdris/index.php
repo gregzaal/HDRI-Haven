@@ -57,11 +57,6 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
         make_category_list($sort, $conn, $category, true);
         ?>
         </div>
-    <div class="adsense-unit" id="ads-sidebar">
-    <?php
-    insert_ad(($ads_testing == 1) ? "Sidebar" : "Sidebar Top");
-    ?>
-    </div>
 </div>
 
 <div id="item-grid-wrapper">
@@ -85,10 +80,6 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
         echo " by ".$author;
     }
     echo "</h1>";
-
-    if (!$none_set){
-        insert_ad("Grid Top");
-    }
 
     include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_options.php');
 

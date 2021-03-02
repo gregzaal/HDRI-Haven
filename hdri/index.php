@@ -136,8 +136,6 @@ echo "</div>";  // #exposure-wrapper
 echo "</div>";  // #main-preview
 echo "</div>";  // #main-preview-wrapper
 
-insert_ad("HDRI Vertical Preview");
-
 echo "<div class='similar-banner-wrapper hidden' id='similar-banner-backup'>";
 echo "<script>
 if (localStorage.getItem('remove-ads') == 'yes'){
@@ -212,16 +210,6 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo " style='flex-direction:column'";
     }
     echo ">";
-
-    echo "<div class='adsense-unit'>";
-    if ($ads_testing == 1){
-        insert_ad("HDRI Vertical DL");
-    }else if ($ads_testing == 2){
-        insert_ad("HDRI Horizontal DL");
-    }else{
-        insert_ad("HDRI Horizontal DL L");
-    }
-    echo "</div>";
 
     echo "<div id='text-section'>";
     echo "<div id='item-info'>";
@@ -451,10 +439,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
         echo "<p class='small'><a href='https://polyhaven.com/support-us'>Support HDRI Haven</a> to add your name here.</p>";
     }else{
         echo "<p class='small'>This HDRI is sponsored by: <b>No one yet :(</b></p>";
-        echo "<div class='adsense-unit'>";
-        insert_ad("HDRI Sponsor");
-        echo "</div>";
-        echo "<p class='small'>Support us on <a href='https://polyhaven.com/support-us'>Patreon</a> at the $10 \"Sponsor\" level to add your name here and remove this advert for everyone.</p>";
+        echo "<p class='small'>Support us on <a href='https://polyhaven.com/support-us'>Patreon</a> at the $10 \"Sponsor\" level to add your name here.</p>";
     }
     echo "</div>";
 
