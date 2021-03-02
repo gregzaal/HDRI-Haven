@@ -14,19 +14,7 @@ $balance_equipment = array_values(mysqli_fetch_assoc(mysqli_query($conn, $sql)))
 <div id="page-wrapper">
     <h1>Finance Reports</h1>
     <p>
-        I treat all Patreon donations as if it's not my own money, instead still belonging to the people who are investing in the platform.
-    </p>
-    <p>
-        All spendings, savings and allocations of the income each month is detailed in the public spreadsheets below.
-    </p>
-    <p>
-        In a nutshell:
-    <ul>
-        <li>The Patreon income is first used to cover the running costs (server hosting and other necessary services).</li>
-        <li>Then, I (Greg Zaal) personally take 20% of the remainder as a salary to cover my time working on building, maintaining and improving the website, as well as checking, processing and uploading HDRIs from the various HDRI authors.</li>
-        <li>The remainder (~75% of the original income) is shared between the HDRI authors whose work was published that month, relative to the number of HDRIs they each published. For more details on how this amount is shared, look at one of the months below.</li>
-        <li>Half the AdSense money is added straight to the Patreon donations and used as described above. The other half is added to the savings tables below.</li>
-    </ul>
+        We're in a transition period at the moment, merging the 3 Haven sites into Poly Haven. Our past financial reports are all detailed below. In future (when polyhaven.com is ready) we'll have a fancier system of showing all of our spendings and savings.
     </p>
     <p>
         If you have any questions, feel free to email me at <?php insert_email() ?>.
