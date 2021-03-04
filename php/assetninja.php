@@ -45,7 +45,13 @@ foreach ($items as $i){
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r){
         $local_url = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug.'_'.$r.'.'.$ext);
         if (file_exists($local_url)){
-            $url = "https://hdrihaven.com/files/hdris/{$slug}_{$r}.{$ext}";
+            $url = "https://download.polyhaven.com/HDRIs/";
+            if (in_array($r, ['1k', '2k', '4k', '8k'])){
+                $url .= $r;
+            }else{
+                $url .= "16k and up";
+            }
+            $url .= "/{$slug}_{$r}.{$ext}";
             if (version_compare($version, '1.1', '>=')) {
                 $file = array();
                 $file['url'] = $url;
