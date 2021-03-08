@@ -149,7 +149,7 @@ include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
     </div>
 
     <div class="form-item">
-    <h2>Backplates:</h2>
+    <h2>Backplates bonus:</h2>
     <input id="form-backplates" type="checkbox" name="backplates" value="">
     </div>
 

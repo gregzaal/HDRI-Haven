@@ -51,8 +51,7 @@ $sql_fields['problem'] = $_POST["problem"];
 $sql_fields['timezone_offset'] = $_POST["timezone_offset"];
 $sql_fields['coords'] = $_POST["coords"];
 if (isset($_POST['backplates'])) {
-    echo "backplates: ";
-    echo $_POST['backplates'];
+    echo "backplates: Yes";
     echo "<br>";
     $sql_fields['backplates'] = "1";
 }

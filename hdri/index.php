@@ -396,11 +396,14 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "<b>Categories:</b> {$category_str}";
     echo "</li>";
 
+    $backplates_scan_dir = $GLOBALS['SYSTEM_ROOT']."/files/backplates/".$slug."/thumbs/S/";
+    $has_backplates = file_exists($backplates_scan_dir);
+
     echo "<li>";
     $tag_str = "";
     $tag_arr = explode(';', $info['tags']);
     sort($tag_arr);
-    if ($info['backplates']){
+    if ($has_backplates){
         array_push($tag_arr, "backplates");
     }
     foreach ($tag_arr as $tag) {
@@ -448,52 +451,49 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']){
     echo "</div>";  // text-section-wrapper
     echo "</div>";  // text-section
 
-    if ($info['backplates']){
-        $backplates_scan_dir = $GLOBALS['SYSTEM_ROOT']."/files/backplates/".$slug."/thumbs/S/";
-        if (file_exists($backplates_scan_dir)){
-            $files = scandir($backplates_scan_dir);
-            if (sizeof($files) > 2){  // In case files don't exist, only "files" in dir will be "." and ".."
-                echo "<h2>Backplates</h2>";
-                echo "<div id='backplates-grid'>";
-                foreach ($files as $f) {
-                    if (ends_with(strtolower($f), ".jpg")){
-                        $basename = substr($f, 0, -4);
-                        $thumb_s = "/files/backplates/".$slug."/thumbs/S/".$f;
-                        $thumb_l = "/files/backplates/".$slug."/thumbs/L/".$f;
-                        $dl_jpg_pretty = "/files/backplates/".$slug."/jpg_pretty/".$f;
-                        $dl_jpg_plain = "/files/backplates/".$slug."/jpg_plain/".$f;
+    if ($has_backplates){
+        $files = scandir($backplates_scan_dir);
+        if (sizeof($files) > 2){  // In case files don't exist, only "files" in dir will be "." and ".."
+            echo "<h2>Backplates</h2>";
+            echo "<div id='backplates-grid'>";
+            foreach ($files as $f) {
+                if (ends_with(strtolower($f), ".jpg")){
+                    $basename = substr($f, 0, -4);
+                    $thumb_s = "/files/backplates/".$slug."/thumbs/S/".$f;
+                    $thumb_l = "/files/backplates/".$slug."/thumbs/L/".$f;
+                    $dl_jpg_pretty = "/files/backplates/".$slug."/jpg_pretty/".$f;
+                    $dl_jpg_plain = "/files/backplates/".$slug."/jpg_plain/".$f;
 
-                        $raw_folder = "/files/backplates/".$slug."/raw/";
-                        $possible_extensions = ["ARW", "DNG", "CR2", "NEF"];
-                        $dl_raw = "";
-                        foreach ($possible_extensions as $ext){
-                            $possible_path = $raw_folder.$basename.".".$ext;
-                            if (file_exists($GLOBALS['SYSTEM_ROOT'].$possible_path)){
-                                $dl_raw = $possible_path;
-                                break;
-                            }
-                            $possible_path = $raw_folder.$basename.".".strtolower($ext);
-                            if (file_exists($GLOBALS['SYSTEM_ROOT'].$possible_path)){
-                                $dl_raw = $possible_path;
-                                break;
-                            }
+                    $raw_folder = "/files/backplates/".$slug."/raw/";
+                    $possible_extensions = ["ARW", "DNG", "CR2", "NEF"];
+                    $dl_raw = "";
+                    foreach ($possible_extensions as $ext){
+                        $possible_path = $raw_folder.$basename.".".$ext;
+                        if (file_exists($GLOBALS['SYSTEM_ROOT'].$possible_path)){
+                            $dl_raw = $possible_path;
+                            break;
                         }
-                        $dl_jpg_pretty = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_jpg_pretty);
-                        $dl_jpg_plain = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_jpg_plain);
-                        $dl_raw = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_raw);
-
-                        echo "<div class='item lightbox-trigger'";
-                        echo " lightbox-src=\"".$thumb_l."\"";
-                        echo " dlbp-pretty=\"".$dl_jpg_pretty."\"";
-                        echo " dlbp-plain=\"".$dl_jpg_plain."\"";
-                        echo " dlbp-raw=\"".$dl_raw."\"";
-                        echo ">";
-                        echo "<img src=\"".$thumb_s."\">";
-                        echo "</div>";
+                        $possible_path = $raw_folder.$basename.".".strtolower($ext);
+                        if (file_exists($GLOBALS['SYSTEM_ROOT'].$possible_path)){
+                            $dl_raw = $possible_path;
+                            break;
+                        }
                     }
+                    $dl_jpg_pretty = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_jpg_pretty);
+                    $dl_jpg_plain = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_jpg_plain);
+                    $dl_raw = str_replace("/files/backplates", $download_path_prefix."Backplates", $dl_raw);
+
+                    echo "<div class='item lightbox-trigger'";
+                    echo " lightbox-src=\"".$thumb_l."\"";
+                    echo " dlbp-pretty=\"".$dl_jpg_pretty."\"";
+                    echo " dlbp-plain=\"".$dl_jpg_plain."\"";
+                    echo " dlbp-raw=\"".$dl_raw."\"";
+                    echo ">";
+                    echo "<img src=\"".$thumb_s."\">";
+                    echo "</div>";
                 }
-                echo "</div>";
             }
+            echo "</div>";
         }
     }
 
