@@ -4,9 +4,9 @@
 // IP addresses are stored (after obfuscation) so that we can count the number of unique downloads of an HDRI,
 // ignoring the same person downloading different resolutions of the same HDRI
 
-include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/php/functions.php');
 
-if(isset($_POST['id']) and isset($_POST['res'])){
+if (isset($_POST['id']) and isset($_POST['res'])) {
     $conn = db_conn_read_write();
 
     $id = mysqli_real_escape_string($conn, $_POST['id']);
@@ -19,12 +19,25 @@ if(isset($_POST['id']) and isset($_POST['res'])){
     }
     $ip_hash = mysqli_real_escape_string($conn, simple_hash($_SERVER['REMOTE_ADDR']));
     $sql = "INSERT INTO download_counting (`ip`, `hdri_id`, `res`) ";
-    $sql .= "VALUES (\"".$ip_hash."\", \"".$id."\", \"".$res."\")";
+    $sql .= "VALUES (\"" . $ip_hash . "\", \"" . $id . "\", \"" . $res . "\")";
 
     // HDRI table
     $sql .= "; ";
-    $sql .= "UPDATE hdris SET download_count=download_count+1 WHERE id='".$id."'";
+    $sql .= "UPDATE hdris SET download_count=download_count+1 WHERE id='" . $id . "'";
     $result = mysqli_multi_query($conn, $sql);
-}
 
-?>
+    // New API
+    $url = "https://api.polyhaven.com/dl_track";
+    $data = [
+        'ip' => $ip_hash,
+        'asset_id' => $id,
+        'res' => $res,
+        'key' => $GLOBALS['DL_API_KEY']
+    ];
+    $ch = curl_init($url);
+    $json_data = json_encode($data);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    $response = curl_exec($ch);
+}
