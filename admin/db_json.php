@@ -24,6 +24,7 @@ foreach ($data as $asset) {
   $asset['date_taken'] = strtotime($asset['date_taken']) + (3600 * $asset['timezone_offset']);
   $asset['download_count'] = (int) $asset['download_count'];
   $asset['evs_cap'] = (int) $asset['evs_cap'];
+  $asset['old_id'] = (int) $asset['id'];
   $asset['whitebalance'] = (int) $asset['whitebalance'];
   $asset['staging'] = (bool) !$asset['is_published'];
   if ($asset['coords'] && $asset['coords'] != '0') {
