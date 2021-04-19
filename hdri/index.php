@@ -51,9 +51,9 @@ $ads_testing = rand(1, 3);  // A/B testing for ad placement
 <div id="lightbox-wrapper" class="hide">
     <img id="lightbox-img" src="#">
     <p id="lightbox-text">Downloads:
-        <a href="/" download="" id="href-dlbp-pretty" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='bp'><b>Pretty JPG</b> (as shown)</span></a>
-        <a href="/" download="" id="href-dlbp-plain" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='bl'><b>Plain JPG</b> (no adjustments)</span></a>
-        <a href="/" download="" id="href-dlbp-raw" target="_blank"><span id="<?php echo $info['id']; ?>" class='dl-btn button' res='br'><b>RAW</b> (straight from camera)</span></a>
+        <a href="/" download="" id="href-dlbp-pretty" target="_blank"><span id="<?php echo $info['id']; ?>" slug="<?php echo $slug; ?>" class='dl-btn button' res='bp'><b>Pretty JPG</b> (as shown)</span></a>
+        <a href="/" download="" id="href-dlbp-plain" target="_blank"><span id="<?php echo $info['id']; ?>" slug="<?php echo $slug; ?>" class='dl-btn button' res='bl'><b>Plain JPG</b> (no adjustments)</span></a>
+        <a href="/" download="" id="href-dlbp-raw" target="_blank"><span id="<?php echo $info['id']; ?>" slug="<?php echo $slug; ?>" class='dl-btn button' res='br'><b>RAW</b> (straight from camera)</span></a>
         License: <a href="/p/license.php">CC0</a>
     </p>
     <div class='item-info'>
@@ -240,7 +240,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
         }
         if (file_exists($local_file)) {
             echo "<a href=\"{$dl_url}\" download=\"{$fname}\">";
-            echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"{$r}\">";
+            echo "<div class='dl-btn' id=\"{$hdri_id}\" slug=\"{$slug}\" res=\"{$r}\">";
             echo "<b>{$r}</b>";
             echo " &sdot; ";
             echo human_filesize(filesize($local_file));
@@ -256,7 +256,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
 
     $tonemapped = join_paths($GLOBALS['SYSTEM_ROOT'], "files/hdri_images/tonemapped/8192", $slug . ".jpg");
     echo "<a href='/files/hdri_images/tonemapped/8192/{$slug}.jpg' download='{$slug}.jpg'>";
-    echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"tm\">";
+    echo "<div class='dl-btn' id=\"{$hdri_id}\" slug=\"{$slug}\" res=\"tm\">";
     echo "8K Tonemapped JPG";
     echo " &sdot; ";
     echo human_filesize(filesize($tonemapped));
@@ -277,7 +277,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
     if (file_exists($macbeth_fp)) {
         $dl_url = $download_path_prefix . "Color Charts/" . basename($macbeth_fp);
         echo "<a href='" . $dl_url . "' download='{$slug}_macbeth." . pathinfo($macbeth_fp, PATHINFO_EXTENSION) . "' target='_blank'>";
-        echo "<div class='dl-btn' id=\"{$hdri_id}\" res=\"cc\">";
+        echo "<div class='dl-btn' id=\"{$hdri_id}\" slug=\"{$slug}\" res=\"cc\">";
         echo "<img src='/core/img/icons/macbeth.svg' style='height:20px;vertical-align:top;margin-right: 0.5em'>";
         echo "ColorChecker";
         echo " &sdot; ";
