@@ -26,6 +26,10 @@ if (isset($_POST['id']) and isset($_POST['res'])) {
     $sql .= "UPDATE hdris SET download_count=download_count+1 WHERE id='" . $id . "'";
     $result = mysqli_multi_query($conn, $sql);
 
+    if (isset($_POST['slug'])) {
+        $id = mysqli_real_escape_string($conn, $_POST['slug']);
+    }
+
     // New API
     $url = "https://api.polyhaven.com/dl_track";
     $data = [
