@@ -1,7 +1,7 @@
 <?php
 
-include ($_SERVER['DOCUMENT_ROOT'].'/php/functions.php');
-include($_SERVER['DOCUMENT_ROOT'].'/php/html/cache_top.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/php/functions.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/php/html/cache_top.php');
 
 $latest_version = "1.1";
 $available_versions = [
@@ -9,11 +9,11 @@ $available_versions = [
     "1.1",
 ];
 $version = $latest_version;
-if (isset($_GET["v"]) && trim($_GET["v"])){
+if (isset($_GET["v"]) && trim($_GET["v"])) {
     $v = $_GET["v"];
-    if (in_array($v, $available_versions)){
+    if (in_array($v, $available_versions)) {
         $version = $v;
-    }else{
+    } else {
         http_response_code(404);
         echo "Version {$v} not found. Available versions: ";
         echo json_encode($available_versions, JSON_PRETTY_PRINT);
@@ -29,27 +29,27 @@ $json['latest_version'] = $latest_version;
 $json['last_updated'] = time();
 
 $assets = array();
-foreach ($items as $i){
+foreach ($items as $i) {
     $slug = $i['slug'];
     $a = array();
     $a['author'] = $i['author'];
     $a['date_published'] = strtotime($i['date_published']);
     $a['license'] = "CC0";
 
-    $tags = $i['tags'].";".$i['categories'];
+    $tags = $i['tags'] . ";" . $i['categories'];
     $tags = explode(';', $tags);
     $a['tags'] = $tags;
 
     $files = [];
     $ext = $i['ext'];
-    foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r){
-        $local_url = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug.'_'.$r.'.'.$ext);
-        if (file_exists($local_url)){
-            $url = "https://download.polyhaven.com/HDRIs/";
-            if (in_array($r, ['1k', '2k', '4k', '8k'])){
+    foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r) {
+        $local_url = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug . '_' . $r . '.' . $ext);
+        if (file_exists($local_url)) {
+            $url = "https://dl.polyhaven.com/file/ph-assets/HDRIs/{$ext}/";
+            if (in_array($r, ['1k', '2k', '4k', '8k'])) {
                 $url .= $r;
-            }else{
-                $url .= "16k and up";
+            } else {
+                $url .= "16k+";
             }
             $url .= "/{$slug}_{$r}.{$ext}";
             if (version_compare($version, '1.1', '>=')) {
@@ -71,6 +71,4 @@ $json['assets'] = $assets;
 
 echo json_encode($json, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 
-include($_SERVER['DOCUMENT_ROOT'].'/php/html/cache_bottom.php');
-
-?>
+include($_SERVER['DOCUMENT_ROOT'] . '/php/html/cache_bottom.php');

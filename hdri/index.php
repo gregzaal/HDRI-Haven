@@ -228,15 +228,16 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
     }
     echo "<div class='download-buttons'>";
 
-    $download_path_prefix = "https://download.polyhaven.com/HDRIs/";
+    $download_path_prefix = "https://dl.polyhaven.com/file/ph-assets/HDRIs/";
+    $download_hdri_path = $download_path_prefix . "{$ext}/";
     $hdri_id = $info['id'];
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r) {
         $fname = $slug . '_' . $r . '.' . $ext;
         $local_file = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $fname);
         if (in_array($r, ['1k', '2k', '4k', '8k'])) {
-            $dl_url = $download_path_prefix . $r . '/' . $fname;
+            $dl_url = $download_hdri_path . $r . '/' . $fname;
         } else {
-            $dl_url = $download_path_prefix . "16k and up/" . $fname;
+            $dl_url = $download_hdri_path . "16k+/" . $fname;
         }
         if (file_exists($local_file)) {
             echo "<a href=\"{$dl_url}\" download=\"{$fname}\">";
@@ -275,7 +276,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
         }
     }
     if (file_exists($macbeth_fp)) {
-        $dl_url = $download_path_prefix . "Color Charts/" . basename($macbeth_fp);
+        $dl_url = $download_path_prefix . "extra/Color Charts/" . basename($macbeth_fp);
         echo "<a href='" . $dl_url . "' download='{$slug}_macbeth." . pathinfo($macbeth_fp, PATHINFO_EXTENSION) . "' target='_blank'>";
         echo "<div class='dl-btn' id=\"{$hdri_id}\" slug=\"{$slug}\" res=\"cc\">";
         echo "<img src='/core/img/icons/macbeth.svg' style='height:20px;vertical-align:top;margin-right: 0.5em'>";
@@ -479,9 +480,9 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
                             break;
                         }
                     }
-                    $dl_jpg_pretty = str_replace("/files/backplates", $download_path_prefix . "Backplates", $dl_jpg_pretty);
-                    $dl_jpg_plain = str_replace("/files/backplates", $download_path_prefix . "Backplates", $dl_jpg_plain);
-                    $dl_raw = str_replace("/files/backplates", $download_path_prefix . "Backplates", $dl_raw);
+                    $dl_jpg_pretty = str_replace("/files/backplates", $download_path_prefix . "extra/Backplates", $dl_jpg_pretty);
+                    $dl_jpg_plain = str_replace("/files/backplates", $download_path_prefix . "extra/Backplates", $dl_jpg_plain);
+                    $dl_raw = str_replace("/files/backplates", $download_path_prefix . "extra/Backplates", $dl_raw);
 
                     echo "<div class='item lightbox-trigger'";
                     echo " lightbox-src=\"" . $thumb_l . "\"";
