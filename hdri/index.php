@@ -237,7 +237,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
         if (in_array($r, ['1k', '2k', '4k', '8k'])) {
             $dl_url = $download_hdri_path . $r . '/' . $fname;
         } else {
-            $dl_url = $download_hdri_path . "16k+/" . $fname;
+            $dl_url = $download_hdri_path . urlencode("16k+") . '/' . $fname;
         }
         if (file_exists($local_file)) {
             echo "<a href=\"{$dl_url}\" download=\"{$fname}\">";

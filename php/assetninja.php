@@ -49,7 +49,7 @@ foreach ($items as $i) {
             if (in_array($r, ['1k', '2k', '4k', '8k'])) {
                 $url .= $r;
             } else {
-                $url .= "16k+";
+                $url .= urlencode("16k+");
             }
             $url .= "/{$slug}_{$r}.{$ext}";
             if (version_compare($version, '1.1', '>=')) {
