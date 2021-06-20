@@ -24,34 +24,16 @@
         --><a href="/p/about-contact.php"><li>About/Contact</li></a>
     </ul>
 
-    <div class='patreon-bar-wrapper' title="Next goal on Patreon: <?php
-        echo goal_title($GLOBALS['PATREON_CURRENT_GOAL']);
-        echo " ($";
-        echo $GLOBALS['PATREON_EARNINGS'];
-        echo " of $";
-        echo $GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100;
-        echo ")";
-        ?>">
-        <a href="https://polyhaven.com/support-us">
-        <div class="patreon-bar-outer">
-            <div class="patreon-bar-inner-wrapper">
-                <div class="patreon-bar-inner" style="width: <?php
-                    echo $GLOBALS['PATREON_CURRENT_GOAL']['completed_percentage'] ?>%">
-                    <div class='patreon-bar-text'>
-                        <img src="/files/site_images/icons/patreon_logo.svg">
-                        <span class="text">
-                        <?php
-                        echo "$";
-                        echo max(0, ($GLOBALS['PATREON_CURRENT_GOAL']['amount_cents']/100) - $GLOBALS['PATREON_EARNINGS']);
-                        echo " to go";
-                        ?>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <h3 class='patreon-bar-wrapper' style="
+    border: 2px solid rgb(190, 111, 255);
+    border-radius: 1.3em;
+    margin: 0.4em;
+    padding: 0.3em 0.7em;
+    ">
+        <a href="https://polyhaven.com/hdris">
+        <strong>Moving to polyhaven.com!</strong>
         </a>
-    </div>
+    </h3>
 </div>
 <div class="nav-bar-spacer"></div>
 <div id="push-footer">
