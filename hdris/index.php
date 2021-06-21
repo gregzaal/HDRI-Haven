@@ -85,8 +85,6 @@ $ads_testing = rand(1, 2);  // A/B testing for ad placement
     include ($_SERVER['DOCUMENT_ROOT'].'/hdris/grid_options.php');
     echo "</div>";
 
-    insert_ad("Grid Top");
-
     echo "</div>";  // .title-bar
 
     echo "<div id='item-grid'>";
