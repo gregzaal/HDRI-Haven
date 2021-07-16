@@ -45,7 +45,7 @@ foreach ($items as $i) {
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r) {
         $local_url = join_paths($GLOBALS['SYSTEM_ROOT'], "files", "hdris", $slug . '_' . $r . '.' . $ext);
         if (file_exists($local_url)) {
-            $url = "https://dl.polyhaven.com/file/ph-assets/HDRIs/{$ext}/";
+            $url = "https://dl.polyhaven.org/file/ph-assets/HDRIs/{$ext}/";
             if (in_array($r, ['1k', '2k', '4k', '8k'])) {
                 $url .= $r;
             } else {

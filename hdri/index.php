@@ -221,7 +221,7 @@ if (is_in_the_past($info['date_published']) || $GLOBALS['WORKING_LOCALLY']) {
     }
     echo "<div class='download-buttons'>";
 
-    $download_path_prefix = "https://dl.polyhaven.com/file/ph-assets/HDRIs/";
+    $download_path_prefix = "https://dl.polyhaven.org/file/ph-assets/HDRIs/";
     $download_hdri_path = $download_path_prefix . "{$ext}/";
     $hdri_id = $info['id'];
     foreach (array_keys($GLOBALS['STANDARD_RESOLUTIONS']) as $r) {
