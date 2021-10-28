@@ -1,3 +1,13 @@
+# NOTE: This repo is no longer in use.
+
+**HDRI Haven has migrated to polyhaven.com which was rewritten from the ground up.**
+
+**So this code base is old and no longer maintained or relevant.**
+
+**Original readme below:**
+
+----
+
 # HDRI Haven Source Code
 
 This repo contains the website code for [HDRI Haven](https://hdrihaven.com/).
